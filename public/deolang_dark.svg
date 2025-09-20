@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="180"
+   height="180"
+   viewBox="0 0 180 180"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1"
+     style="display:none">
+    <path
+       id="rect1"
+       style="display:inline;fill:#ffcc00;stroke-width:27.7433;stroke-linecap:round;stroke-linejoin:round"
+       d="M 26.172333,9.5239643 64.594889,50.423518 V 9.5239643 Z M 18.35463,16.196115 V 169.27139 h 0.0623 v 0.25257 L 162.35462,169.47906 116.6888,120.8686 64.594893,120.67281 V 65.416999 Z" />
+    <path
+       id="path2"
+       style="display:inline;fill:#ffcc00;stroke-width:63.6241;stroke-linecap:round;stroke-linejoin:round"
+       d="M 69.821812,9.8423423 A 92.263129,96.406353 0 0 0 57.25858,10.78611 v 31.827337 l 11.943416,12.713226 a 46.698262,50.389939 0 0 1 0.678262,-0.06338 46.698262,50.389939 0 0 1 46.713182,50.323347 h 45.48895 A 92.263129,96.406353 0 0 0 69.821812,9.8423423 Z" />
+  </g>
+  <g
+     id="g3"
+     style="fill:#000000">
+    <rect
+       style="display:inline;fill:#ffcc00;stroke-width:41.784;stroke-linecap:round;stroke-linejoin:round"
+       id="rect3"
+       width="180.57693"
+       height="180"
+       x="0"
+       y="0"
+       ry="27.118586" />
+    <path
+       id="path1"
+       style="display:inline;fill:#000000;stroke-width:23.2193;stroke-linecap:round;stroke-linejoin:round"
+       d="m 70.668608,21.238868 c -1.05034,0.0014 -2.090957,0.0084 -2.973398,0.02125 H 39.877027 l 26.016818,27.693952 6.141316,6.536897 3.854465,4.102929 c 0.189098,-0.01917 0.379515,-0.03611 0.568852,-0.05231 21.569816,-0.0074 39.067012,18.841344 39.095522,42.116324 h 38.0706 C 153.33315,57.313906 117.54097,21.252125 75.101733,21.251945 c 0,0 -2.170765,-0.01601 -4.433125,-0.01308 z M 33.335226,26.844024 V 154.95838 h 0.05067 v 0.21087 L 153.85345,155.13165 115.63409,114.4489 72.035157,114.2838 V 68.040044 Z" />
+  </g>
+</svg>

@@ -1,0 +1,1045 @@
+/* From Uiverse.io by SelfMadeSystem */ 
+.matrix-containera {
+    position: absolute;
+    inset: -1em;
+    --c: 7px;
+    background-color: #000;
+    background-image: radial-gradient(
+        circle at 50% 50%,
+        #0000 1.5px,
+        #000 0 var(--c),
+        #0000 var(--c)
+      ),
+      radial-gradient(
+        circle at 50% 50%,
+        #0000 1.5px,
+        #000 0 var(--c),
+        #0000 var(--c)
+      ),
+      radial-gradient(circle at 50% 50%, #f00, #f000 60%),
+      radial-gradient(circle at 50% 50%, #ff0, #ff00 60%),
+      radial-gradient(circle at 50% 50%, #0f0, #0f00 60%),
+      radial-gradient(ellipse at 50% 50%, #00f, #00f0 60%);
+    background-size:
+      12px 20.7846097px,
+      12px 20.7846097px,
+      200% 200%,
+      200% 200%,
+      200% 200%,
+      200% 20.7846097px;
+    --p: 0px 0px, 6px 10.39230485px;
+    background-position:
+      var(--p),
+      0% 0%,
+      0% 0%,
+      0% 0px;
+    animation:
+      wee 40s linear infinite,
+      filt 6s linear infinite;
+    height: auto;
+  }
+  
+  @keyframes filt {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    to {
+      filter: hue-rotate(360deg);
+    }
+  }
+  
+  @keyframes wee {
+    0% {
+      background-position:
+        var(--p),
+        800% 400%,
+        1000% -400%,
+        -1200% -600%,
+        400% 41.5692194px;
+    }
+    to {
+      background-position:
+        var(--p),
+        0% 0%,
+        0% 0%,
+        0% 0%,
+        0% 0%;
+    }
+  }
+  
+
+  /* From Uiverse.io by SelfMadeSystem */ 
+/*
+More comprehensive version at shenanigans.shoghisimon.ca/collection/css-rain-bg/
+ */
+
+.containera::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-image: radial-gradient(
+      ellipse 1.5px 2px at 1.5px 50%,
+      #0000 0,
+      #0000 90%,
+      #000 100%
+    );
+    background-size: 25px 8px;
+  }
+  
+  .containera {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    --c: #09f;
+    background-color: #000;
+    background-image: radial-gradient(4px 100px at 0px 235px, var(--c), #0000),
+      radial-gradient(4px 100px at 300px 235px, var(--c), #0000),
+      radial-gradient(1.5px 1.5px at 150px 117.5px, var(--c) 100%, #0000 150%),
+      radial-gradient(4px 100px at 0px 252px, var(--c), #0000),
+      radial-gradient(4px 100px at 300px 252px, var(--c), #0000),
+      radial-gradient(1.5px 1.5px at 150px 126px, var(--c) 100%, #0000 150%),
+      radial-gradient(4px 100px at 0px 150px, var(--c), #0000),
+      radial-gradient(4px 100px at 300px 150px, var(--c), #0000),
+      radial-gradient(1.5px 1.5px at 150px 75px, var(--c) 100%, #0000 150%),
+      radial-gradient(4px 100px at 0px 253px, var(--c), #0000),
+      radial-gradient(4px 100px at 300px 253px, var(--c), #0000),
+      radial-gradient(1.5px 1.5px at 150px 126.5px, var(--c) 100%, #0000 150%),
+      radial-gradient(4px 100px at 0px 204px, var(--c), #0000),
+      radial-gradient(4px 100px at 300px 204px, var(--c), #0000),
+      radial-gradient(1.5px 1.5px at 150px 102px, var(--c) 100%, #0000 150%),
+      radial-gradient(4px 100px at 0px 134px, var(--c), #0000),
+      radial-gradient(4px 100px at 300px 134px, var(--c), #0000),
+      radial-gradient(1.5px 1.5px at 150px 67px, var(--c) 100%, #0000 150%),
+      radial-gradient(4px 100px at 0px 179px, var(--c), #0000),
+      radial-gradient(4px 100px at 300px 179px, var(--c), #0000),
+      radial-gradient(1.5px 1.5px at 150px 89.5px, var(--c) 100%, #0000 150%),
+      radial-gradient(4px 100px at 0px 299px, var(--c), #0000),
+      radial-gradient(4px 100px at 300px 299px, var(--c), #0000),
+      radial-gradient(1.5px 1.5px at 150px 149.5px, var(--c) 100%, #0000 150%),
+      radial-gradient(4px 100px at 0px 215px, var(--c), #0000),
+      radial-gradient(4px 100px at 300px 215px, var(--c), #0000),
+      radial-gradient(1.5px 1.5px at 150px 107.5px, var(--c) 100%, #0000 150%),
+      radial-gradient(4px 100px at 0px 281px, var(--c), #0000),
+      radial-gradient(4px 100px at 300px 281px, var(--c), #0000),
+      radial-gradient(1.5px 1.5px at 150px 140.5px, var(--c) 100%, #0000 150%),
+      radial-gradient(4px 100px at 0px 158px, var(--c), #0000),
+      radial-gradient(4px 100px at 300px 158px, var(--c), #0000),
+      radial-gradient(1.5px 1.5px at 150px 79px, var(--c) 100%, #0000 150%),
+      radial-gradient(4px 100px at 0px 210px, var(--c), #0000),
+      radial-gradient(4px 100px at 300px 210px, var(--c), #0000),
+      radial-gradient(1.5px 1.5px at 150px 105px, var(--c) 100%, #0000 150%);
+    background-size:
+      300px 235px,
+      300px 235px,
+      300px 235px,
+      300px 252px,
+      300px 252px,
+      300px 252px,
+      300px 150px,
+      300px 150px,
+      300px 150px,
+      300px 253px,
+      300px 253px,
+      300px 253px,
+      300px 204px,
+      300px 204px,
+      300px 204px,
+      300px 134px,
+      300px 134px,
+      300px 134px,
+      300px 179px,
+      300px 179px,
+      300px 179px,
+      300px 299px,
+      300px 299px,
+      300px 299px,
+      300px 215px,
+      300px 215px,
+      300px 215px,
+      300px 281px,
+      300px 281px,
+      300px 281px,
+      300px 158px,
+      300px 158px,
+      300px 158px,
+      300px 210px,
+      300px 210px,
+      300px 210px;
+    animation: hi 150s linear infinite;
+  }
+  
+  @keyframes hi {
+    0% {
+      background-position:
+        0px 220px,
+        3px 220px,
+        151.5px 337.5px,
+        25px 24px,
+        28px 24px,
+        176.5px 150px,
+        50px 16px,
+        53px 16px,
+        201.5px 91px,
+        75px 224px,
+        78px 224px,
+        226.5px 350.5px,
+        100px 19px,
+        103px 19px,
+        251.5px 121px,
+        125px 120px,
+        128px 120px,
+        276.5px 187px,
+        150px 31px,
+        153px 31px,
+        301.5px 120.5px,
+        175px 235px,
+        178px 235px,
+        326.5px 384.5px,
+        200px 121px,
+        203px 121px,
+        351.5px 228.5px,
+        225px 224px,
+        228px 224px,
+        376.5px 364.5px,
+        250px 26px,
+        253px 26px,
+        401.5px 105px,
+        275px 75px,
+        278px 75px,
+        426.5px 180px;
+    }
+  
+    to {
+      background-position:
+        0px 6800px,
+        3px 6800px,
+        151.5px 6917.5px,
+        25px 13632px,
+        28px 13632px,
+        176.5px 13758px,
+        50px 5416px,
+        53px 5416px,
+        201.5px 5491px,
+        75px 17175px,
+        78px 17175px,
+        226.5px 17301.5px,
+        100px 5119px,
+        103px 5119px,
+        251.5px 5221px,
+        125px 8428px,
+        128px 8428px,
+        276.5px 8495px,
+        150px 9876px,
+        153px 9876px,
+        301.5px 9965.5px,
+        175px 13391px,
+        178px 13391px,
+        326.5px 13540.5px,
+        200px 14741px,
+        203px 14741px,
+        351.5px 14848.5px,
+        225px 18770px,
+        228px 18770px,
+        376.5px 18910.5px,
+        250px 5082px,
+        253px 5082px,
+        401.5px 5161px,
+        275px 6375px,
+        278px 6375px,
+        426.5px 6480px;
+    }
+  }
+  
+
+  /* From Uiverse.io by Rodrypaladin */ 
+.phone {
+    width: 210px;
+    height: 400px;
+    background: black;
+    border-radius: 16px;
+    border: 2px solid rgb(40, 40, 40);
+    padding: 7px;
+    position: relative;
+    box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.486);
+  }
+  
+  .phone-int {
+    background-image: linear-gradient(to right bottom, #ff0000, #ff0045, #ff0078, #ea00aa, #b81cd7, #8a3ad6, #5746cf, #004ac2, #003d94, #002e66, #001d3a, #020812);
+    background-size: 200% 200%;
+    background-position: 0% 0%;
+    height: 100%;
+    border-radius: 8px;
+    transition: all 0.6s ease-out;
+    overflow: hidden;
+  }
+  
+  .phone:hover .phone-int {
+    background-position: 100% 100%;
+  }
+  .phone:hover {
+    scale: 0.98;
+  }
+  
+  .top {
+    position: absolute;
+    top: 10px;
+    right: 50%;
+    transform: translate(50%, 0%);
+    width: 16px;
+    height: 16px;
+    background-color: black;
+    border-radius: 20px;
+    /* border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px; */
+  }
+  
+  .speaker {
+    position: absolute;
+    top: 2px;
+    right: 50%;
+    transform: translate(50%, 0%);
+    width: 40%;
+    height: 2px;
+    border-radius: 2px;
+    background-color: rgb(20, 20, 20);
+  }
+  
+  .camera {
+    position: absolute;
+    top: 6px;
+    right: 84%;
+    transform: translate(50%, 0%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.048);
+  }
+  
+  .int {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    background-color: rgba(0, 0, 255, 0.212);
+  }
+  
+  .btn1, .btn2, .btn3, .btn4 {
+    position: absolute;
+    width: 2px;
+  }
+  
+  .btn1, .btn2, .btn3 {
+    height: 45px;
+    top: 30%;
+    right: -4px;
+    background-image: linear-gradient(to right, #111111, #222222, #333333, #464646, #595959);
+  }
+  
+  .btn2, .btn3 {
+    transform: scale(-1);
+    left: -4px;
+  }
+  
+  .btn2, .btn3 {
+    transform: scale(-1);
+    height: 30px;
+  }
+  
+  .btn2 {
+    top: 26%
+  }
+  
+  .btn3 {
+    top: 36%
+  }
+  
+  .hello {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 35px;
+    height: 100%;
+    transition: 0.5s ease-in-out;
+  }
+  
+  .hidden {
+    display: block;
+    opacity: 0;
+    transition: all 0.3s ease-in;
+  }
+  
+  .phone:hover .hidden {
+    opacity: 1;
+  }
+  
+  .phone:hover .hello {
+    transform: translateY(-20px);
+  }
+  
+  
+  /* From Uiverse.io by csozidev */ 
+/* 3D tower loader made by: csozi | Website: www.csozi.hu*/
+
+.app-building {
+    scale: 3;
+    height: 50px;
+    width: 40px;
+  }
+  
+  .box {
+    position: relative;
+    opacity: 0;
+    left: 10px;
+  }
+  
+  .side-left {
+    position: absolute;
+    background-color: #286cb5;
+    width: 19px;
+    height: 5px;
+    transform: skew(0deg, -25deg);
+    top: 14px;
+    left: 10px;
+  }
+  
+  .side-right {
+    position: absolute;
+    background-color: #2f85e0;
+    width: 19px;
+    height: 5px;
+    transform: skew(0deg, 25deg);
+    top: 14px;
+    left: -9px;
+  }
+  
+  .side-top {
+    position: absolute;
+    background-color: #5fa8f5;
+    width: 20px;
+    height: 20px;
+    rotate: 45deg;
+    transform: skew(-20deg, -20deg);
+  }
+  
+  .box-1 {
+    animation: from-left 4s infinite;
+  }
+  
+  .box-2 {
+    animation: from-right 4s infinite;
+    animation-delay: 1s;
+  }
+  
+  .box-3 {
+    animation: from-left 4s infinite;
+    animation-delay: 2s;
+  }
+  
+  .box-4 {
+    animation: from-right 4s infinite;
+    animation-delay: 3s;
+  }
+  
+  @keyframes from-left {
+    0% {
+      z-index: 20;
+      opacity: 0;
+      translate: -20px -6px;
+    }
+  
+    20% {
+      z-index: 10;
+      opacity: 1;
+      translate: 0px 0px;
+    }
+  
+    40% {
+      z-index: 9;
+      translate: 0px 4px;
+    }
+  
+    60% {
+      z-index: 8;
+      translate: 0px 8px;
+    }
+  
+    80% {
+      z-index: 7;
+      opacity: 1;
+      translate: 0px 12px;
+    }
+  
+    100% {
+      z-index: 5;
+      translate: 0px 30px;
+      opacity: 0;
+    }
+  }
+  
+  @keyframes from-right {
+    0% {
+      z-index: 20;
+      opacity: 0;
+      translate: 20px -6px;
+    }
+  
+    20% {
+      z-index: 10;
+      opacity: 1;
+      translate: 0px 0px;
+    }
+  
+    40% {
+      z-index: 9;
+      translate: 0px 4px;
+    }
+  
+    60% {
+      z-index: 8;
+      translate: 0px 8px;
+    }
+  
+    80% {
+      z-index: 7;
+      opacity: 1;
+      translate: 0px 12px;
+    }
+  
+    100% {
+      z-index: 5;
+      translate: 0px 30px;
+      opacity: 0;
+    }
+  }
+
+  /* From Uiverse.io by Spacious74 */ 
+.laptop {
+    /* transform: scale(0.8); */
+    width: fit-content;
+    /* margin-left: -20%; */
+  }
+  .screen {
+    border-radius: 14px;
+    box-shadow: inset 0 0 0 2px #c8cacb, inset 0 0 0 8px #000;
+    height: 260px;
+    width: 410px;
+    margin: 0 auto;
+    padding: 9px 9px 23px 9px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-image: linear-gradient(
+      15deg,
+      #3f51b1 0%,
+      #5a55ae 13%,
+      #7b5fac 25%,
+      #8f6aae 38%,
+      #a86aa4 50%,
+      #cc6b8e 62%,
+      #f18271 75%,
+      #f3a469 87%,
+      #f7c978 100%
+    ); */
+    /* background-image: linear-gradient(to right bottom, #ff0000, #ff0045, #ff0078, #ea00aa, #b81cd7, #8a3ad6, #5746cf, #004ac2, #003d94, #002e66, #001d3a, #020812); */
+    background-image: linear-gradient(303deg,rgba(62, 49, 235, 1) 18%, rgba(181, 65, 166, 1) 49%, rgba(247, 189, 42, 1) 75%);
+    background-size: 200% 200%;
+    background-position: 0% 0%;
+    transition: all 0.6s ease-out;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    /* transform: perspective(1900px) rotateX(0deg); */
+    transform-origin: 50% 100%;
+    animation: open 4s infinite alternate;
+  }
+  .laptop:hover .screen {
+    background-position: 100% 100%;
+  }
+  .laptop:hover {
+    scale: 100%;
+  }
+  @keyframes open2 {
+    0% {
+      transform: perspective(1900px) rotateX(-88.5deg);
+    }
+    100% {
+      transform: perspective(1000px) rotateX(0deg);
+    }
+  }
+  .screen::before {
+    content: "";
+    width: 518px;
+    height: 12px;
+    position: absolute;
+    background: linear-gradient(#979899, transparent);
+    top: -3px;
+    /* transform: rotateX(90deg); */
+    border-radius: 5px 5px;
+  }
+  
+  .text {
+    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    color: #fff;
+    letter-spacing: 1px;
+    text-shadow: 0 0 5px #fff; */
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 35px;
+  }
+  .header {
+    width: 80px;
+    height: 12px;
+    position: absolute;
+    background-color: #000;
+    top: 4px;
+    left: 50%;
+    transform: translate(-50%, -0%);
+    border-radius: 0 0 6px 6px;
+  }
+  .screen::after {
+    background: linear-gradient(to bottom, #272727, #0d0d0d);
+    border-radius: 0 0 20px 20px;
+    bottom: 2px;
+    content: "";
+    height: 24px;
+    left: 2px;
+    position: absolute;
+    width: 514px;
+  }
+  .keyboard {
+    background: radial-gradient(circle at center, #e2e3e4 85%, #a9abac 100%);
+    border: solid #a0a3a7;
+    border-radius: 2px 2px 12px 12px;
+    border-width: 1px 2px 0 2px;
+    box-shadow: inset 0 -2px 8px 0 #6c7074;
+    height: 16px;
+    margin-top: -10px;
+    position: relative;
+    width: 450px;
+    z-index: 9;
+  }
+  .keyboard::after {
+    background: #e2e3e4;
+    border-radius: 0 0 10px 10px;
+    box-shadow: inset 0 0 4px 2px #babdbf;
+    content: "";
+    height: 10px;
+    left: 50%;
+    margin-left: -60px;
+    position: absolute;
+    top: 0;
+    width: 120px;
+  }
+  .keyboard::before {
+    background: 0 0;
+    border-radius: 0 0 3px 3px;
+    bottom: -2px;
+    box-shadow: -200px 0 #272727, 190px 0 #272727;
+    content: "";
+    height: 2px;
+    left: 50%;
+    margin-left: -10px;
+    position: absolute;
+    width: 30px;
+  }
+  
+  
+
+  /* From Uiverse.io by Juanes200122 */ 
+.container_SevMini {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .Ghost {
+    transform: translate(0px, -25px);
+    z-index: -1;
+    animation: opacidad 4s infinite ease-in-out;
+  }
+  
+  @keyframes opacidad {
+    0% {
+      opacity: 1;
+      scale: 1;
+    }
+  
+    50% {
+      opacity: 0.5;
+      scale: 0.9;
+    }
+  
+    100% {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+  
+  @keyframes estroboscopico {
+    0% {
+      opacity: 1;
+    }
+  
+    50% {
+      opacity: 0;
+    }
+  
+    51% {
+      opacity: 1;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes rebote {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+  
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes estroboscopico1 {
+    0%,
+    50%,
+    100% {
+      fill: rgb(255, 95, 74);
+    }
+  
+    25%,
+    75% {
+      fill: rgb(16, 53, 115);
+    }
+  }
+  
+  @keyframes estroboscopico2 {
+    0%,
+    50%,
+    100% {
+      fill: #17e300;
+    }
+  
+    25%,
+    75% {
+      fill: #17e300b4;
+    }
+  }
+  
+  .SevMini {
+    animation: rebote 4s infinite ease-in-out;
+  }
+  
+  #strobe_led1 {
+    animation: estroboscopico 0.5s infinite;
+  }
+  
+  #strobe_color1 {
+    animation: estroboscopico2 0.8s infinite;
+  }
+  
+  #strobe_color3 {
+    animation: estroboscopico1 0.8s infinite;
+    animation-delay: 3s;
+  }
+  
+  /* From Uiverse.io by mobinkakei */ 
+.cta {
+  display: flex;
+  padding: 11px 33px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  background: #6225e6;
+  transition: 1s;
+  box-shadow: 6px 6px 0 black;
+  transform: skewX(-15deg);
+  border: none;
+  cursor: pointer;
+}
+
+.cta:focus {
+  outline: none;
+}
+
+.cta:hover {
+  transition: 0.5s;
+  box-shadow: 10px 10px 0 #fbc638;
+}
+
+.cta .second {
+  transition: 0.5s;
+  margin-right: 0px;
+}
+
+.cta:hover .second {
+  transition: 0.5s;
+  margin-right: 45px;
+}
+
+.span {
+  transform: skewX(15deg);
+}
+
+.second {
+  width: 20px;
+  margin-left: 30px;
+  margin-top: 5px;
+  position: relative;
+  top: 20%;
+}
+
+.one {
+  transition: 0.4s;
+  transform: translateX(-60%);
+}
+
+.two {
+  transition: 0.5s;
+  transform: translateX(-30%);
+}
+
+.cta:hover .three {
+  animation: color_anim 1s infinite 0.2s;
+}
+
+.cta:hover .one {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.6s;
+}
+
+.cta:hover .two {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.4s;
+}
+
+@keyframes color_anim {
+  0% {
+    fill: white;
+  }
+
+  50% {
+    fill: #fbc638;
+  }
+
+  100% {
+    fill: white;
+  }
+}
+
+@font-face {
+  font-family: Ahom;
+  src: url(/public/ahom.woff);
+}
+
+.ahom {
+  font-family: Ahom;
+  font-size: 110%;
+}
+
+#clients {
+  width: 100%;
+  height: 100%;
+  /* Add your background pattern here */
+  /* background-color: #ffffff; */
+  background-image: radial-gradient(rgba(12, 12, 12, 0.171) 2px, transparent 0);
+  background-size: 30px 30px;
+  background-position: -5px -5px;
+}
+
+/* From Uiverse.io by Smit-Prajapati */ 
+.card {
+  width: 280px;
+  height: 280px;
+  background: white;
+  border-radius: 32px;
+  padding: 3px;
+  position: relative;
+  box-shadow: #604b4a30 0px 70px 30px -50px;
+  transition: all 0.5s ease-in-out;
+}
+
+.card .mail {
+  position: absolute;
+  right: 2rem;
+  top: 1.4rem;
+  background: transparent;
+  border: none;
+}
+
+.card .mail svg {
+  stroke: #ce271e;
+  stroke-width: 3px;
+}
+
+.card .mail svg:hover {
+  stroke: #ce271e;
+}
+
+.card .profile-pic {
+  position: absolute;
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  top: 3px;
+  left: 3px;
+  border-radius: 29px;
+  z-index: 1;
+  border: 0px solid #ce271e;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out 0.2s, z-index 0.5s ease-in-out 0.2s;
+}
+
+.card .profile-pic img {
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  -o-object-position: 0px 0px;
+  object-position: 0px 0px;
+  transition: all 0.5s ease-in-out 0s;
+}
+
+.card .profile-pic svg {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: 0px 0px;
+  object-position: 0px 0px;
+  transform-origin: 45% 20%;
+  transition: all 0.5s ease-in-out 0s;
+}
+
+.card .bottom {
+  position: absolute;
+  bottom: 3px;
+  left: 3px;
+  right: 3px;
+  background: #ce271e;
+  top: 80%;
+  border-radius: 29px;
+  z-index: 2;
+  box-shadow: rgba(96, 75, 74, 0.1882352941) 0px 5px 5px 0px inset;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+}
+
+.card .bottom .content {
+  position: absolute;
+  bottom: 0;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 160px;
+}
+
+.card .bottom .content .name {
+  display: block;
+  font-size: 1.2rem;
+  color: white;
+  font-weight: bold;
+}
+
+.card .bottom .content .about-me {
+  display: block;
+  font-size: 0.9rem;
+  color: white;
+  margin-top: 1rem;
+}
+
+.card .bottom .bottom-bottom {
+  position: absolute;
+  bottom: 1rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card .bottom .bottom-bottom .social-links-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.card .bottom .bottom-bottom .social-links-container svg {
+  height: 20px;
+  fill: white;
+  filter: drop-shadow(0 5px 5px rgba(165, 132, 130, 0.1333333333));
+}
+
+.card .bottom .bottom-bottom .social-links-container svg:hover {
+  fill: #e56761;
+  transform: scale(1.2);
+}
+
+.card .bottom .bottom-bottom .button {
+  background: white;
+  color: #ce271e;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.6rem;
+  padding: 0.4rem 0.6rem;
+  box-shadow: rgba(165, 132, 130, 0.1333333333) 0px 5px 5px 0px;
+}
+
+.card .bottom .bottom-bottom .button:hover {
+  background: #ce271e;
+  color: white;
+}
+
+.card:hover {
+  border-top-left-radius: 55px;
+}
+
+.card:hover .bottom {
+  top: 20%;
+  border-radius: 80px 29px 29px 29px;
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
+}
+
+.card:hover .profile-pic {
+  width: 100px;
+  height: 100px;
+  aspect-ratio: 1;
+  top: 10px;
+  left: 10px;
+  border-radius: 50%;
+  z-index: 3;
+  border: 7px solid #ce271e;
+  box-shadow: rgba(96, 75, 74, 0.1882352941) 0px 5px 5px 0px;
+  transition: all 0.5s ease-in-out, z-index 0.5s ease-in-out 0.1s;
+}
+
+.card:hover .profile-pic:hover {
+  transform: scale(1.3);
+  border-radius: 0px;
+}
+
+.card:hover .profile-pic img {
+  transform: scale(2.5);
+  -o-object-position: 0px 25px;
+  object-position: 0px 25px;
+  transition: all 0.5s ease-in-out 0.5s;
+}
+
+.card:hover .profile-pic svg {
+  transform: scale(2.5);
+  transition: all 0.5s ease-in-out 0.5s;
+}
