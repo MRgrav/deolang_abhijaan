@@ -455,7 +455,7 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="bg-zinc-50 py-16 px-6">
+    <section id="services" class="bg-zinc-50 pt-28 pb-10 px-6">
       <div class="container mx-auto">
         <h2 class="text-3xl text-center font-bold mb-8 text-indigo-700">Our Services</h2>
         <!-- <ul class="grid md:grid-cols-3 gap-8">
@@ -520,7 +520,7 @@
     </section>
     
     <!-- About Section -->
-    <section id="about" class="py-16 px-6 bg-gradient-to-b from-zinc-50 to-red-100">
+    <section id="about" class="pt-28 px-6 bg-gradient-to-b from-zinc-50 to-red-100">
       <div class="container mx-auto flex flex-col justify-center items-center">
         <h2 class="text-3xl font-bold mb-4 text-indigo-700">About Us</h2>
         <p class="text-center mb-6 leading-8 md:max-w-[86%]">DeoLang is a forward-thinking IT company committed to delivering high-quality software solutions. Our team of experienced developers, designers, and IT professionals work collaboratively to ensure that we meet and exceed our clients' expectations.</p>
@@ -531,7 +531,7 @@
     <!-- Team Section -->
     <section id="team" class="px-4 bg-red-100">
       <!-- From Uiverse.io by Smit-Prajapati --> 
-       <div class=" py-20">
+       <div class=" py-28">
        <h2 class="text-indigo-700 text-center mb-10 font-bold text-3xl">Meet The Team</h2>
       <div class="flex lg:flex-row flex-col gap-5 lg:gap-8 xl:gap-16 justify-around w-fit mx-auto">
         <div class="card">
@@ -643,7 +643,7 @@
       </top>
     </section>
     <!-- Testimonials Section -->
-    <section id="testimonials" class="hidden bg-gradient-to-r from-indigo-500 to-pink-500 text-white py-16 px-6">
+    <!-- <section id="testimonials" class="hidden bg-gradient-to-r from-indigo-500 to-pink-500 text-white py-16 px-6">
       <div class="container mx-auto">
         <h2 class="text-3xl font-bold mb-8">What Clients Say</h2>
         <blockquote class="max-w-xl mx-auto italic text-lg">
@@ -651,15 +651,15 @@
           <span class="block mt-4 font-semibold not-italic">- Client Name</span>
         </blockquote>
       </div>
-    </section>
+    </section> -->
     
     <!-- Contact Section -->
     
-    <section id="contact" class="container mx-auto py-16 px-6">
+    <section id="contact" class="container mx-auto py-16 px-6 text-center">
       <h2 class="text-3xl font-bold mb-4 text-yellow-600">Contact Us</h2>
-      <address class="not-italic text-zinc-600">
-        Email: <a href="mailto:info@company.com" class="text-indigo-600 hover:underline">info@deolang.com</a><br>
-        Phone: +91-12345-67890
+      <address class="not-italic text-zinc-600 tracking-wider">
+        Email: <a href="mailto:info@deolang.com" class="text-indigo-600 hover:underline">info@deolang.com</a><br>
+        LinkedIn: <a href="https://www.linkedin.com/company/deolang" target="_blank" class="text-blue-500">DeoLang</a>
       </address>
     </section>
   </main>
