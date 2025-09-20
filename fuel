@@ -1,0 +1,581 @@
+#!/usr/bin/env php
+<?php
+
+// Ensure CLI usage
+if (PHP_SAPI !== 'cli') {
+    exit('This script can only be run from the command line.');
+}
+
+// Check command-line arguments
+if ($argc < 2) {
+    help(); // Display help if no command is provided
+} else {
+    $command = $argv[1];
+    $port = isset($argv[2]) ? $argv[2] : "2323";
+    $currentDir = getcwd();
+    switch ($command) {
+        case "help": help(); break;
+        case "version": version(); break;
+        case "run": run($port); break;
+        case "create-app": createApp($currentDir); break;
+        case "create-table": createTable($argv[2]); break;
+        case "create-all-table": createAllTable(); break;
+        case "truncate-table": deleteTable($argv[2]); break;
+        case "drop-table": dropTable($argv[2]); break;
+        default: help();
+    }
+}
+// Run function
+function run($port) {
+    echo "Running your project at localhost:".$port."\n";
+    exec("php -S 127.0.0.1:".$port." -t .");
+}
+// uses function
+function help() {
+    cli_logo();
+    echo "\033[33musage:\033[32m php fuel\033[0m <--command--> \033[33m(--options--)\n\n";
+    echo "\033[33mcommands:\033[0m\n";
+    echo "\t\033[32mrun \033[33m(port)\033[0m\t\t run your project at localhost (default port:2323)\n";
+    echo "\t\033[32mcreate-app .\033[0m\t\t create your project inside the current directory\n";
+    echo "\t\033[32mcreate-table \033[33m(name)\033[0m\t create a single table into the database\n";
+    echo "\t\033[32mcreate-all-table \033[33m(name)\033[0m\t create all tables into the database\n";
+    echo "\t\033[32mtruncate-table \033[33m(name)\033[0m\t truncate a single table in the database\n";
+    echo "\t\033[32mdrop-table \033[33m(name)\033[0m\t drop a single table from the database\n";
+    echo "\t\033[32mversion\033[0m\t\t\t version\n";
+    echo "\t\033[32mhelp\033[0m\t\t\t help\n";
+    echo "\n\033[33moptions:\033[0m\n";
+    echo "\t\033[32mport\033[0m\t\t\t 3000, 3001, etc\n";
+    echo "\t\033[32mname\033[0m\t\t\t table name without the .tbl.json extension\n";
+    exit(1);
+}
+// version function
+function version() { cli_logo(); exit(1); }
+// create project  //  cc = creation - type (connection/route/core) for core it is x
+function createApp($currentDir) {
+    cli_logo();
+    try { writeAuth($currentDir); } catch (e) {}
+    try { writeConnection($currentDir); } catch (e) { echo "\nError code(cc)\n:File creation failed. Database services will not work. Please try again."; }
+    try { writeConnectionMessage($currentDir); } catch (e) { }
+    try { write404($currentDir); } catch (e) {}
+    try { writeRoute($currentDir); } catch (e) { echo "\nError code(cr)\n:File creation failed. Routing may not work. Please try again."; }
+    try { writeSecure($currentDir); } catch (e) {}
+    try { writeCore($currentDir); } catch (e) { echo "\nError code(cx)\n:File creation failed. Framework may not work. Please try again."; }
+    try { writeConfig($currentDir); } catch (e) {}
+    try { writeRoutes($currentDir); } catch (e) {}
+    try {  writePublicIndex($currentDir); } catch (e) {}
+    try { writeViewsIndex($currentDir); } catch (e) {}
+    try { writeIndex($currentDir); } catch (e) { echo "\nError code(ri)\n:File creation failed. Framework will not load. Please try again."; }
+    try { copyStylesheet($currentDir); } catch (e) {}
+    try { copyLogoImage($currentDir); } catch (e) {}
+    try { demoUsersTable($currentDir); } catch (e) {}
+    echo "\nYour abhijaan project is ready.\nRun the project : \n\t\tphp fuel run\n\n";
+}
+
+
+                                                                                
+function cli_logo() {
+    echo " \t\t\t\t\t    \033[1m\033[44m </> \033[0m\033[37m\033[1m";
+    echo "\033[36m
+╔───────────────────────────────────────────────╗ 
+│    ___   ___  __ ______   _____   ___   _  __ │ 
+│   / _ | / _ )/ // /  _/_ / / _ | / _ | / |/ / │ 
+│  / __ |/ _  / _  // // // / __ |/ __ |/    /  │ 
+│ /_/ |_/____/_//_/___/\___/_/ |_/_/ |_/_/|_/   │ 
+╚───────────────────────────────────────────────╝ \n";
+    echo "\033[0m\033[31m\033[6mABHIJAAN\033[0m Framework version \033[32m0.1.0\033[0m 2024\n\n";
+}
+
+/*  *********************
+    *  part table query *
+    *********************
+*/
+// create a single table
+function createTable ($tableName) {
+    $file = 'tables/'.$tableName.'.tbl.json';
+    $fileContent = file_get_contents($file);
+    createHandler($fileContent);
+}
+function createAllTable() {
+    $directory = 'tables/'; $files = glob($directory . '*.tbl.json');
+    foreach ($files as $file) { $fileContent = file_get_contents($file); createHandler($fileContent); }
+}
+function createHandler($fileContent) {
+    require_once "./config/config.php";
+    require_once "./.core/inbuilts/connection/connection.php";
+    global $pdo;
+    if (!isset($pdo) || $pdo === null) { die('Database connection is not initialized.'); }
+    $schema = json_decode($fileContent, true);
+
+    if (!$schema) {
+        echo "Error parsing schema file.\n";
+        return;
+    }
+    $tableName = isset($schema['table']) ? $schema['table'] : '';
+    $columns = isset($schema['columns']) ? $schema['columns'] : [];
+    $foreignKeys = isset($schema['references']) ? $schema['references'] : [];
+    if (empty($tableName) || empty($columns)) {
+        echo "Table name or columns missing in schema.\n";
+        return;
+    }
+    $sqlColumns = [];
+    foreach ($columns as $column => $datatype) { $sqlColumns[] = "$column $datatype"; }
+    $sqlForeignKeys = [];
+    foreach ($foreignKeys as $column => $reference) { $sqlForeignKeys[] = "FOREIGN KEY ($column) REFERENCES $reference"; }
+    $sql = "CREATE TABLE IF NOT EXISTS $tableName (";
+    $sql .= implode(", ", $sqlColumns);
+    if (!empty($sqlForeignKeys)) { $sql .= ", " . implode(", ", $sqlForeignKeys); } $sql .= ");";
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        echo "\nTable $tableName created successfully!";
+    } catch (PDOException $e) {echo "\nError executing SQL: " . $e->getMessage();}
+}
+function dropTable($tableName) {
+    require_once "./config/config.php";
+    require_once "./.core/inbuilts/connection/connection.php";
+    global $pdo; 
+    try {
+        $stmt = $pdo->prepare("DROP TABLE $tableName");
+        $stmt->execute();
+        echo "\nTable $tableName droppeed successful!";
+    } catch (PDOException $e) {
+        echo "\nError executing SQL: " . $e->getMessage();
+    }
+}
+
+function truncateTable($tableName) {
+    require_once "./config/config.php";
+    require_once "./.core/inbuilts/connection/connection.php";
+    global $pdo; 
+    try {
+        $stmt = $pdo->prepare("TRUNCATE TABLE $tableName");
+        $stmt->execute();
+        echo "\nTable $tableName truncated successful!";
+    } catch (PDOException $e) {
+        echo "\nError executing SQL: " . $e->getMessage();
+    }
+}
+function writeAuth($currentDir) {
+mkdir($currentDir.'/'.'.core/inbuilts/auth', 0777, true);
+$filename = $currentDir.'/'.'.core/inbuilts/auth/auth.php';
+file_put_contents($filename, 
+<<<CODE
+<?php
+    function set_auth(\$id = null, \$username = null) {
+        if (\$id && \$username) {
+            \$_SESSION['id'] = \$id;
+            \$_SESSION['name'] = \$username;
+        }
+    }
+    // get logged in info
+    function get_user() {
+        if (isset(\$_SESSION['id']) && isset(\$_SESSION['name'])) {
+            return array(\$_SESSION['id'], \$_SESSION['name']);
+        }
+    }
+    // get logged in user name
+    function user_name() {
+        if (isset(\$_SESSION['name'])) {
+            return \$_SESSION['name'];
+        }
+    }
+    // get logged in user id
+    function user_id() {
+        if (isset(\$_SESSION['id'])) {
+            return \$_SESSION['id'];
+        }
+    }
+    // check if logged in
+    function check_auth() {
+        if (isset(\$_SESSION['id']) && isset(\$_SESSION['name'])) {
+            return true;
+        }
+        return false;
+    }
+    // destroy session
+    function destroy_user() {
+        session_unset();
+        session_destroy();
+    }
+CODE
+);
+chmod($filename, 0444);
+}
+function writeConnection($currentDir) {
+mkdir($currentDir.'/'.'.core/inbuilts/connection', 0777, true);
+$filename = $currentDir.'/'.'.core/inbuilts/connection/connection.php';
+file_put_contents($filename, 
+<<<CODE
+<?php\n
+\$pdo;\n
+function initializeDatabase() {
+    global $pdo;
+    if (defined('DB_HOST') && defined('DB_NAME') && defined('DB_USER')) {
+        switch (DB) {
+            case "pgsql":
+                $pdo = postgres(DB_HOST, DB_NAME, DB_USER, DB_PASS);
+                break;
+            case "mysql":
+                $pdo = mysql_pdo(DB_HOST, DB_NAME, DB_USER, DB_PASS);
+                break;
+            default:
+                die("Unsupported database type.");
+        }
+    } else {
+        die("Database configuration constants are not defined.");
+    }
+}\n\n
+function postgres(\$host, \$dbname, \$user, \$password) {
+    global \$pdo;
+    \$dsn = "pgsql:host=\$host;port=5432;dbname=\$dbname;";
+    // make a database connection
+    return new PDO(\$dsn, \$user, \$password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+}
+// initialize of database connection
+initializeDatabase();
+CODE
+);
+chmod($filename, 0444);
+}
+function writeConnectionMessage($currentDir) {
+mkdir($currentDir.'/'.'.core/inbuilts/connection', 0777, true);
+$filename = $currentDir.'/'.'.core/inbuilts/connection/connectionMessage.php';
+file_put_contents($filename, 
+<<<CODE
+<div class="container bg-gray h-full">
+    <div class="flex align-center justify-center h-full">
+        <div class="card rounded-lg shadow w-50 border border-blue">
+                <h1 class="card-title text-center text-blue">Connection Page</h1>
+                <?php if (\$pdo) { ?>
+                <p class="my-6 text-center">
+                    Your project is connected to the <b><?= DB ?></b> database.
+                </p>
+                <?php } else { ?>
+                <p class="my-6 text-center">
+                    Your project is not connected to any database. Please check config file.
+                </p>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+</div>
+CODE
+);
+chmod($filename, 0444);
+}
+function write404($currentDir) {
+mkdir($currentDir.'/'.'.core/inbuilts/errors', 0777, true);
+$filename = $currentDir.'/'.'.core/inbuilts/errors/404.php';
+file_put_contents($filename, 
+<<<CODE
+<div class="container bg-shadowed-orange h-full">
+    <div class="flex align-center justify-center h-full">
+        <div class="card rounded-lg shadow w-50 border border-red">
+                <h1 class="card-title text-center text-red text-bold">404 - Page Not Found</h1>
+                <p class="my-6 text-justify">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+                <a href="/" class="btn btn-primary mb-6 mx-auto">Go to Homepage</a>
+            </div>
+        </div>
+    </div>
+</div>
+CODE
+);
+chmod($filename, 0444);
+}
+function writeRoute($currentDir) {
+mkdir($currentDir.'/'.'.core/inbuilts/routing', 0777, true);
+$filename = $currentDir.'/'.'.core/inbuilts/routing/route.php';
+file_put_contents($filename, 
+<<<CODE
+<?php
+    \$route = [
+    	'/' => ROOT.'/views/index.php',
+        // ...
+	    '/abhijaan/is-connected' => ROOT.'/.core/inbuilts/connection/connectionMessage.php',
+    ];
+    function route(\$uri = null, \$path= null) {
+	global \$route;
+	\$uri = secure_data(\$uri);
+	\$path = secure_data(\$path);\n
+	if (\$path && \$uri) {
+		if (isset(\$route[\$uri])) {
+			error_log("Path already assigned");
+		}
+		// asign
+		\$route[\$uri] = ROOT.'/views/'.\$path;
+	}
+	return \$route;
+}
+CODE );
+chmod($filename, 0444);
+}
+function writeSecure($currentDir) {
+mkdir($currentDir.'/'.'.core/inbuilts/secure', 0777, true);
+$filename = $currentDir.'/'.'.core/inbuilts/secure/secure.php';
+file_put_contents($filename, 
+<<<CODE
+<?php
+    // secure data by filtering
+    function secure_data (\$data) {
+        \$data = trim(\$data);
+        \$data = stripslashes(\$data);
+        \$data = htmlspecialchars(\$data);
+        return \$data;
+    }
+    // Function to encrypt data
+    function encryptData(\$data, \$key) {
+        \$iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+        \$encrypted = openssl_encrypt(\$data, 'aes-256-cbc', \$key, 0, \$iv);
+        return base64_encode(\$encrypted . '::' . \$iv);
+    }
+    // Function to decrypt data
+    function decryptData(\$data, \$key) {
+        \$parts = explode('::', base64_decode(\$data));
+        \$encrypted = \$parts[0];
+        \$iv = \$parts[1];
+        return openssl_decrypt(\$encrypted, 'aes-256-cbc', \$key, 0, \$iv);
+    }
+CODE );
+chmod($filename, 0444);
+}
+function writeCore($currentDir) {
+$filename = $currentDir.'/'.'.core/core.php';
+file_put_contents($filename, 
+<<<CODE
+<?php\n
+    // secure
+    require_once 'inbuilts/secure/secure.php';
+    // route
+    require_once 'inbuilts/routing/route.php';
+    // connection
+    require_once 'inbuilts/connection/connection.php';
+    // for user routes
+    require_once ROOT.'/routes/routes.php';\n
+    // asset()
+    function asset(\$path) {
+        return "/public/".\$path;
+    }\n\n
+    function redirector() {
+        // getting parsed uri
+        \$uri = parse_url(\$_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        \$query = parse_url(\$_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+        // using route as global
+        global \$route;
+        // getting the key for the route array
+        \$key_uri = routeFilter(\$uri, \$query);
+        // echo \$key_uri;
+        // echo \$route[\$key_uri];
+        // route redirecting
+        if (isset(\$route[\$key_uri])) {
+        \$viewPath = \$route[\$key_uri];
+        if (file_exists(\$viewPath)) { 
+            return \$viewPath;
+        } else {
+            // echo "4041 Not Found";
+            echo "1";
+            return ROOT.'/.core/inbuilts/errors/404.php';
+        }
+        } else {
+        // route not found
+        return ROOT.'/.core/inbuilts/errors/404.php';
+        }
+    }\n
+    function routeFilter(\$uri, \$query) {
+        if (!\$query) {
+        return \$uri;
+        } else {
+        \$uri = rtrim(\$uri, '/');
+        return \$uri . '/GET';
+        }
+    }
+CODE );
+chmod($filename, 0444);
+}
+function writeConfig($currentDir) {
+mkdir($currentDir.'/'.'config', 0777, true);
+$filename = $currentDir.'/'.'config/config.php';
+file_put_contents($filename, 
+<<<CODE
+<?php
+    // ./config/config.php\n
+    // Project Name
+    define('PROJECT_NAME','gemiPHP');\n
+    // Database configuration
+    define('DB_HOST', "localhost");
+    define('DB_USER', "");
+    define('DB_PASS', "");
+    define('DB_NAME', "");\n
+    // for postgreSQL database, uncomment the below line
+    define('DB', 'pgsql');\n
+    // localhost server port
+    define('PORT', "2323");
+CODE );
+chmod($filename, 0444);
+}
+function writePublicIndex($currentDir) {
+mkdir($currentDir.'/'.'public', 0777, true);
+$filename = $currentDir.'/'.'public/index.php';
+file_put_contents($filename, 
+<<<CODE
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অভিযান</title>
+    <link rel="icon" href="<?= asset('favicon.ico') ?>">
+    <link rel="stylesheet" href="<?= asset('style.min.css') ?>">
+    <!-- Other meta tags, stylesheets, or scripts -->
+</head>
+<body>
+CODE );
+chmod($filename, 0444);
+}
+function writeRoutes($currentDir) {
+mkdir($currentDir.'/routes', 0777, true);
+$filename = $currentDir.'/routes/routes.php';
+file_put_contents($filename, 
+<<<CODE
+<?php
+    // ./routes/routes.php\n
+    route('/home', 'home/index.php');
+CODE );
+chmod($filename, 0444);
+}
+function writeViewsIndex($currentDir) {
+mkdir($currentDir.'/views', 0777, true);
+$filename = $currentDir.'/views/index.php';
+file_put_contents($filename, 
+<<<CODE
+<style>
+    .container {
+        background: rgb(0,133,255);
+        background: linear-gradient(153deg, rgba(0,133,255,1) 0%, rgba(126,193,255,1) 12%, rgba(202,225,255,1) 34%, rgba(255,219,214,1) 72%, rgba(255,158,131,1) 89%, rgba(255,58,0,1) 100%);
+    }
+    .heads {
+        width: 90vw;
+        max-width: 900px; 
+        margin-bottom: 3rem;
+        background: rgba(255,255,255, 0.4);
+        padding: 2rem 0rem;
+    }
+    .logo-abhijaan {
+        width: 280px;
+        padding-right: 2rem;
+    }
+    .logo-b {
+        display: hidden;
+        width: 70px;
+    }
+    .cards {
+        max-width: 900px;
+    }
+    .cards > div > div {
+        padding: 1.5rem 2rem;
+        margin: 0.2rem;
+        height: max-content;
+    }
+    .cards > div > div:hover {
+        box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
+        border-radius: 0.3rem;
+    }
+    .footer {
+        padding: 1rem ;
+        letter-spacing: 1px;
+        color: #0085ff;
+        width: 90vw;
+        max-width: 900px;
+    }
+</style>
+<div class="container h-full flex-col justify-center">
+    <div class="flex align-end justify-end mx-auto heads">
+        <div>
+            <img class="logo-abhijaan" src="<?= asset('abhijaan_full.png') ?>" alt="abhijaan logo" >
+        </div>
+    </div>
+    <div class="flex-row cards mx-auto w-full">
+        <div class="flex-50">
+            <div class="bg-white">
+                <p class="card-title text-orange cursor-pointer">Documentation</p>
+                <p class="text-gray">Good human readable documentation for beginners.</p>
+            </div>
+        </div>
+        <div class="flex-50">
+            <div class="bg-white">
+                <p class="card-title text-orange cursor-pointer">Style sheet</p>
+                <p class="text-gray">Style your project with inbuilt css classes.</p>
+            </div>
+        </div>
+    </div>
+    <div class="flex cards justify-between mx-auto footer">
+        <div>
+            <small>copy &copy; 2024</small>
+        </div>
+        <div>
+            <small>abhijaan 0.1.0</small>
+        </div>
+    </div>
+</div>
+CODE );
+chmod($filename, 0444);
+}
+function writeIndex($currentDir) {
+$filename = $currentDir.'/index.php';
+file_put_contents($filename, 
+<<<CODE
+<?php
+    // ./index.php\n
+    // uncomment the below line when developing and debugging
+    ini_set('display_errors', 1);\n
+    // Define constants for paths
+    define('ROOT', __DIR__);\n
+    // config
+    require_once 'config/config.php';
+    // core files
+    require_once '.core/core.php';
+    // main header
+    require_once 'public/index.php';\n
+    // redirects the routes
+    require_once redirector();
+CODE );
+chmod($filename, 0444);
+}
+function demoUsersTable($currentDir){
+mkdir($currentDir.'/tables', 0777, true);
+$filename = $currentDir.'/tables/users.tbl';
+file_put_contents($filename, 
+<<<CODE
+table: users
+columns:
+    id: INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY
+    username: VARCHAR(100) NOT NULL
+    email: VARCHAR(255) NOT NULL
+    created_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    # Add more columns as needed
+CODE );
+}
+function copyStylesheet($currentDir) {
+    $url = 'https://raw.githubusercontent.com/MRgrav/public_files/master/style.min.css';
+    $targetDir = $currentDir.'/'.'public';
+    downloadFile($url, $targetDir);
+}
+function copyLogoImage($currentDir) {
+    $url = 'https://raw.githubusercontent.com/MRgrav/public_files/master/abhijaan_full.png';
+    $targetDir = $currentDir.'/'.'public';
+    downloadFile($url, $targetDir);
+}
+function downloadFile($sourceURL, $targetDir) {
+    $filename = basename($sourceURL);
+    if (!preg_match("/^[a-zA-Z0-9._-]+\.[a-zA-Z]+$/", $filename)) {die("Invalid filename: $filename");}
+    if (!is_dir($targetDir)) {mkdir($targetDir, 0755, true);}
+    $targetPath = "$targetDir/$filename";
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $sourceURL);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    $content = curl_exec($ch);
+    $error = curl_error($ch);
+    curl_close($ch);
+    if ($error) {die("Error downloading file: $error");}
+    if (file_put_contents($targetPath, $content) === false) {die("Error saving file: $targetPath");}
+}
