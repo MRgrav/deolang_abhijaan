@@ -17,41 +17,17 @@
   animation: marquee 100s linear infinite;
 }
 </style>
-<div class="font-sans text-gray-800 bg-zinc-900 ">
-  <section class="relative bg-red-900">
-  <top class="w-fit flex flex-row flex-nowrap animate-marquee-top justify-around gap-6 md:gap-20 overflow-hidden text-sm px-3 py-1 font-semibold text-red-100">
-    <p class="whitespace-nowrap">নমস্কাৰ</p>
-    <p class="whitespace-nowrap">नमस्ते</p>
-    <p class="whitespace-nowrap">नमस्कार</p>
-    <p class="whitespace-nowrap">নমস্কার</p>
-    <p class="whitespace-nowrap">Kem Chho</p>
-    <p class="whitespace-nowrap">Tashi Delek</p>
-    <p class="whitespace-nowrap">Chonglai</p>
-    <p class="whitespace-nowrap">Chibai</p>
-    <p class="whitespace-nowrap">Khurumjari</p>
-    <p class="whitespace-nowrap ahom">Màu sung khāa</p>
-    <p class="whitespace-nowrap">Khulumkha</p>
-    <p class="whitespace-nowrap">Hola</p>
-    <p class="whitespace-nowrap">নমস্কাৰ</p>
-    <p class="whitespace-nowrap">नमस्ते</p>
-    <p class="whitespace-nowrap">नमस्कार</p>
-    <p class="whitespace-nowrap">Tashi Delek</p>
-    <p class="whitespace-nowrap">Chonglai</p>
-    <p class="whitespace-nowrap">Chibai</p>
-    <p class="whitespace-nowrap ahom">Màu sung khāa</p>
-    <p class="whitespace-nowrap">Khulumkha</p>
-  </top>
-  </section>
-  <header class="bg-zinc-900/80 backdrop-blur text-zinc-200 sticky top-0 z-50">
+<div class="font-sans text-gray-800 bg-zinc-900 overflow-x-hidden">
+  <header class="bg-zinc-900/80 backdrop-blur text-zinc-200 fixed w-full top-0 z-50">
     <!-- <x_use_nav /> -->
     <?php include ROOT.'/views/components/nav.php' ?>
   </header>
   
   <main>
     <!-- hero -->
-    <section id="hero" class="lg:min-h-[500px] min-h-screen flex justify-center bg-zinc-900 top-0 bg-cover bg-center bg-no-repeat mb-20 md:mb-0" >
-        <div class="container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-4 absolute z-[32] p-20">
-          <div>
+    <section id="hero" class="flex justify-center bg-zinc-900 bg-cover bg-center top-0 bg-no-repeat mb-20 md:mb-0" >
+        <div class="h-fit container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-4 z-[32] p-8 pt-40">
+          <div class="h-fit">
             <h1 class="font-extrabold text-[360%] text-yellow-300 tracking-wider">Your Partner in Tech Solutions</h1>
             <div class="w-[200px] bg-yellow-300 p-1 rounded mt-4 mb-8"></div>
             <p class="font-semibold text-2xl text-purple-200 mb-20">Empowering businesses with smart, scalable software.</p>
@@ -93,10 +69,10 @@
               </span>
             </button>
           </div>
-          <div class="">
+          <div class="h-fit">
             <div class="relative h-[400px] w-[400px] scale-75 md:scale-100 group hover:scale-105">
-              <img src="<?= asset('calling.jpg') ?>" class="absolute top-0 aspect-square object-cover w-[300px] rounded-2xl mb-6 border-4 border-yellow-500 hover:scale-105 hover:rotate-[-5deg] group-hover:scale-105 group-hover:rotate-[-5deg] duration-150" />
-              <img src="<?= asset('hiii.jpg') ?>" class="absolute top-55 left-55 aspect-square object-cover w-[140px] rounded-xl mb-6 border-4 border-purple-500 shadow hover:scale-110 group-hover:rotate-10 duration-150" />
+              <img src="<?= asset('calling.webp') ?>" class="absolute top-0 aspect-square object-cover w-[300px] rounded-2xl mb-6 border-4 border-yellow-500 hover:scale-105 hover:rotate-[-5deg] group-hover:scale-105 group-hover:rotate-[-5deg] duration-150" />
+              <img src="<?= asset('hiii.webp') ?>" class="absolute top-55 left-55 aspect-square object-cover w-[140px] rounded-xl mb-6 border-4 border-purple-500 shadow hover:scale-110 group-hover:rotate-10 duration-150" />
               <div class="absolute w-6 h-6 rounded bg-yellow-500 bottom-0 left-0 group-hover:scale-125 duration-150 delay-50"></div>
               <div class="absolute w-3 h-3 rounded bg-yellow-500 bottom-0 left-10 group-hover:w-6 group-hover:scale-125 duration-100 delay-100"></div>
               <div class="absolute w-6 h-6 rounded bg-white top-0 right-0 group-hover:scale-125 duration-150 delay-50"></div>
@@ -105,31 +81,6 @@
           </div>
         </div>
     </section>
-    <!-- <section>
-        <div class="flex gap-20 justify-center items-center bg-zinc-950 p-10 overflow-auto">
-            <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-                <img src="<?= asset('laravel.png') ?>" />
-            </div>
-            <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-                <img src="<?= asset('solid.png') ?>" />
-            </div>
-            <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-                <img src="<?= asset('flutter.png') ?>" />
-            </div>
-            <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-                <img src="<?= asset('vue.png') ?>" />
-            </div>
-            <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-                <img src="<?= asset('ElysiaJS.svg') ?>" />
-            </div>
-            <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-                <img src="<?= asset('golang.png') ?>" />
-            </div>
-            <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-                <img src="<?= asset('tauri.png') ?>" />
-            </div>
-        </div>
-    </section> -->
     <section class="bg-zinc-50 bg-zinc-900">
       <div class="relative max-w-[90%] lg:max-w-[80%] mx-auto rounded z-40 shadow-xl -bottom-20 overflow-x-hidden overflow-y-hidden bg-zinc-100 border-2 border-zinc-100 p-10">
         <div class="flex gap-10 md:gap-20 animate-marquee whitespace-nowrap top-0">
@@ -234,7 +185,7 @@
       </div>
     </section>
     <!--app-->
-    <section class="bg-zinc-200 p-4 text-lg pt-20">
+    <section class="bg-zinc-200 p-4 text-lg pt-28">
         <div class="grid md:grid-cols-2 mx-auto container my-20">
             <div class="md:order-2 mx-auto mb-20 md:mb-0">
                 <!-- From Uiverse.io by Rodrypaladin --> 
@@ -477,11 +428,11 @@
                   <i class="ph-duotone ph-apple-logo text-violet-600"></i>
                 </div>
             </div>
-            <div class="flex justify-center p-4">
-                <div class="laptop ">
+            <div class="flex justify-center p-4 ">
+                <div class="laptop">
                     <div class="screen">
                         <div class="header"></div>
-                        <div class="text text-5xl">Namaskar DeoLang</div>
+                        <div class="text text-3xl">Namaskar DeoLang</div>
                     </div>
                     <div class="keyboard"></div>
                 </div>
@@ -502,7 +453,7 @@
             </div>
         </div>
     </section>
-        
+
     <!-- Services Section -->
     <section id="services" class="bg-zinc-50 py-16 px-6">
       <div class="container mx-auto">
@@ -643,7 +594,7 @@
           </button>
           <div class="profile-pic">
               
-            <img src="<?= asset('/me21.png') ?>" class="bg-gradient-to-br from-yellow-600 to-purple-500" />
+            <img src="<?= asset('/me.webp') ?>" class="bg-gradient-to-br from-yellow-600 to-purple-500" />
           </div>
           <div class="bottom">
               <div class="content">
@@ -666,9 +617,33 @@
       </div>
        </div>
     </section>
-    
+            
+    <section class="relative bg-red-900">
+      <top class="w-fit flex flex-row flex-nowrap animate-marquee-top justify-around gap-6 md:gap-20 overflow-x-hidden text-sm tracking-wide px-3 py-1 font-semibold text-red-100">
+        <p class="whitespace-nowrap">নমস্কাৰ</p>
+        <p class="whitespace-nowrap">नमस्ते</p>
+        <p class="whitespace-nowrap">नमस्कार</p>
+        <p class="whitespace-nowrap">নমস্কার</p>
+        <p class="whitespace-nowrap">Kem Chho</p>
+        <p class="whitespace-nowrap">Tashi Delek</p>
+        <p class="whitespace-nowrap">Chonglai</p>
+        <p class="whitespace-nowrap">Chibai</p>
+        <p class="whitespace-nowrap">Khurumjari</p>
+        <p class="whitespace-nowrap ahom">Màu sung khāa</p>
+        <p class="whitespace-nowrap">Khulumkha</p>
+        <p class="whitespace-nowrap">Hola</p>
+        <p class="whitespace-nowrap">নমস্কাৰ</p>
+        <p class="whitespace-nowrap">नमस्ते</p>
+        <p class="whitespace-nowrap">नमस्कार</p>
+        <p class="whitespace-nowrap">Tashi Delek</p>
+        <p class="whitespace-nowrap">Chonglai</p>
+        <p class="whitespace-nowrap">Chibai</p>
+        <p class="whitespace-nowrap ahom">Màu sung khāa</p>
+        <p class="whitespace-nowrap">Khulumkha</p>
+      </top>
+    </section>
     <!-- Testimonials Section -->
-    <section id="testimonials" class="bg-gradient-to-r from-indigo-500 to-pink-500 text-white py-16 px-6">
+    <section id="testimonials" class="hidden bg-gradient-to-r from-indigo-500 to-pink-500 text-white py-16 px-6">
       <div class="container mx-auto">
         <h2 class="text-3xl font-bold mb-8">What Clients Say</h2>
         <blockquote class="max-w-xl mx-auto italic text-lg">
@@ -681,32 +656,20 @@
     <!-- Contact Section -->
     
     <section id="contact" class="container mx-auto py-16 px-6">
-      <h2 class="text-3xl font-bold mb-4 text-indigo-700">Contact Us</h2>
-      <form class="max-w-lg bg-white p-8 rounded-lg shadow-md flex flex-col gap-4 mb-8" action="/deolang/mail/contact" method="POST">
-        <label for="name" class="font-semibold">Name</label>
-        <input id="name" name="name" type="text" required class="border border-gray-300 rounded p-2 focus:outline-indigo-500">
-        
-        <label for="email" class="font-semibold">Email</label>
-        <input id="email" name="email" type="email" required class="border border-gray-300 rounded p-2 focus:outline-indigo-500">
-        
-        <label for="message" class="font-semibold">Message</label>
-        <textarea id="message" name="message" required class="border border-gray-300 rounded p-2 h-24 focus:outline-indigo-500"></textarea>
-        <input type="hidden" name="csrf_token"  value="<?php echo generateCSRFToken(); ?>">
-        <button type="submit" class="bg-indigo-600 text-white font-bold py-2 px-6 rounded shadow hover:bg-indigo-700 transition">Send</button>
-      </form>
-      <address class="not-italic text-gray-600">
-        Email: <a href="mailto:info@company.com" class="text-indigo-600 hover:underline">info@company.com</a><br>
+      <h2 class="text-3xl font-bold mb-4 text-yellow-600">Contact Us</h2>
+      <address class="not-italic text-zinc-600">
+        Email: <a href="mailto:info@company.com" class="text-indigo-600 hover:underline">info@deolang.com</a><br>
         Phone: +91-12345-67890
       </address>
     </section>
   </main>
   
-  <footer class="bg-gray-100 py-6 mt-8">
-    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-6">
-      <p class="text-gray-700">&copy; 2025 Your Company Name. All rights reserved.</p>
+  <footer class="bg-zinc-700 text-zinc-50 py-6 mt-8">
+    <div class="container mx-auto text-sm flex flex-col md:flex-row justify-between items-center px-6">
+      <p class="text-zinc-400">&copy; 2025 DeoLang. All rights reserved.</p>
       <nav class="mt-2 md:mt-0">
-        <a href="#privacy" class="text-indigo-600 hover:underline mx-2">Privacy Policy</a>
-        <a href="#terms" class="text-indigo-600 hover:underline mx-2">Terms of Service</a>
+        <a href="#privacy" class="hover:text-indigo-500 hover:underline mx-2">Privacy Policy</a>
+        <a href="#terms" class="hover:text-indigo-500 hover:underline mx-2">Terms of Service</a>
       </nav>
     </div>
   </footer>
