@@ -7,6 +7,10 @@
   0% { transform: translateX(100%); }
   100% { transform: translateX(0%); }
 }
+@keyframes marquee3 {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-86%); }
+}
 .animate-marquee {
   animation: marquee 22s linear infinite;
 }
@@ -28,7 +32,7 @@
     <section id="hero" class="flex justify-center bg-zinc-900 bg-cover bg-center top-0 bg-no-repeat mb-20 md:mb-0" >
         <div class="h-fit container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-4 z-[32] p-8 pt-40">
           <div class="h-fit">
-            <h1 class="font-extrabold text-[360%] text-yellow-300 tracking-wider">Your Partner in Tech Solutions</h1>
+            <h2 class="font-extrabold text-[360%] text-yellow-300 tracking-wider">Your Partner in Tech Solutions</h2>
             <div class="w-[200px] bg-yellow-300 p-1 rounded mt-4 mb-8"></div>
             <p class="font-semibold text-2xl text-purple-200 mb-20">Empowering businesses with smart, scalable software.</p>
             <button class="cta">
@@ -71,8 +75,8 @@
           </div>
           <div class="h-fit">
             <div class="relative h-[400px] w-[400px] scale-75 md:scale-100 group hover:scale-105">
-              <img src="<?= asset('calling.webp') ?>" class="absolute top-0 aspect-square object-cover w-[300px] rounded-2xl mb-6 border-4 border-yellow-500 hover:scale-105 hover:rotate-[-5deg] group-hover:scale-105 group-hover:rotate-[-5deg] duration-150" />
-              <img src="<?= asset('hiii.webp') ?>" class="absolute top-55 left-55 aspect-square object-cover w-[140px] rounded-xl mb-6 border-4 border-purple-500 shadow hover:scale-110 group-hover:rotate-10 duration-150" />
+              <img src="<?= asset('calling.webp') ?>" alt="calling_men" class="absolute top-0 aspect-square object-cover w-[300px] rounded-2xl mb-6 border-4 border-yellow-500 hover:scale-105 hover:rotate-[-5deg] group-hover:scale-105 group-hover:rotate-[-5deg] duration-150" />
+              <img src="<?= asset('hiii.webp') ?>" alt="happy_girl" class="absolute top-55 left-55 aspect-square object-cover w-[140px] rounded-xl mb-6 border-4 border-purple-500 shadow hover:scale-110 group-hover:rotate-10 duration-150" />
               <div class="absolute w-6 h-6 rounded bg-yellow-500 bottom-0 left-0 group-hover:scale-125 duration-150 delay-50"></div>
               <div class="absolute w-3 h-3 rounded bg-yellow-500 bottom-0 left-10 group-hover:w-6 group-hover:scale-125 duration-100 delay-100"></div>
               <div class="absolute w-6 h-6 rounded bg-white top-0 right-0 group-hover:scale-125 duration-150 delay-50"></div>
@@ -86,68 +90,68 @@
         <div class="flex gap-10 md:gap-20 animate-marquee whitespace-nowrap top-0">
           <!-- Your logos (repeat for smoothness) -->
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('laravel.png') ?>" />
+            <img src="<?= asset('laravel.png') ?>" alt="laravel" />
           </div>
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('solid.png') ?>" />
+            <img src="<?= asset('solid.png') ?>" alt="solidjs"/>
           </div>
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('flutter.png') ?>" />
+            <img src="<?= asset('flutter.png') ?>" alt="flutter" />
           </div>
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('vue.png') ?>" />
+            <img src="<?= asset('vue.png') ?>" alt="vuejs" />
           </div>
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('ElysiaJS.svg') ?>" />
+            <img src="<?= asset('ElysiaJS.svg') ?>" alt="elysiajs" />
           </div>
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('golang.png') ?>" />
+            <img src="<?= asset('golang.png') ?>" alt="golang" />
           </div>
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('tauri.png') ?>" />
+            <img src="<?= asset('tauri.png') ?>" alt="tauri" />
           </div>
           <!-- Repeat same logos for seamless loop -->
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('laravel.png') ?>" />
+            <img src="<?= asset('laravel.png') ?>" alt="laravel" />
           </div>
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('solid.png') ?>" />
+            <img src="<?= asset('solid.png') ?>" alt="solid" />
           </div>
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('flutter.png') ?>" />
+            <img src="<?= asset('flutter.png') ?>" alt="flutter" />
           </div>
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('vue.png') ?>" />
+            <img src="<?= asset('vue.png') ?>" alt="vue" />
           </div>
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('ElysiaJS.svg') ?>" />
+            <img src="<?= asset('ElysiaJS.svg') ?>" alt="elysiabun" />
           </div>
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('golang.png') ?>" />
+            <img src="<?= asset('golang.png') ?>" alt="go" />
           </div>
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('tauri.png') ?>" />
+            <img src="<?= asset('tauri.png') ?>" alt="tauri2.0" />
           </div>
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('laravel.png') ?>" />
+            <img src="<?= asset('laravel.png') ?>" alt="laravel" />
           </div>
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('solid.png') ?>" />
+            <img src="<?= asset('solid.png') ?>" alt="solidjs" />
           </div>
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('flutter.png') ?>" />
+            <img src="<?= asset('flutter.png') ?>" alt="flutter" />
           </div>
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('vue.png') ?>" />
+            <img src="<?= asset('vue.png') ?>" alt="vue" />
           </div>
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('ElysiaJS.svg') ?>" />
+            <img src="<?= asset('ElysiaJS.svg') ?>" alt="elysia" />
           </div>
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('golang.png') ?>" />
+            <img src="<?= asset('golang.png') ?>" alt="golang" />
           </div>
           <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
-            <img src="<?= asset('tauri.png') ?>" />
+            <img src="<?= asset('tauri.png') ?>" alt="tauri" />
           </div>
           <!-- ...repeat as needed -->
         </div>
@@ -444,11 +448,11 @@
       <h2 class="text-3xl font-bold text-indigo-700 text-center mb-8">Our Happy Clients</h2>
         <div class="flex flex-col md:flex-row gap-x-40 gap-y-20 justify-center items-center ">
             <div class="text-5xl font-bold text-orange-600 tracking-wider">
-                <img src="<?= asset('classwix.png') ?>" class="w-20 h-20 rounded-md mx-auto" />
+                <img src="<?= asset('classwix.png') ?>" alt="classwix" class="w-20 h-20 rounded-md mx-auto" />
                 <h3>CLASSWiX</h3>
             </div>
             <div class="text-5xl font-bold text-blue-600 tracking-wider">
-            <img src="<?= asset('arps.png') ?>" class="w-20 h-20 rounded-md mx-auto" />
+            <img src="<?= asset('arps.png') ?>" alt="arps" class="w-20 h-20 rounded-md mx-auto" />
                 <h3>ARPS Jorhat</h3>
             </div>
         </div>
@@ -480,9 +484,9 @@
               <p class="absolute bottom-6 left-7 text-white text-2xl">01</p>
             </div>
             <div class="fill-violet-500 w-12">
-              <img src="<?= asset('idea.gif') ?>" class="scale-125" />
+              <img src="<?= asset('idea.gif') ?>" alt="app development" class="scale-125" />
             </div>
-            <h1 class="font-bold text-xl">App Development</h1>
+            <h3 class="font-bold text-xl">App Development</h3>
             <p class="text-sm text-zinc-500 leading-6">
               Develop stunning, modern custom apps for both android and ios.
             </p>
@@ -494,9 +498,9 @@
               <p class="absolute bottom-6 left-7 text-white text-2xl">02</p>
             </div>
             <div class="fill-violet-500 w-12">
-              <img src="<?= asset('website.gif') ?>" class="scale-125" />
+              <img src="<?= asset('website.gif') ?>" alt="web development" class="scale-125" />
             </div>
-            <h1 class="font-bold text-xl">Web Development</h1>
+            <h3 class="font-bold text-xl">Web Development</h3>
             <p class="text-sm text-zinc-500 leading-6">
               Have your custom sites, webapps ready to serve with responsive designs.
             </p>
@@ -508,9 +512,9 @@
               <p class="absolute bottom-6 left-7 text-white text-2xl">03</p>
             </div>
             <div class="fill-violet-500 w-12">
-              <img src="<?= asset('seo.gif') ?>" class="scale-125" />
+              <img src="<?= asset('seo.gif') ?>" alt="seo" class="scale-125" />
             </div>
-            <h1 class="font-bold text-xl">SEO Optimization</h1>
+            <h3 class="font-bold text-xl">SEO Optimization</h3>
             <p class="text-sm text-zinc-500 leading-6">
               Rank your brand on internet with well optimized SEO and be the next trend.
             </p>
@@ -539,8 +543,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
           </button>
           <div class="profile-pic">
-              
-            <img src="<?= asset('/smt.jpeg') ?>" />
+            <img src="<?= asset('/smt.jpeg') ?>" alt="sumeet bharali" />
           </div>
           <div class="bottom">
               <div class="content">
@@ -567,7 +570,7 @@
           </button>
           <div class="profile-pic">
               
-            <img src="<?= asset('/ank.jpg') ?>" />
+            <img src="<?= asset('/ank.jpg') ?>" alt="ankit gupta" />
           </div>
           <div class="bottom">
               <div class="content">
@@ -594,7 +597,7 @@
           </button>
           <div class="profile-pic">
               
-            <img src="<?= asset('/me.webp') ?>" class="bg-gradient-to-br from-yellow-600 to-purple-500" />
+            <img src="<?= asset('/me.webp') ?>" alt="gaurab gogoi" class="bg-gradient-to-br from-yellow-600 to-purple-500" />
           </div>
           <div class="bottom">
               <div class="content">

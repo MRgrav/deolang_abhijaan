@@ -22,7 +22,8 @@
     <meta name="twitter:description" content="Leading IT startup in Jorhat, Assam delivering cutting‑edge software development, cloud services, and digital transformation for businesses across Northeast India.">
     <meta name="twitter:image" content="<?= asset('logo_192.png') ?>">
     <link rel="canonical" href="https://deolang.com/">
-    <meta name="keywords" content="custom software development Jorhat, software solutions Assam, IT services Northeast">
+    <meta name="keywords" content="services, development, web, apps, android, mac, linux, deolang, ideas, digital, smart, ai, create, cutting-edge, mobile, desktop, northeast, it, jorhat, golaghat">
+    <meta name="" content="Innovative tech solutions from Jorhat, Northeast India. Crafting cutting-edge apps, websites, and desktop software to empower businesses and individuals with seamless digital experiences." />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link
       rel="stylesheet"

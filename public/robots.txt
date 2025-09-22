@@ -1,0 +1,56 @@
+# DeoLang Robots.txt - Secure Configuration
+# Last Updated: September 2025
+
+# Global Crawler Directives
+User-agent: *
+
+# Block Specific Chinese Search Engines
+User-agent: Baidu
+Disallow: /
+
+User-agent: Sogou
+Disallow: /
+
+User-agent: Soso
+Disallow: /
+
+User-agent: Yisouspider
+Disallow: /
+
+User-agent: EasouSpider
+Disallow: /
+
+# Allow Full Crawling for Approved Search Engines
+Allow: /
+
+# Sitemap Location
+Sitemap: https://www.deolang.com/sitemap.xml
+
+# Directories to Disallow
+Disallow: /admin/
+Disallow: /backend/
+Disallow: /private/
+Disallow: /internal/
+
+# Prevent Indexing of Specific File Types
+Disallow: /*.pdf$
+Disallow: /*.docx$
+Disallow: /*.xlsx$
+
+# Performance and Security Optimization
+Disallow: /*?
+Disallow: /wp-admin/
+Disallow: /cgi-bin/
+
+# Crawl-delay to Prevent Server Overload
+Crawl-delay: 10
+
+# Specific Approved Bot Configurations
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
