@@ -9,3 +9,5 @@ fuel
 ./public/web.jpg
 ./public/calling.jpg
 ./me.jpg
+.env
+dev/temp.php

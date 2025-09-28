@@ -35,6 +35,8 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/duotone/style.css"
     />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8423647290391534"
+     crossorigin="anonymous"></script>
     <!-- Other meta tags, stylesheets, or scripts -->
 </head>
 <body>

@@ -28,6 +28,10 @@
   </header>
   
   <main>
+    <?php 
+    // $env = parse_ini_file('.env');
+    // echo getenv('APPL'); 
+    ?>
     <!-- hero -->
     <section id="hero" class="flex justify-center bg-zinc-900 bg-cover bg-center top-0 bg-no-repeat mb-20 md:mb-0" >
         <div class="h-fit container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-4 z-[32] p-8 pt-40">

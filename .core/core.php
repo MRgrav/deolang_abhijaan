@@ -16,8 +16,14 @@ require_once ROOT.'/routes/routes.php';
 
 // for customs 
 foreach (glob('custom/*/index.php') as $file) {
-    require_once $file;
+    if (file_exists($file)) {
+        require_once $file;
+    } else {
+        error_log("File not found: $file");
+    }
 }
+
+// require_once 'custom/env/index.php';
 
 // asset()
 function asset($path) {
