@@ -429,7 +429,7 @@ $testimonials = [
     <p class="mb-2">&copy; <?= date('Y') ?> <?= $company ?>. Building the future of SaaS, one product at a time.</p>
     <p>Assam, India | contact@deolang.com</p>
   </footer> -->
-  {{ use_nav }}
+  {{ use_footer }}
 
   <!-- Scripts -->
   <script>
