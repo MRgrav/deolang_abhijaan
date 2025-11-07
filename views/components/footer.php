@@ -12,10 +12,10 @@
                         <a href="/blogs.asm" prefetch="hover">Blogs</a>
                     </li>
                     <li>
-                        <a href="/career.asm" prefetch="hover">Career</a>
+                        <a href="/career" prefetch="hover">Career</a>
                     </li>
                     <li>
-                        <a href="/prot.cpp" prefetch="hover">Protfolio</a>
+                        <a href="/prot" prefetch="hover">Protfolio</a>
                     </li>
                 </ul>
             </div>
