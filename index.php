@@ -12,6 +12,8 @@ define('ROOT', __DIR__);
 header("X-Frame-Options: SAMEORIGIN");
 header("X-XSS-Protection: 1; mode=block");
 header("X-Content-Type-Options: nosniff");
+header("X-Powered-By: abhijaan");
+header("X-Developed-By: gaurab gogoi");
 header("Referrer-Policy: strict-origin-when-cross-origin");
 
 // Performance and Caching Headers

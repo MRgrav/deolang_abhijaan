@@ -1,0 +1,81 @@
+<!-- Portfolio Section -->
+        <section id="portfolio" class="py-20 bg-zinc-200 ">
+          <div class="max-w-7xl mx-auto ">
+            <h2 class="text-4xl md:text-5xl font-bold text-yellow-500 text-center mb-16">
+              Our Portfolio
+            </h2>
+
+            <!-- Project 1: ClassWix -->
+            <div class="scroll-reveal px-5 py-20">
+              <div class="max-w-4xl mx-auto text-center mb-12">
+                <h3 class="text-4xl md:text-5xl font-bold text-blue-400 mb-3">ClassWix</h3>
+                <h4 class="text-xl md:text-2xl text-zinc-400 font-normal mb-5">Complete School Management Ecosystem</h4>
+                <p class="text-base md:text-lg text-zinc-700 leading-relaxed mb-4">
+                  A modern ERP platform designed for K-12 schools with intuitive admin panels, student portals, attendance tracking, grade management, and parent communication tools. Built with performance-first architecture to handle 10,000+ concurrent users.
+                </p>
+                <div class="text-sm text-zinc-500 italic">Tech Stack: Laravel · Vue.js · PostgreSQL</div>
+              </div>
+              
+              <div class="flex justify-center mb-10">
+                <div class="phone-frame w-80 h-[640px] bg-zinc-950 border-[14px] border-zinc-800 rounded-[36px] shadow-2xl overflow-hidden">
+                  <iframe src="https://www.classwix.com" title="ClassWix Preview" loading="lazy" class="w-full h-full border-0 rounded-[22px]"></iframe>
+                </div>
+              </div>
+              
+              <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://www.classwix.com" target="_blank" class="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                  Visit Website
+                </a>
+                <a href="https://www.classwix.com" target="_blank" class="px-8 py-3 bg-yellow-500 hover:bg-yellow-600 text-zinc-900 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                  Explore More
+                </a>
+              </div>
+            </div>
+            <!-- other projects -->
+            <div class="scroll-reveal px-5 py-20 ">
+              <div class="max-w-4xl mx-auto text-center mb-12">
+                <h5 class="text-4xl md:text-3xl font-bold text-zinc-600 mb-6">Other projects</h5>
+                <div class="grid gap-6 md:grid-cols-2">
+                  <div>
+                    <h3 class="text-4xl md:text-5xl font-bold text-green-400 mb-3">Sundaram Developers</h3>
+                    <h4 class="text-xl md:text-2xl text-zinc-400 font-normal mb-5">Modern Living Spaces in Jorhat</h4>
+                    <div>
+                      <img src="" class="w-full h-auto aspect-auto object-cover" />
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-4">
+                      <a href="https://www.sundaramdevelopers.in" target="_blank" class="px-8 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                        Visit Website
+                      </a>
+                      <a href="https://www.sundaramdevelopers.in" target="_blank" class="px-8 py-3 bg-yellow-500 hover:bg-yellow-600 text-zinc-900 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                        Explore More
+                      </a>
+                    </div>
+                    <p class="text-base md:text-lg text-zinc-300 leading-relaxed mb-4">
+                      Real estate solutions focused on affordable housing and smart homes across Upper Assam. Connected living with world-class facilities, sustainable green spaces, and round-the-clock surveillance. Making modern living accessible in the heart of Jorhat.
+                    </p>
+                    <div class="text-sm text-zinc-500 italic">Tech Stack: Real Estate · Smart Homes · Sustainable Living</div>
+                  </div>
+                  <div>
+                    <h3 class="text-4xl md:text-5xl font-bold text-green-400 mb-3">Sundaram Developers</h3>
+                    <h4 class="text-xl md:text-2xl text-zinc-400 font-normal mb-5">Modern Living Spaces in Jorhat</h4>
+                    <div>
+                      <img src="" class="w-full h-auto aspect-auto object-cover" />
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-4">
+                      <a href="https://www.sundaramdevelopers.in" target="_blank" class="px-8 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                        Visit Website
+                      </a>
+                      <a href="https://www.sundaramdevelopers.in" target="_blank" class="px-8 py-3 bg-yellow-500 hover:bg-yellow-600 text-zinc-900 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                        Explore More
+                      </a>
+                    </div>
+                    <p class="text-base md:text-lg text-zinc-300 leading-relaxed mb-4">
+                      Real estate solutions focused on affordable housing and smart homes across Upper Assam. Connected living with world-class facilities, sustainable green spaces, and round-the-clock surveillance. Making modern living accessible in the heart of Jorhat.
+                    </p>
+                    <div class="text-sm text-zinc-500 italic">Tech Stack: Real Estate · Smart Homes · Sustainable Living</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>

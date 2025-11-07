@@ -32,7 +32,7 @@ $projects = [
     "subtitle" => "Modern Living Spaces in Jorhat",
     "desc" => "Real estate solutions focused on affordable housing and smart homes across Upper Assam. Connected living with world-class facilities, sustainable green spaces, and round-the-clock surveillance. Making modern living accessible in the heart of Jorhat.",
     "url" => "https://www.sundaramdevelopers.in",
-    "screenshot" => "/images/asd.png",
+    "screenshot" => "https://pk.deolang.com/api/files/pbc_4285667772/oex0p2137mtpnes/asd_xyyjkab0m8.png?thumb=400x400&token=",
     "tech" => "Real Estate · Smart Homes · Sustainable Living",
     "btn_color" => "bg-green-600 hover:bg-green-700",
     "accent_color" => "text-green-400",
@@ -429,7 +429,7 @@ $testimonials = [
     <p class="mb-2">&copy; <?= date('Y') ?> <?= $company ?>. Building the future of SaaS, one product at a time.</p>
     <p>Assam, India | contact@deolang.com</p>
   </footer> -->
-  <?php require '/opt/lampp/htdocs/deolang/views/components/nav.php'; ?>
+  {{ use_nav }}
 
   <!-- Scripts -->
   <script>

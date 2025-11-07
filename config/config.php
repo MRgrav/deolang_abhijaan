@@ -19,4 +19,4 @@ define('DB', 'pgsql');
 define('PORT', "2323");
 
 // htmx
-define('HTMX', true);
+define('HTMX', false);

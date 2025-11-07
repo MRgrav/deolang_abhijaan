@@ -1,0 +1,1 @@
+window.APP_CONFIG = {"PB_HOST":""};

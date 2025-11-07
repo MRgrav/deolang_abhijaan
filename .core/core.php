@@ -14,14 +14,33 @@ require_once 'inbuilts/routing/route.php';
 // for user routes
 require_once ROOT.'/routes/routes.php';
 
-// for customs 
-foreach (glob('custom/*/index.php') as $file) {
-    if (file_exists($file)) {
-        require_once $file;
-    } else {
-        error_log("File not found: $file");
+// for custom
+// More robust file inclusion method
+$customPath = ROOT. '/.core/custom/*/index.php';
+$customFiles = glob($customPath);
+
+if (!empty($customFiles)) {
+    foreach ($customFiles as $file) {
+        try {
+            // Additional checks for extra safety
+            if (is_readable($file)) {
+                require_once $file;
+            } else {
+                error_log("File not readable: $file");
+            }
+        } catch (Exception $e) {
+            error_log("Error including file $file: " . $e->getMessage());
+        }
     }
+} else {
+    error_log("No custom files found in path: $customPath");
 }
+
+// require 'load-env.php';
+$config = [
+  'PB_HOST' => $_ENV['PB_HOST'] ?? ''
+];
+// file_put_contents(ROOT.'/config.js', 'window.APP_CONFIG = '.json_encode($config).';');
 
 // require_once 'custom/env/index.php';
 
@@ -73,7 +92,9 @@ function redirector() {
             // echo file_get_contents($viewPath);
 
         $templateContent = file_get_contents($viewPath);
-        
+
+        $templateContent = prep($templateContent);
+
         // Process the template
         $processed = processTemplate($templateContent);
         
@@ -114,6 +135,14 @@ function handleNotFound() {
     http_response_code(404);
     include ROOT.'/.core/inbuilts/errors/404.php';
     exit;
+}
+
+function prep($temp) {
+    return preg_replace_callback_array([
+        '/{{\suse_(\w+)\s}}/' => function ($matches) {
+            return '<?php require \''.ROOT.'/views/components/'.$matches[1].'.php\'; ?>';
+        },
+    ], $temp);
 }
 
 function processTemplate($template) {

@@ -17,6 +17,7 @@ if ($argc < 2) {
         case "help": help(); break;
         case "version": version(); break;
         case "run": run($port); break;
+        case "start": start($port); break;
         case "create-app": createApp($currentDir); break;
         case "create-table": createTable($argv[2]); break;
         case "create-all-table": createAllTable(); break;
@@ -30,12 +31,18 @@ function run($port) {
     echo "Running your project at localhost:".$port."\n";
     exec("php -S 127.0.0.1:".$port." -t .");
 }
+// Start function
+function start($port) {
+    echo "Your production project on:".$port."\n";
+    exec("php -S 0.0.0.0:".$port." -t .");
+}
 // uses function
 function help() {
     cli_logo();
     echo "\033[33musage:\033[32m php fuel\033[0m <--command--> \033[33m(--options--)\n\n";
     echo "\033[33mcommands:\033[0m\n";
     echo "\t\033[32mrun \033[33m(port)\033[0m\t\t run your project at localhost (default port:2323)\n";
+    echo "\t\033[32mstart \033[33m(port)\033[0m\t\t run your project as production (default port:2323)\n";
     echo "\t\033[32mcreate-app .\033[0m\t\t create your project inside the current directory\n";
     echo "\t\033[32mcreate-table \033[33m(name)\033[0m\t create a single table into the database\n";
     echo "\t\033[32mcreate-all-table \033[33m(name)\033[0m\t create all tables into the database\n";

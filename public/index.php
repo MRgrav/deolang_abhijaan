@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DeoLang</title>
-    <link rel="icon" href="<?= asset('favicon.ico') ?>">
-    <link rel="stylesheet" href="<?= asset('style.css') ?>">
+    <link rel="icon" href="<?= asset('images/favicon.ico') ?>">
+    <link preload rel="stylesheet" href="<?= asset('style.css') ?>">
     <!-- <link rel="stylesheet" href="<?= asset('style.min.css') ?>"> -->
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <!-- <script src="https://unpkg.com/@tailwindcss/browser@4"></script> -->
+    <script src="<?= asset('tailwind.js') ?>"></script>
     <?php if (HTMX) {
             echo '<script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>';
         }?>
@@ -15,12 +16,12 @@
     <meta property="og:description" content="Leading IT startup in Jorhat, Assam delivering cutting‑edge software development, cloud services, and digital transformation for businesses across Northeast India.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://deolang.com/">
-    <meta property="og:image" content="<?= asset('logo_192.png') ?>">
+    <meta property="og:image" content="<?= asset('images/logo_192.png') ?>">
     <meta property="og:locale" content="en_IN">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Innovative IT Solutions – Jorhat, Assam | Northeast Tech Startup">
     <meta name="twitter:description" content="Leading IT startup in Jorhat, Assam delivering cutting‑edge software development, cloud services, and digital transformation for businesses across Northeast India.">
-    <meta name="twitter:image" content="<?= asset('logo_192.png') ?>">
+    <meta name="twitter:image" content="<?= asset('images/logo_192.png') ?>">
     <link rel="canonical" href="https://deolang.com/">
     <meta name="keywords" content="services, development, web, apps, android, mac, linux, deolang, ideas, digital, smart, ai, create, cutting-edge, mobile, desktop, northeast, it, jorhat, golaghat">
     <meta name="" content="Innovative tech solutions from Jorhat, Northeast India. Crafting cutting-edge apps, websites, and desktop software to empower businesses and individuals with seamless digital experiences." />
@@ -35,10 +36,18 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/duotone/style.css"
     />
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8423647290391534"
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8423647290391534"
      crossorigin="anonymous"></script>
-     <meta name="google-adsense-account" content="ca-pub-8423647290391534">
+     <meta name="google-adsense-account" content="ca-pub-8423647290391534"> -->
     <!-- Other meta tags, stylesheets, or scripts -->
 </head>
 <body>
+<script src="<?= asset('pocketbase.umd.js') ?>"></script>
+<script>
+  const pb = new PocketBase('https://pk.deolang.com');
+  //       console.log('pb :',<?php //echo get_env('PB_HOST'); ?>);
+  // const PB_HOST = 'https://pkdb23.deolang.com';
+const COLLECTION = 'clients';
+
+</script>
 

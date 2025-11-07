@@ -20,8 +20,8 @@
 <nav class="flex items-center justify-between py-4 px-6 w-full relative bg-zinc-950/30">
   <!-- LOGO -->
   <div class="text-2xl font-bold text-yellow-500 z-20">
-    <a href="#" class="flex gap-3 items-center">
-      <img src="<?= asset('deolang_dark.svg') ?>" class="w-8 h-8" />
+    <a href="/main.asm" class="flex gap-3 items-center">
+      <img src="<?= asset('images/deolang_dark.svg') ?>" class="w-8 h-8" />
       DeoLang
     </a>
   </div>
@@ -35,7 +35,7 @@
   <!-- Main Menu -->
   <ul
     class="
-      flex-col items-center gap-4 absolute top-full left-0 w-full md:w-fit bg-zinc-900/95 backdrop-blur-md py-8
+      flex-col items-center gap-4 absolute top-full left-0 w-full md:w-fit py-8
       peer-checked:flex
       peer-checked:opacity-100
       peer-checked:pointer-events-auto
