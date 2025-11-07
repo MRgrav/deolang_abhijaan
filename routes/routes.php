@@ -12,8 +12,8 @@ route('/test', 'test.sim.php');
 route('/blogs.asm', 'index.php');
 // route('/blogs/GET', 'blogs/view.php');
 route('/pricing.cpp', 'pricing.php');
-route('/career.asm', 'career.php');
+route('/career', 'career.php');
 route('/main.asm', 'index.php');
-route('/prot.cpp', 'k.php');
+route('/prot', 'k.php');
 
 // route('/deolang/mail/contact', 'logics/mail.php');
