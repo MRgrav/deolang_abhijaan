@@ -8,9 +8,9 @@
             <div>
                 <h3 class='font-semibold text-lg'>Quick Links</h3>
                 <ul class='mt-2 space-y-2 text-zinc-300'>
-                    <li>
-                        <a href="/blogs.asm" prefetch="hover">Blogs</a>
-                    </li>
+                    <!-- <li>
+                        <a href="/blogs" prefetch="hover">Blogs</a>
+                    </li> -->
                     <li>
                         <a href="/career" prefetch="hover">Career</a>
                     </li>
@@ -23,13 +23,13 @@
                 <h3 class='font-semibold text-lg'>Contacts</h3>
                 <ul class='mt-2 space-y-2 tracking-wider text-zinc-300'>
                     <li>
-                        <a href="mailto:">contact@deolang.com</a>
+                        <a href="mailto:contact@deolang.com" target="_blank">contact@deolang.com</a>
                     </li>
                     <li>
-                        <a href="mailto:">LinkedIn</a>
+                        <a href="https://www.linkedin.com/company/deolang/" target="_blank">LinkedIn</a>
                     </li>
                     <li>
-                        <a href="mailto:">Instagram</a>
+                        <a href="https://www.instagram.com/deolangllp/" target="_blank">Instagram</a>
                     </li>
                 </ul>
             </div>

@@ -21,7 +21,7 @@ $projects = [
     "subtitle" => "Complete School Management Ecosystem",
     "desc" => "A modern ERP platform designed for K-12 schools with intuitive admin panels, student portals, attendance tracking, grade management, and parent communication tools. Built with performance-first architecture to handle 10,000+ concurrent users.",
     "url" => "https://www.classwix.com",
-    "tech" => "Laravel · Vue.js · PostgreSQL",
+    "tech" => "Laravel · Solid.js · Flutter · Redis · PostgreSQL",
     "btn_color" => "bg-blue-600 hover:bg-blue-700",
     "accent_color" => "text-blue-400",
     "display_type" => "phone",
@@ -33,7 +33,7 @@ $projects = [
     "desc" => "Real estate solutions focused on affordable housing and smart homes across Upper Assam. Connected living with world-class facilities, sustainable green spaces, and round-the-clock surveillance. Making modern living accessible in the heart of Jorhat.",
     "url" => "https://www.sundaramdevelopers.in",
     "screenshot" => "https://pk.deolang.com/api/files/pbc_4285667772/oex0p2137mtpnes/asd_xyyjkab0m8.png?thumb=400x400&token=",
-    "tech" => "Real Estate · Smart Homes · Sustainable Living",
+    "tech" => "Hono · Pocketbase",
     "btn_color" => "bg-green-600 hover:bg-green-700",
     "accent_color" => "text-green-400",
     "display_type" => "desktop",
@@ -45,7 +45,7 @@ $projects = [
     "desc" => "CBSE-affiliated English-medium school established in 1977, offering comprehensive education from Nursery to Class XII. Excellence in academics with streams in Humanities, Commerce, and Science. Nurturing young minds with modern educational practices.",
     "url" => "https://www.arpsjorhat.in",
     "screenshot" => "https://pk.deolang.com/api/files/pbc_4285667772/jiszgx0uersa0ix/arps_jorhat_hl2uijt6y8.webp?thumb=400x400&token=",
-    "tech" => "Education · CBSE Curriculum · Since 1977",
+    "tech" => "Laravel · Vue · Postgress",
     "btn_color" => "bg-purple-600 hover:bg-purple-700",
     "accent_color" => "text-purple-400",
     "display_type" => "tablet",
@@ -79,13 +79,13 @@ $testimonials = [
   ]
 ];
 ?>
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title><?= $company ?> - Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com"></script> -->
   <style>
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-30px); }
@@ -187,49 +187,12 @@ $testimonials = [
       transform: translateX(0);
     }
   </style>
-</head>
-<body class="bg-zinc-900 text-zinc-100">
+<!-- </head> -->
+<div class="bg-zinc-900 text-zinc-100">
   
   <!-- Navigation -->
-  <nav class="nav-sticky bg-zinc-950/80 border-b border-zinc-800">
-    <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
-      <a href="#" class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
-        <?= $company ?>
-      </a>
-      
-      <!-- Desktop Menu -->
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#about" class="text-zinc-300 hover:text-yellow-500 transition-colors">About</a>
-        <a href="#projects" class="text-zinc-300 hover:text-yellow-500 transition-colors">Projects</a>
-        <a href="#skills" class="text-zinc-300 hover:text-yellow-500 transition-colors">Skills</a>
-        <a href="#testimonials" class="text-zinc-300 hover:text-yellow-500 transition-colors">Testimonials</a>
-        <a href="#contact" class="px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-zinc-900 font-semibold rounded-lg transition-all">
-          Contact
-        </a>
-      </div>
-      
-      <!-- Mobile Menu Button -->
-      <button class="md:hidden text-zinc-300" onclick="toggleMenu()">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-    </div>
-    
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="mobile-menu md:hidden fixed top-0 right-0 h-full w-64 bg-zinc-950 border-l border-zinc-800 p-6 flex flex-col gap-6">
-      <button onclick="toggleMenu()" class="self-end text-zinc-300">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
-      <a href="#about" onclick="toggleMenu()" class="text-zinc-300 hover:text-yellow-500">About</a>
-      <a href="#projects" onclick="toggleMenu()" class="text-zinc-300 hover:text-yellow-500">Projects</a>
-      <a href="#skills" onclick="toggleMenu()" class="text-zinc-300 hover:text-yellow-500">Skills</a>
-      <a href="#testimonials" onclick="toggleMenu()" class="text-zinc-300 hover:text-yellow-500">Testimonials</a>
-      <a href="#contact" onclick="toggleMenu()" class="text-zinc-300 hover:text-yellow-500">Contact</a>
-    </div>
-  </nav>
+
+  {{ use_nav }}
 
   <!-- Hero Section -->
   <section class="hero-animate text-center px-5 py-24 bg-zinc-950">
@@ -430,7 +393,7 @@ $testimonials = [
     <p>Assam, India | contact@deolang.com</p>
   </footer> -->
   {{ use_footer }}
-
+</div>
   <!-- Scripts -->
   <script>
     // Scroll Reveal
@@ -457,5 +420,5 @@ $testimonials = [
     }
   </script>
 
-</body>
-</html>
+<!-- </body>
+</html> -->

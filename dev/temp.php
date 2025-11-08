@@ -1,461 +1,992 @@
-<?php
-// portfolio.php
-$company = "DeoLang";
-$tagline = "Innovative SaaS Solutions That Scale";
-$hero_text = "We craft cutting-edge software for education, fitness, and enterprise clients. From concept to deployment, we build platforms that empower thousands of users.";
-
-$about = [
-  "title" => "Who We Are",
-  "description" => "DeoLang is a technology company based in Assam, India, specializing in building scalable SaaS applications. With expertise in full-stack development, we transform ideas into powerful digital solutions that serve thousands of users daily.",
-  "stats" => [
-    ["number" => "10K+", "label" => "Active Users"],
-    ["number" => "3", "label" => "Products Launched"],
-    ["number" => "99.9%", "label" => "Uptime"],
-    ["number" => "24/7", "label" => "Support"]
-  ]
-];
-
-$projects = [
-  [
-    "title" => "ClassWix",
-    "subtitle" => "Complete School Management Ecosystem",
-    "desc" => "A modern ERP platform designed for K-12 schools with intuitive admin panels, student portals, attendance tracking, grade management, and parent communication tools. Built with performance-first architecture to handle 10,000+ concurrent users.",
-    "url" => "https://www.classwix.com",
-    "tech" => "Laravel · Vue.js · PostgreSQL",
-    "btn_color" => "bg-blue-600 hover:bg-blue-700",
-    "accent_color" => "text-blue-400",
-    "display_type" => "phone",
-    "use_iframe" => true
-  ],
-  [
-    "title" => "Sundaram Developers",
-    "subtitle" => "Modern Living Spaces in Jorhat",
-    "desc" => "Real estate solutions focused on affordable housing and smart homes across Upper Assam. Connected living with world-class facilities, sustainable green spaces, and round-the-clock surveillance. Making modern living accessible in the heart of Jorhat.",
-    "url" => "https://www.sundaramdevelopers.in",
-    "screenshot" => "https://pk.deolang.com/api/files/pbc_4285667772/oex0p2137mtpnes/asd_xyyjkab0m8.png?thumb=400x400&token=",
-    "tech" => "Real Estate · Smart Homes · Sustainable Living",
-    "btn_color" => "bg-green-600 hover:bg-green-700",
-    "accent_color" => "text-green-400",
-    "display_type" => "desktop",
-    "use_iframe" => false
-  ],
-  [
-    "title" => "ARPS Jorhat",
-    "subtitle" => "Assam Rifles Public School",
-    "desc" => "CBSE-affiliated English-medium school established in 1977, offering comprehensive education from Nursery to Class XII. Excellence in academics with streams in Humanities, Commerce, and Science. Nurturing young minds with modern educational practices.",
-    "url" => "https://www.arpsjorhat.in",
-    "screenshot" => "https://pk.deolang.com/api/files/pbc_4285667772/jiszgx0uersa0ix/arps_jorhat_hl2uijt6y8.webp?thumb=400x400&token=",
-    "tech" => "Education · CBSE Curriculum · Since 1977",
-    "btn_color" => "bg-purple-600 hover:bg-purple-700",
-    "accent_color" => "text-purple-400",
-    "display_type" => "tablet",
-    "use_iframe" => false
-  ]
-];
-
-$skills = [
-  ["name" => "Full-Stack Development", "icon" => "💻"],
-  ["name" => "Laravel & Vue.js", "icon" => "⚡"],
-  ["name" => "Go & Fiber", "icon" => "🚀"],
-  ["name" => "Multi-Tenant SaaS", "icon" => "🏢"],
-  ["name" => "PostgreSQL & MySQL", "icon" => "🗄️"],
-  ["name" => "Authentication Systems", "icon" => "🔐"]
-];
-
-$testimonials = [
-  [
-    "name" => "Rajesh Kumar",
-    "role" => "School Principal",
-    "company" => "Modern Academy",
-    "text" => "ClassWix transformed our school management. The intuitive interface and powerful features helped us digitize our entire operations seamlessly.",
-    "rating" => 5
-  ],
-  [
-    "name" => "Priya Sharma",
-    "role" => "Real Estate Investor",
-    "company" => "Sundaram Developers",
-    "text" => "The website showcases our properties beautifully. Customer inquiries have increased by 300% since launch.",
-    "rating" => 5
-  ]
-];
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title><?= $company ?> - Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .hero-animate { animation: fadeIn 1.2s ease-out; }
-    
-    /* Scroll Reveal Animation */
-    .scroll-reveal {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    .scroll-reveal.revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    /* Smooth Scroll */
-    html { scroll-behavior: smooth; }
-    
-    /* Navigation */
-    .nav-sticky {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(12px);
-    }
-    
-    /* Phone Frame with Punch Hole */
-    .phone-frame {
-      position: relative;
-      transition: transform 0.6s ease;
-      perspective: 1000px;
-    }
-    .phone-frame:hover {
-      transform: rotateY(5deg) rotateX(2deg) scale(1.02);
-    }
-    .phone-frame::before {
-      content: '';
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      width: 12px;
-      height: 12px;
-      background: #18181b;
-      border-radius: 50%;
-      z-index: 10;
-      box-shadow: 0 0 0 2px #27272a;
-    }
-    
-    /* Desktop Browser Frame */
-    .browser-frame {
-      position: relative;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-      transition: transform 0.6s ease;
-      cursor: pointer;
-    }
-    .browser-frame:hover { transform: scale(1.02); }
-    .browser-header {
-      height: 35px;
-      background: #27272a;
-      display: flex;
-      align-items: center;
-      padding: 0 12px;
-      gap: 6px;
-    }
-    .browser-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-    }
-    
-    /* Tablet Frame */
-    .tablet-frame {
-      position: relative;
-      transition: transform 0.6s ease;
-      cursor: pointer;
-    }
-    .tablet-frame:hover {
-      transform: scale(1.02) rotateZ(-1deg);
-    }
-    
-    .screenshot-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-    }
-    
-    /* Mobile Menu */
-    .mobile-menu {
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
-    }
-    .mobile-menu.active {
-      transform: translateX(0);
-    }
-  </style>
-</head>
-<body class="bg-zinc-900 text-zinc-100">
+<style>
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+@keyframes marquee2 {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(0%); }
+}
+@keyframes marquee3 {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-86%); }
+}
+.animate-marquee {
+  animation: marquee 22s linear infinite;
+}
+.animate-marquee2 {
+  animation: marquee2 28s linear infinite;
+}
+.animate-marquee-top {
+  animation: marquee 100s linear infinite;
+}
+</style>
+<div class="font-sans text-zinc-800 bg-zinc-900 overflow-x-hidden">
+  <header class="bg-zinc-900/80 backdrop-blur text-zinc-200 fixed w-full top-0 z-50">
+  <?php require '/opt/lampp/htdocs/deolang/views/components/nav.php'; ?>
+  </header>
   
-  <!-- Navigation -->
-  <nav class="nav-sticky bg-zinc-950/80 border-b border-zinc-800">
-    <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
-      <a href="#" class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
-        <?= $company ?>
-      </a>
-      
-      <!-- Desktop Menu -->
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#about" class="text-zinc-300 hover:text-yellow-500 transition-colors">About</a>
-        <a href="#projects" class="text-zinc-300 hover:text-yellow-500 transition-colors">Projects</a>
-        <a href="#skills" class="text-zinc-300 hover:text-yellow-500 transition-colors">Skills</a>
-        <a href="#testimonials" class="text-zinc-300 hover:text-yellow-500 transition-colors">Testimonials</a>
-        <a href="#contact" class="px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-zinc-900 font-semibold rounded-lg transition-all">
-          Contact
-        </a>
+  <main>
+    <?php 
+    // $env = parse_ini_file('.env');
+    // echo $env;
+    // echo getenv('APPL'); 
+    ?>
+    <!-- hero -->
+    <!-- <section id="hero" class="flex justify-center bg-zinc-900 bg-cover bg-center top-0 bg-no-repeat mb-20 md:mb-0" >
+        <div class="h-fit container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-4 z-[32] p-8 pt-40">
+          <div class="h-fit">
+            <h2 class="font-extrabold text-[360%] text-yellow-300 tracking-wider">Your Partner in Tech Solutions</h2>
+            <div class="w-[200px] bg-yellow-300 p-1 rounded mt-4 mb-8"></div>
+            <p class="font-semibold text-2xl text-purple-200 mb-20">Empowering businesses with smart, scalable software.</p>
+            <button class="cta">
+              <span class="span">GET START</span>
+              <span class="second">
+                <svg
+                  width="50px"
+                  height="20px"
+                  viewBox="0 0 66 43"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <g
+                    id="arrow"
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                  >
+                    <path
+                      class="one"
+                      d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z"
+                      fill="#FFFFFF"
+                    ></path>
+                    <path
+                      class="two"
+                      d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z"
+                      fill="#FFFFFF"
+                    ></path>
+                    <path
+                      class="three"
+                      d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z"
+                      fill="#FFFFFF"
+                    ></path>
+                  </g>
+                </svg>
+              </span>
+            </button>
+          </div>
+          <div class="h-fit">
+            <div class="relative h-[400px] w-[400px] scale-75 md:scale-100 group hover:scale-105">
+              <img src="<?= asset('images/calling.webp') ?>" alt="calling_men" class="absolute top-0 aspect-square object-cover w-[300px] rounded-2xl mb-6 border-4 border-yellow-500 hover:scale-105 hover:rotate-[-5deg] group-hover:scale-105 group-hover:rotate-[-5deg] duration-150" />
+              <img src="<?= asset('images/hiii.webp') ?>" alt="happy_girl" class="absolute top-55 left-55 aspect-square object-cover w-[140px] rounded-xl mb-6 border-4 border-purple-500 shadow hover:scale-110 group-hover:rotate-10 duration-150" />
+              <div class="absolute w-6 h-6 rounded bg-yellow-500 bottom-0 left-0 group-hover:scale-125 duration-150 delay-50"></div>
+              <div class="absolute w-3 h-3 rounded bg-yellow-500 bottom-0 left-10 group-hover:w-6 group-hover:scale-125 duration-100 delay-100"></div>
+              <div class="absolute w-6 h-6 rounded bg-white top-0 right-0 group-hover:scale-125 duration-150 delay-50"></div>
+              <div class="absolute w-3 h-3 rounded-[2px] bg-white top-10 right-10 group-hover:scale-125 duration-100 delay-100"></div>
+            </div>
+          </div>
+        </div>
+    </section> -->
+
+    <!-- Hero Section -->
+    <!-- <section id="hero" class="relative flex justify-center bg-zinc-900 bg-cover bg-center top-0 bg-no-repeat mb-20 md:mb-0 pb-44" >
+      <span class="absolute p-10 rounded-full border-2 border-yellow-400/10 top-72 right-11" ></span>
+      <span class="absolute p-14 rounded-full border-3 border-yellow-400/10 top-36 left-20" ></span>
+      <span class="absolute p-16 rounded-full border-2 border-yellow-400/10 bottom-20 right-72" ></span>
+      <span class="absolute p-18 rounded-full border-2 border-yellow-400/10 top-1/2 right-3/5" ></span>
+      <span class="absolute p-14 rounded-full border-3 border-yellow-400/10 top-1/2 left-30" ></span>
+      <span class="absolute p-12 rounded-full border-2 border-yellow-400/10 bottom-40 right-1/3" ></span>
+
+        <div class="h-fit container mx-auto flex flex-col-reverse lg:flex-row items-center justify-center text-center gap-4 z-[32] p-8 pt-40">
+          <div class="h-fit">
+            <div class=" flex rounded-full bg-zinc-500 border border-yellow-400 text-zinc-900 font-semibold w-fit mx-auto mb-10">
+              <span class="px-4 py-2">Wellcome to </span>
+              <span class="text-yellow-400 bg-zinc-800 px-4 py-2 rounded-full">DeoLang</span>
+            </div>
+            <h2 class="font-extrabold text-lg lg:text-7xl text-zinc-100 tracking-wider uppercase my-4">Step into the digital world with Us</h2>
+            <p class="font-semibold text-2xl text-purple-300 mb-20">Empowering businesses with smart, scalable software.</p>
+            <button class="relative px-6 py-2 text-xl font-bold shadow-md shadow-purple-700 border bg-purple-600 text-white hover:shadow-xl hover:text-purple-300 hover:tracking-wider transition-all duration-300 delay-100">
+              GET START
+              <span class="absolute shadow-lg shadow-purple-600 -mt-4 right-10 bg-purple-100 rounded-full p-2"></span>
+              <span class="absolute shadow-lg shadow-purple-600 -mb-4 right-30 bg-purple-100 rounded-full p-2.5"></span>
+              <span class="absolute shadow-lg shadow-purple-600 -top-4 left-0 bg-purple-100 rounded-full p-1"></span>
+              <span class="absolute shadow-lg shadow-purple-600 -bottom-4 right-20 bg-purple-100 rounded-full p-1"></span>
+              <span class="absolute shadow-lg shadow-purple-600 bottom-4 -right-4 bg-purple-100 rounded-full p-3"></span>
+              <span class="absolute shadow-lg shadow-purple-600 bottom-0 -right-7 bg-purple-100 rounded-full p-1"></span>
+            </button>
+            <button class="cta mx-auto hidden">
+              <span class="span">GET START</span>
+              <span class="second">
+                <svg
+                  width="50px"
+                  height="20px"
+                  viewBox="0 0 66 43"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                  <g
+                    id="arrow"
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                  >
+                    <path
+                      class="one"
+                      d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z"
+                      fill="#FFFFFF"
+                    ></path>
+                    <path
+                      class="two"
+                      d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z"
+                      fill="#FFFFFF"
+                    ></path>
+                    <path
+                      class="three"
+                      d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z"
+                      fill="#FFFFFF"
+                    ></path>
+                  </g>
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+    </section> -->
+    
+    <style>
+/* Rotating background animation */
+@keyframes rotate-bg {
+  0% {
+    transform: rotate(0deg) scale(1.4);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.4);
+  }
+}
+
+/* Zoom animation on hover */
+@keyframes zoom-rotate-bg {
+  0% {
+    transform: rotate(var(--current-rotation, 0deg)) scale(1.4);
+  }
+  100% {
+    transform: rotate(calc(var(--current-rotation, 0deg) + 360deg)) scale(1.4);
+  }
+}
+
+/* Floating circles animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.hero-bg-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-bg-rotate {
+  position: absolute;
+  inset: -50%;
+  /* background: 
+    radial-gradient(circle at 20% 30%, rgba(234, 179, 8, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 70%); */
+  background-color: black;
+  background-image: url('/public/images/max-petrunin-sm.webp');
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: rotate-bg 60s linear infinite;
+  transition: animation 0.5s ease;
+}
+
+#hero:hover .hero-bg-rotate {
+  animation: rotate-bg 60s linear infinite, zoom-rotate-bg 2s ease-in-out forwards;
+  transform-origin: center;
+}
+
+.hero-circle {
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-circle:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.hero-circle:nth-child(3) {
+  animation-delay: 2s;
+}
+
+.hero-circle:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+.hero-circle:nth-child(5) {
+  animation-delay: 2.5s;
+}
+
+.hero-circle:nth-child(6) {
+  animation-delay: 0.5s;
+}
+</style>
+
+<!-- Hero Section -->
+<section id="hero" class="relative flex justify-center bg-zinc-900 bg-cover bg-center top-0 bg-no-repeat mb-20 md:mb-0 pb-52 overflow-hidden">
+  
+  <!-- Animated Rotating Background -->
+  <div class="hero-bg-container">
+    <div class="hero-bg-rotate"></div>
+  </div>
+
+  <!-- Floating Decorative Circles -->
+  <span class="hero-circle absolute p-10 rounded-full border-2 border-yellow-400/10 top-72 right-11"></span>
+  <span class="hero-circle absolute p-14 rounded-full border-3 border-yellow-400/10 top-36 left-20"></span>
+  <span class="hero-circle absolute p-16 rounded-full border-2 border-yellow-400/10 bottom-20 right-72"></span>
+  <span class="hero-circle absolute p-18 rounded-full border-2 border-yellow-400/10 top-1/2 right-3/5"></span>
+  <span class="hero-circle absolute p-14 rounded-full border-3 border-yellow-400/10 top-1/2 left-30"></span>
+  <span class="hero-circle absolute p-12 rounded-full border-2 border-yellow-400/10 bottom-40 right-1/3"></span>
+
+  <!-- Content -->
+  <div class="h-fit container mx-auto flex flex-col-reverse lg:flex-row items-center justify-center text-center gap-4 z-10 p-8 pt-40 relative">
+    <div class="h-fit">
+      <div class="flex rounded-full bg-zinc-500 border border-yellow-400 text-zinc-900 font-semibold w-fit mx-auto mb-10">
+        <span class="px-4 py-2">Welcome to </span>
+        <span class="text-yellow-400 bg-zinc-800 px-4 py-2 rounded-full">DeoLang</span>
       </div>
       
-      <!-- Mobile Menu Button -->
-      <button class="md:hidden text-zinc-300" onclick="toggleMenu()">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
+      <h2 class="font-extrabold text-lg lg:text-7xl text-zinc-100 tracking-wider uppercase my-4">
+        Step into the digital world with Us
+      </h2>
+      
+      <p class="font-semibold text-2xl text-purple-300 mb-20">
+        Empowering businesses with smart, scalable software.
+      </p>
+      
+      <button class="relative px-6 py-2 text-xl font-bold shadow-md shadow-purple-700 border bg-purple-600 text-white hover:shadow-xl hover:text-purple-300 hover:tracking-wider transition-all duration-300 delay-100">
+        GET STARTED
+        <span class="absolute shadow-lg shadow-purple-600 -mt-4 right-10 bg-purple-100 rounded-full p-2"></span>
+        <span class="absolute shadow-lg shadow-purple-600 -mb-4 right-30 bg-purple-100 rounded-full p-2.5"></span>
+        <span class="absolute shadow-lg shadow-purple-600 -top-4 left-0 bg-purple-100 rounded-full p-1"></span>
+        <span class="absolute shadow-lg shadow-purple-600 -bottom-4 right-20 bg-purple-100 rounded-full p-1"></span>
+        <span class="absolute shadow-lg shadow-purple-600 bottom-4 -right-4 bg-purple-100 rounded-full p-3"></span>
+        <span class="absolute shadow-lg shadow-purple-600 bottom-0 -right-7 bg-purple-100 rounded-full p-1"></span>
       </button>
     </div>
+  </div>
+</section>
+
     
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="mobile-menu md:hidden fixed top-0 right-0 h-full w-64 bg-zinc-950 border-l border-zinc-800 p-6 flex flex-col gap-6">
-      <button onclick="toggleMenu()" class="self-end text-zinc-300">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
-      <a href="#about" onclick="toggleMenu()" class="text-zinc-300 hover:text-yellow-500">About</a>
-      <a href="#projects" onclick="toggleMenu()" class="text-zinc-300 hover:text-yellow-500">Projects</a>
-      <a href="#skills" onclick="toggleMenu()" class="text-zinc-300 hover:text-yellow-500">Skills</a>
-      <a href="#testimonials" onclick="toggleMenu()" class="text-zinc-300 hover:text-yellow-500">Testimonials</a>
-      <a href="#contact" onclick="toggleMenu()" class="text-zinc-300 hover:text-yellow-500">Contact</a>
-    </div>
-  </nav>
+    <section class=" bg-zinc-900 -mt-56">
+      <div class="relative max-w-[90%] lg:max-w-[80%] mx-auto rounded z-40 shadow-xl -bottom-20 overflow-x-hidden overflow-y-hidden bg-zinc-100 border-2 border-zinc-100 p-10">
+        <div class="flex gap-10 md:gap-20 animate-marquee whitespace-nowrap top-0">
+          <!-- Your logos (repeat for smoothness) -->
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/laravel.png') ?>" alt="laravel" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/solid.png') ?>" alt="solidjs"/>
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/flutter.png') ?>" alt="flutter" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/vue.png') ?>" alt="vuejs" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/ElysiaJS.svg') ?>" alt="elysiajs" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/golang.png') ?>" alt="golang" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/tauri.png') ?>" alt="tauri" />
+          </div>
+          <!-- Repeat same logos for seamless loop -->
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/laravel.png') ?>" alt="laravel" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/solid.png') ?>" alt="solid" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/flutter.png') ?>" alt="flutter" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/vue.png') ?>" alt="vue" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/ElysiaJS.svg') ?>" alt="elysiabun" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/golang.png') ?>" alt="go" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/tauri.png') ?>" alt="tauri2.0" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/laravel.png') ?>" alt="laravel" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/solid.png') ?>" alt="solidjs" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/flutter.png') ?>" alt="flutter" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/vue.png') ?>" alt="vue" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/ElysiaJS.svg') ?>" alt="elysia" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/golang.png') ?>" alt="golang" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/tauri.png') ?>" alt="tauri" />
+          </div>
+          <!-- ...repeat as needed -->
+        </div>
+        <div class="hidden gap-20 animate-marquee2 whitespace-nowrap absolute top-10 left-30">
+          <!-- Repeat logos for seamless loop as above -->
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/laravel.png') ?>" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/solid.png') ?>" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/flutter.png') ?>" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/vue.png') ?>" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/ElysiaJS.svg') ?>" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/golang.png') ?>" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/tauri.png') ?>" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/laravel.png') ?>" />
+          </div>
+          <div class="bg-zinc-500/20 rounded-xl shadow min-w-20 md:min-w-32 p-4">
+            <img src="<?= asset('images/solid.png') ?>" />
+          </div>
+          <!-- ...repeat as needed -->
+        </div>
+      </div>
+    </section>
 
-  <!-- Hero Section -->
-  <section class="hero-animate text-center px-5 py-24 bg-zinc-950">
-    <h1 class="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent mb-4 tracking-tight">
-      <?= $company ?>
-    </h1>
-    <div class="text-2xl md:text-3xl text-zinc-400 mb-6 font-light tracking-wide">
-      <?= $tagline ?>
-    </div>
-    <p class="max-w-3xl mx-auto text-lg md:text-xl text-zinc-300 mb-8 leading-relaxed">
-      <?= $hero_text ?>
-    </p>
-    <div class="flex flex-wrap justify-center gap-4">
-      <a href="#projects" class="px-8 py-3 bg-yellow-500 hover:bg-yellow-600 text-zinc-900 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-        View Our Work
-      </a>
-      <a href="#contact" class="px-8 py-3 bg-zinc-800 hover:bg-zinc-700 text-zinc-100 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-        Get in Touch
-      </a>
-    </div>
-  </section>
-
+    
   <!-- About Section -->
-  <section id="about" class="scroll-reveal px-5 py-20 bg-zinc-800/40">
+  <section id="about" class="scroll-reveal px-5 py-36 bg-zinc-100">
     <div class="max-w-6xl mx-auto">
       <h2 class="text-4xl md:text-5xl font-bold text-yellow-500 text-center mb-8">
-        <?= $about['title'] ?>
+        Who We Are
       </h2>
-      <p class="text-lg text-zinc-300 text-center max-w-3xl mx-auto mb-16 leading-relaxed">
-        <?= $about['description'] ?>
+      <p class="text-lg text-zinc-600 text-center max-w-3xl mx-auto mb-16 leading-relaxed">
+        DeoLang is a technology company based in Assam, India, specializing in building scalable SaaS applications. With expertise in full-stack development, we transform ideas into powerful digital solutions that serve thousands of users daily.
       </p>
       
       <!-- Stats -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-        <?php foreach ($about['stats'] as $stat): ?>
-          <div class="text-center">
-            <div class="text-4xl md:text-5xl font-bold text-yellow-500 mb-2">
-              <?= $stat['number'] ?>
-            </div>
-            <div class="text-zinc-400">
-              <?= $stat['label'] ?>
-            </div>
-          </div>
-        <?php endforeach; ?>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-bold text-yellow-500 mb-2">10K+</div>
+          <div class="text-zinc-500">Active Users</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-bold text-yellow-500 mb-2">3</div>
+          <div class="text-zinc-500">Products Launched</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-bold text-yellow-500 mb-2">99.9%</div>
+          <div class="text-zinc-500">Uptime</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-bold text-yellow-500 mb-2">24/7</div>
+          <div class="text-zinc-500">Support</div>
+        </div>
       </div>
     </div>
   </section>
+        
+          <!--app-->
+          <section class="bg-zinc-200 p-4 text-lg pt-28">
+              <div class="grid md:grid-cols-2 mx-auto container my-20">
+                  <div class="md:order-2 mx-auto mb-20 md:mb-0">
+                      <!-- From Uiverse.io by Rodrypaladin --> 
+                      <div class="phone">
+                          <div class="btn1"></div>
+                          <div class="btn2"></div>
+                          <div class="btn3"></div>
+                          <div class="btn4"></div>
+                          <div class="phone-int">
+                              <div class="hello">Namaskar
+                              <span class="hidden">DeoLang</span>
+                              </div>
+                          </div>
+                          <div class="top">
+                              <div class="camera">
+                              <div class="int"></div>
+                              </div>
+                              <div class="speaker"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="flex flex-col justify-center items-center gap-4">
+                      <!-- From Uiverse.io by csozidev --> 
+                      <div class="app-building mb-12">
+                          <div class="box box-1">
+                              <div class="side-left"></div>
+                              <div class="side-right"></div>
+                              <div class="side-top"></div>
+                          </div>
+                          <div class="box box-2">
+                              <div class="side-left"></div>
+                              <div class="side-right"></div>
+                              <div class="side-top"></div>
+                          </div>
+                          <div class="box box-3">
+                              <div class="side-left"></div>
+                              <div class="side-right"></div>
+                              <div class="side-top"></div>
+                          </div>
+                          <div class="box box-4">
+                              <div class="side-left"></div>
+                              <div class="side-right"></div>
+                              <div class="side-top"></div>
+                          </div>
+                      </div>
+                      <p class="text-2xl font-bold">Android/IOS Apps</p>
+                      <p class="max-w-[500px] text-center leading-8">Our expert in-house team uses cutting edge technologies to build IOS and Android Apps that are stunning, robust and scalable.</p>
+                      <div class="flex gap-2 text-xl">
+                        <i class="ph-duotone ph-app-store-logo text-purple-600"></i>
+                        <i class="ph-duotone ph-google-play-logo text-green-600"></i>
+                      </div>
+                  </div>
+              </div>
+          </section>
+          <!-- web -->
+          <section class="bg-zinc-200 p-4">
+              <div class="grid md:grid-cols-2 mx-auto container my-20">
+                  <div class="order-2 flex flex-col justify-center items-center gap-4 p-4">
+                      <!-- From Uiverse.io by Juanes200122 --> 
+                      <div class="container_SevMini">
+                          <div class="SevMini">
+                              <svg
+                              width="74"
+                              height="90"
+                              viewBox="0 0 74 90"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              >
+                              <path
+                                  d="M40 76.5L72 57V69.8615C72 70.5673 71.628 71.2209 71.0211 71.5812L40 90V76.5Z"
+                                  fill="#396CAA"
+                              ></path>
+                              <path
+                                  d="M34 75.7077L2 57V69.8615C2 70.5673 2.37203 71.2209 2.97892 71.5812L34 90V75.7077Z"
+                                  fill="#396DAC"
+                              ></path>
+                              <path d="M34 76.5H40V90H34V76.5Z" fill="#396CAA"></path>
+                              <path
+                                  d="M3.27905 55.593L35.2806 37.5438C36.3478 36.9419 37.6522 36.9419 38.7194 37.5438L70.721 55.593C71.7294 56.1618 71.7406 57.6102 70.7411 58.1945L39.2712 76.593C37.8682 77.4133 36.1318 77.4133 34.7288 76.593L3.25887 58.1945C2.25937 57.6102 2.27061 56.1618 3.27905 55.593Z"
+                                  fill="#163C79"
+                                  stroke="#396CAA"
+                              ></path>
+                              <path
+                                  d="M40 79L72 60V70.4001C72 71.1151 71.6183 71.7758 70.9987 72.1329L40 90V79Z"
+                                  fill="#173D7A"
+                              ></path>
+                              <path d="M34 79L3 61V71.5751L34 90V79Z" fill="#0665B2"></path>
+                              <path
+                                  id="strobe_color1"
+                                  d="M58 72.5L60.5 71V74L58 75.5V72.5Z"
+                                  fill="#FF715E"
+                              ></path>
+                              <path
+                                  id="strobe_color2"
+                                  d="M63 69.5L65.5 68V71L63 72.5V69.5Z"
+                                  fill="#17e300b4"
+                              ></path>
+                              <path d="M68 66.5L70.5 65V68L68 69.5V66.5Z" fill="#FF715E"></path>
+                              <path
+                                  d="M40 58.5L72 39V51.8615C72 52.5673 71.628 53.2209 71.0211 53.5812L40 72V58.5Z"
+                                  fill="#396CAA"
+                              ></path>
+                              <path
+                                  d="M34 57.7077L2 39V51.8615C2 52.5673 2.37203 53.2209 2.97892 53.5812L34 72V57.7077Z"
+                                  fill="#396DAC"
+                              ></path>
+                              <path d="M34 58.5H40V72H34V58.5Z" fill="#396CAA"></path>
+                              <path
+                                  d="M3.27905 37.593L35.2806 19.5438C36.3478 18.9419 37.6522 18.9419 38.7194 19.5438L70.721 37.593C71.7294 38.1618 71.7406 39.6102 70.7411 40.1945L39.2712 58.593C37.8682 59.4133 36.1318 59.4133 34.7288 58.593L3.25887 40.1945C2.25937 39.6102 2.27061 38.1618 3.27905 37.593Z"
+                                  fill="#163C79"
+                                  stroke="#396CAA"
+                              ></path>
+                              <path
+                                  d="M40 61L72 42V52.4001C72 53.1151 71.6183 53.7758 70.9987 54.1329L40 72V61Z"
+                                  fill="#173D7A"
+                              ></path>
+                              <path d="M34 61L3 43V53.5751L34 72V61Z" fill="#0665B2"></path>
+                              <path d="M58 54.5L60.5 53V56L58 57.5V54.5Z" fill="#FF715E"></path>
+                              <path d="M63 51.5L65.5 50V53L63 54.5V51.5Z" fill="black"></path>
+                              <path
+                                  id="strobe_color1"
+                                  d="M63 51.5L65.5 50V53L63 54.5V51.5Z"
+                                  fill="#FF715E"
+                              ></path>
+                              <path d="M68 48.5L70.5 47V50L68 51.5V48.5Z" fill="#FF715E"></path>
+                              <path
+                                  d="M40 40.5L72 21V33.8615C72 34.5673 71.628 35.2209 71.0211 35.5812L40 54V40.5Z"
+                                  fill="#396CAA"
+                              ></path>
+                              <path
+                                  d="M34 39.7077L2 21V33.8615C2 34.5673 2.37203 35.2209 2.97892 35.5812L34 54V39.7077Z"
+                                  fill="#396DAC"
+                              ></path>
+                              <path d="M34 40.5H40V54H34V40.5Z" fill="#396CAA"></path>
+                              <path
+                                  d="M3.27905 19.593L35.2806 1.54381C36.3478 0.941872 37.6522 0.941872 38.7194 1.54381L70.721 19.593C71.7294 20.1618 71.7406 21.6102 70.7411 22.1945L39.2712 40.593C37.8682 41.4133 36.1318 41.4133 34.7288 40.593L3.25887 22.1945C2.25937 21.6102 2.27061 20.1618 3.27905 19.593Z"
+                                  fill="#124E89"
+                                  stroke="#396CAA"
+                              ></path>
+                              <path
+                                  d="M40 43L72 24V34.4001C72 35.1151 71.6183 35.7758 70.9987 36.1329L40 54V43Z"
+                                  fill="#173D7A"
+                              ></path>
+                              <path d="M34 43L3 25V35.5751L34 54V43Z" fill="#0665B2"></path>
+                              <path d="M68 30.5L70.5 29V32L68 33.5V30.5Z" fill="#FF715E"></path>
+                              <path
+                                  id="strobe_color3"
+                                  d="M58 36.5L60.5 35V38L58 39.5V36.5Z"
+                                  fill="#FF715E"
+                              ></path>
+                              <path d="M63 33.5L65.5 32V35L63 36.5V33.5Z" fill="#FF715E"></path>
+                              <path
+                                  d="M20.1902 22.0719C18.8101 21.3026 18.8252 19.3119 20.2168 18.5636L36.1054 10.0189C37.2884 9.3827 38.7116 9.3827 39.8946 10.0189L55.7832 18.5636C57.1748 19.3119 57.1899 21.3026 55.8098 22.0719L40.4345 30.6429C38.9211 31.4865 37.0789 31.4865 35.5655 30.6429L20.1902 22.0719Z"
+                                  fill="#396CAA"
+                              ></path>
+                              <path
+                                  d="M11 52.755C11 51.9801 11.8432 51.4997 12.5098 51.8947L23.5196 58.419C24.1273 58.7792 24.5 59.4332 24.5 60.1396V60.245C24.5 61.0199 23.6568 61.5003 22.9902 61.1053L11.9804 54.581C11.3727 54.2208 11 53.5668 11 52.8604V52.755Z"
+                                  fill="#396CAA"
+                              ></path>
+                              <mask
+                                  id="mask0_2_176"
+                                  style="mask-type:alpha"
+                                  maskUnits="userSpaceOnUse"
+                                  x="11"
+                                  y="51"
+                                  width="14"
+                                  height="11"
+                              >
+                                  <path
+                                  d="M11 52.755C11 51.9801 11.8432 51.4997 12.5098 51.8947L23.5196 58.419C24.1273 58.7792 24.5 59.4332 24.5 60.1396V60.245C24.5 61.0199 23.6568 61.5003 22.9902 61.1053L11.9804 54.581C11.3727 54.2208 11 53.5668 11 52.8604V52.755Z"
+                                  fill="#396CAA"
+                                  ></path>
+                              </mask>
+                              <g mask="url(#mask0_2_176)">
+                                  <path
+                                  d="M11.5 52.7417C11.5 51.9803 12.3349 51.5138 12.9833 51.9128L23.5482 58.4143C24.1397 58.7783 24.5 59.4231 24.5 60.1176V61.5L12.4598 54.4195C11.8651 54.0698 11.5 53.4315 11.5 52.7417V52.7417Z"
+                                  fill="#163874"
+                                  ></path>
+                              </g>
+                              <mask
+                                  id="mask1_2_176"
+                                  style="mask-type:alpha"
+                                  maskUnits="userSpaceOnUse"
+                                  x="19"
+                                  y="9"
+                                  width="38"
+                                  height="23"
+                              >
+                                  <path
+                                  d="M20.1902 22.0719C18.8101 21.3026 18.8252 19.3119 20.2168 18.5636L36.1054 10.0189C37.2884 9.3827 38.7116 9.3827 39.8946 10.0189L55.7832 18.5636C57.1748 19.3119 57.1899 21.3026 55.8098 22.0719L40.4345 30.6429C38.9211 31.4865 37.0789 31.4865 35.5655 30.6429L20.1902 22.0719Z"
+                                  fill="#396CAA"
+                                  ></path>
+                              </mask>
+                              <g mask="url(#mask1_2_176)">
+                                  <path
+                                  d="M18 21.3115L36.167 11.9451C37.3171 11.3521 38.6829 11.3521 39.833 11.9451L58 21.3115L40.3567 30.7405C38.8841 31.5275 37.1159 31.5275 35.6433 30.7405L18 21.3115Z"
+                                  fill="#173D7A"
+                                  ></path>
+                              </g>
+                              <path
+                                  d="M37.447 21.565L35 19.9799L37.6941 18.66L40.141 20.245L37.447 21.565Z"
+                                  fill="#FF715E"
+                              ></path>
+                              <path
+                                  d="M48.9738 30.8646L47.0741 29.7745L49.1792 28.684L51.0789 29.7741L48.9738 30.8646Z"
+                                  fill="#173E7B"
+                              ></path>
+                              <path
+                                  d="M52.0661 29.0093L50.1635 27.9242L52.2657 26.8282L54.1682 27.9133L52.0661 29.0093Z"
+                                  fill="#173E7B"
+                              ></path>
+                              <path
+                                  id="strobe_led1"
+                                  d="M55.1521 27.1464L53.2538 26.054L55.3602 24.9661L57.2585 26.0586L55.1521 27.1464Z"
+                                  fill="#3A6DAB"
+                              ></path>
+                              </svg>
+                          </div>
+                          <div class="Ghost">
+                              <svg
+                              width="60"
+                              height="36"
+                              viewBox="0 0 60 36"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              >
+                              <path
+                                  d="M1.96545 19.4296C0.643777 18.6484 0.658726 16.7309 1.99242 15.9705L28.0186 1.12982C29.2467 0.429534 30.7533 0.429533 31.9814 1.12982L58.0076 15.9704C59.3413 16.7309 59.3562 18.6484 58.0346 19.4296L32.5442 34.4962C30.9749 35.4238 29.0251 35.4238 27.4558 34.4962L1.96545 19.4296Z"
+                                  fill="#3C4F6D"
+                              ></path>
+                              </svg>
+                          </div>
+                      </div>
+                      <p class="text-2xl font-bold">Web-Apps/Desktop Apps</p>
+                      <p class="max-w-[500px] text-center leading-8">Our expert in-house team uses cutting edge technologies to build softwares and custom web applications that are stunning, robust and scalable.</p>
+                      <div class="flex gap-2 text-xl">
+                        <i class="ph-duotone ph-linux-logo text-black-600"></i>
+                        <i class="ph-duotone ph-windows-logo text-sky-600"></i>
+                        <i class="ph-duotone ph-google-chrome-logo text-orange-600"></i>
+                        <i class="ph-duotone ph-apple-logo text-violet-600"></i>
+                      </div>
+                  </div>
+                  <div class="flex justify-center p-4 ">
+                      <div class="laptop">
+                          <div class="screen">
+                              <div class="header"></div>
+                              <div class="text text-3xl">Namaskar DeoLang</div>
+                          </div>
+                          <div class="keyboard"></div>
+                      </div>
+                  </div>
+              </div>
+          </section>
+        
+          <!-- <section id="clients" class="bg-zinc-200 p-10 pb-20">
+            <h2 class="text-3xl font-bold text-indigo-700 text-center mb-8">Our Happy Clients</h2>
+              <div class="flex flex-col md:flex-row gap-x-40 gap-y-20 justify-center items-center " id="clientsWrapper">
+                  <div class="text-5xl font-bold text-orange-600 tracking-wider">
+                      <img src="<?= asset('classwix.png') ?>" alt="classwix" class="w-20 h-20 rounded-md mx-auto" />
+                      <h3>CLASSWiX</h3>
+                  </div>
+                  <div class="text-5xl font-bold text-blue-600 tracking-wider">
+                  <img src="<?= asset('arps.png') ?>" alt="arps" class="w-20 h-20 rounded-md mx-auto" />
+                      <h3>ARPS Jorhat</h3>
+                  </div>
+              </div>
+          </section> -->
+          <?php require '/opt/lampp/htdocs/deolang/views/components/clients.php'; ?>
 
-  <!-- Projects Section -->
-  <div id="projects" class="max-w-7xl mx-auto">
-    <?php foreach ($projects as $index => $project): ?>
-    <section class="scroll-reveal px-5 py-20 <?= $index % 2 === 1 ? 'bg-zinc-800/40' : '' ?>">
-      <div class="max-w-4xl mx-auto text-center mb-12">
-        <h2 class="text-4xl md:text-5xl font-bold <?= $project['accent_color'] ?> mb-3">
-          <?= $project['title'] ?>
-        </h2>
-        <h3 class="text-xl md:text-2xl text-zinc-400 font-normal mb-5">
-          <?= $project['subtitle'] ?>
-        </h3>
-        <p class="text-base md:text-lg text-zinc-300 leading-relaxed mb-4">
-          <?= $project['desc'] ?>
-        </p>
-        <div class="text-sm text-zinc-500 italic">
-          Tech Stack: <?= $project['tech'] ?>
-        </div>
-      </div>
-      
-      <div class="flex justify-center mb-10">
-        <?php if ($project['display_type'] === 'phone'): ?>
-          <div class="phone-frame w-80 h-[640px] bg-zinc-950 border-[14px] border-zinc-800 rounded-[36px] shadow-2xl overflow-hidden">
-            <?php if ($project['use_iframe']): ?>
-              <iframe src="<?= $project['url'] ?>" title="<?= $project['title'] ?> Preview" loading="lazy" class="w-full h-full border-0 rounded-[22px]"></iframe>
-            <?php else: ?>
-              <a href="<?= $project['url'] ?>" target="_blank" class="block w-full h-full">
-                <img src="<?= asset($project['screenshot']) ?>" alt="<?= $project['title'] ?>" class="screenshot-img rounded-[22px]">
-              </a>
-            <?php endif; ?>
-          </div>
-        <?php elseif ($project['display_type'] === 'desktop'): ?>
-          <a href="<?= $project['url'] ?>" target="_blank" class="browser-frame w-full max-w-5xl bg-zinc-950 block">
-            <div class="browser-header">
-              <div class="browser-dot bg-red-500"></div>
-              <div class="browser-dot bg-yellow-500"></div>
-              <div class="browser-dot bg-green-500"></div>
+          <!-- Services Section -->
+          <section id="services" class="bg-zinc-50 pt-28 pb-10 px-6">
+            <div class="container mx-auto">
+              <h2 class="text-3xl text-center font-bold mb-8 text-indigo-700">Our Services</h2>
+              <!-- <ul class="grid md:grid-cols-3 gap-8">
+                <li class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                  <h3 class="text-xl font-semibold mb-2 text-indigo-600">Custom Software Development</h3>
+                  <p>We create software tailored to your business needs.</p>
+                </li>
+                <li class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
+                  <h3 class="text-xl font-semibold mb-2 text-indigo-600">Cloud Solutions</h3>
+                  <p>Maximize efficiency and agility with our cloud services.</p>
+                </li>
+                <li class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
+                  <h3 class="text-xl font-semibold mb-2 text-indigo-600">SEO Optimization</h3>
+                  <p>Get expert guidance for your digital transformation.</p>
+                </li>
+              </ul> -->
+              <div class="grid lg:grid-cols-3 w-fit gap-10 mx-auto">
+                <card
+                  class="w-64 shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden bg-gradient-to-tl from-white to-white hover:from-violet-100 hover:shadow-xl transition hover:scale-[103%]"
+                >
+                  <div class="w-24 h-24 bg-violet-500 rounded-full absolute -right-5 -top-7">
+                    <p class="absolute bottom-6 left-7 text-white text-2xl">01</p>
+                  </div>
+                  <div class="fill-violet-500 w-12">
+                    <img src="<?= asset('images/idea.gif') ?>" alt="app development" class="scale-125" />
+                  </div>
+                  <h3 class="font-bold text-xl">App Development</h3>
+                  <p class="text-sm text-zinc-500 leading-6">
+                    Develop stunning, modern custom apps for both android and ios.
+                  </p>
+                </card>
+                <card
+                  class="w-64 shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden bg-gradient-to-tl from-white to-white hover:from-violet-100 hover:shadow-xl transition hover:scale-[103%]"
+                >
+                  <div class="w-24 h-24 bg-violet-500 rounded-full absolute -right-5 -top-7">
+                    <p class="absolute bottom-6 left-7 text-white text-2xl">02</p>
+                  </div>
+                  <div class="fill-violet-500 w-12">
+                    <img src="<?= asset('images/website.gif') ?>" alt="web development" class="scale-125" />
+                  </div>
+                  <h3 class="font-bold text-xl">Web Development</h3>
+                  <p class="text-sm text-zinc-500 leading-6">
+                    Have your custom sites, webapps ready to serve with responsive designs.
+                  </p>
+                </card>
+                <card
+                  class="w-64 shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden bg-gradient-to-tl from-white to-white hover:from-violet-100 hover:shadow-xl transition hover:scale-[103%]"
+                >
+                  <div class="w-24 h-24 bg-violet-500 rounded-full absolute -right-5 -top-7">
+                    <p class="absolute bottom-6 left-7 text-white text-2xl">03</p>
+                  </div>
+                  <div class="fill-violet-500 w-12">
+                    <img src="<?= asset('images/seo.gif') ?>" alt="seo" class="scale-125" />
+                  </div>
+                  <h3 class="font-bold text-xl">SEO Optimization</h3>
+                  <p class="text-sm text-zinc-500 leading-6">
+                    Rank your brand on internet with well optimized SEO and be the next trend.
+                  </p>
+                </card>
+              </div>
             </div>
-            <?php if ($project['use_iframe']): ?>
-              <iframe src="<?= $project['url'] ?>" title="<?= $project['title'] ?> Preview" loading="lazy" class="w-full h-[600px] border-0"></iframe>
-            <?php else: ?>
-              <img src="<?= $project['screenshot'] ?>" alt="<?= $project['title'] ?>" class="screenshot-img h-[600px]">
-            <?php endif; ?>
-          </a>
-        <?php elseif ($project['display_type'] === 'tablet'): ?>
-          <a href="<?= $project['url'] ?>" target="_blank" class="tablet-frame w-full max-w-2xl bg-zinc-950 border-[16px] border-zinc-800 rounded-[24px] shadow-2xl overflow-hidden block">
-            <?php if ($project['use_iframe']): ?>
-              <iframe src="<?= $project['url'] ?>" title="<?= $project['title'] ?> Preview" loading="lazy" class="w-full h-[550px] border-0 rounded-[8px]"></iframe>
-            <?php else: ?>
-              <img src="<?= $project['screenshot'] ?>" alt="<?= $project['title'] ?>" class="screenshot-img rounded-[8px] h-[550px]">
-            <?php endif; ?>
-          </a>
-        <?php endif; ?>
-      </div>
-      
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="<?= $project['url'] ?>" target="_blank" class="px-8 py-3 <?= $project['btn_color'] ?> text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-          Visit Website
-        </a>
-        <a href="<?= $project['url'] ?>" target="_blank" class="px-8 py-3 bg-yellow-500 hover:bg-yellow-600 text-zinc-900 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-          Explore More
-        </a>
-      </div>
-    </section>
-    <?php endforeach; ?>
-  </div>
-
-  <!-- Skills Section -->
-  <section id="skills" class="scroll-reveal px-5 py-20 bg-zinc-800/40">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl md:text-5xl font-bold text-yellow-500 text-center mb-12">
-        Our Expertise
-      </h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-        <?php foreach ($skills as $skill): ?>
-          <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-6 text-center hover:border-yellow-500 transition-all hover:scale-105">
-            <div class="text-4xl mb-3"><?= $skill['icon'] ?></div>
-            <div class="text-lg font-semibold text-zinc-200"><?= $skill['name'] ?></div>
-          </div>
-        <?php endforeach; ?>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="scroll-reveal px-5 py-20">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl md:text-5xl font-bold text-yellow-500 text-center mb-12">
-        Client Testimonials
-      </h2>
-      <div class="grid md:grid-cols-2 gap-8">
-        <?php foreach ($testimonials as $testimonial): ?>
-          <div class="bg-zinc-800 border border-zinc-700 rounded-lg p-8">
-            <div class="flex mb-4">
-              <?php for ($i = 0; $i < $testimonial['rating']; $i++): ?>
-                <span class="text-yellow-500 text-xl">★</span>
-              <?php endfor; ?>
+          </section>
+          
+          <!-- About Section -->
+          <section id="about" class="pt-28 px-6 bg-gradient-to-b from-zinc-50 to-red-100">
+            <div class="container mx-auto flex flex-col justify-center items-center">
+              <h2 class="text-3xl font-bold mb-4 text-indigo-700">About Us</h2>
+              <p class="text-center mb-6 leading-8 md:max-w-[86%]">DeoLang is a forward-thinking IT company committed to delivering high-quality software solutions. Our team of experienced developers, designers, and IT professionals work collaboratively to ensure that we meet and exceed our clients' expectations.</p>
             </div>
-            <p class="text-zinc-300 mb-6 italic">"<?= $testimonial['text'] ?>"</p>
-            <div>
-              <div class="font-semibold text-zinc-100"><?= $testimonial['name'] ?></div>
-              <div class="text-sm text-zinc-400"><?= $testimonial['role'] ?> at <?= $testimonial['company'] ?></div>
+          </section>
+
+          
+          <!-- Team Section -->
+          <section id="team" class="px-4 bg-red-100">
+            <!-- From Uiverse.io by Smit-Prajapati --> 
+            <div class=" py-28">
+            <h2 class="text-indigo-700 text-center mb-10 font-bold text-3xl">Meet The Team</h2>
+            <div class="flex lg:flex-row flex-col gap-5 lg:gap-8 xl:gap-16 justify-around w-fit mx-auto">
+              <div class="card">
+                <button class="mail">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                </button>
+                <div class="profile-pic">
+                  <img src="<?= asset('images/team/smt.jpeg') ?>" alt="sumeet bharali" />
+                </div>
+                <div class="bottom">
+                    <div class="content">
+                        <span class="name">CEO</span>
+                        <span class="about-me">Sumeet Bharali</span>
+                    </div>
+                  <div class="bottom-bottom">
+                    <div class="social-links-container">
+                      <a href="mailto:ceo@deolang.com" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM12.0606 11.6829L5.64722 6.2377L4.35278 7.7623L12.0731 14.3171L19.6544 7.75616L18.3456 6.24384L12.0606 11.6829Z"></path></svg>
+                      </a>
+                      <a href="https://www.linkedin.com/in/sumeetbharali/" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94048 4.99993C6.94011 5.81424 6.44608 6.54702 5.69134 6.85273C4.9366 7.15845 4.07187 6.97605 3.5049 6.39155C2.93793 5.80704 2.78195 4.93715 3.1105 4.19207C3.43906 3.44699 4.18654 2.9755 5.00048 2.99993C6.08155 3.03238 6.94097 3.91837 6.94048 4.99993ZM7.00048 8.47993H3.00048V20.9999H7.00048V8.47993ZM13.3205 8.47993H9.34048V20.9999H13.2805V14.4299C13.2805 10.7699 18.0505 10.4299 18.0505 14.4299V20.9999H22.0005V13.0699C22.0005 6.89993 14.9405 7.12993 13.2805 10.1599L13.3205 8.47993Z"></path></svg>
+                      </a>
+                      <a href="https://github.com/Sumeetbharali" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 2C6.47598 2 2.00098 6.475 2.00098 12C2.00098 16.425 4.86348 20.1625 8.83848 21.4875C9.33848 21.575 9.52598 21.275 9.52598 21.0125C9.52598 20.775 9.51348 19.9875 9.51348 19.15C7.00098 19.6125 6.35098 18.5375 6.15098 17.975C6.03848 17.6875 5.55098 16.8 5.12598 16.5625C4.77598 16.375 4.27598 15.9125 5.11348 15.9C5.90098 15.8875 6.46348 16.625 6.65098 16.925C7.55098 18.4375 8.98848 18.0125 9.56348 17.75C9.65098 17.1 9.91348 16.6625 10.201 16.4125C7.97598 16.1625 5.65098 15.3 5.65098 11.475C5.65098 10.3875 6.03848 9.4875 6.67598 8.7875C6.57598 8.5375 6.22598 7.5125 6.77598 6.1375C6.77598 6.1375 7.61348 5.875 9.52598 7.1625C10.326 6.9375 11.176 6.825 12.026 6.825C12.876 6.825 13.726 6.9375 14.526 7.1625C16.4385 5.8625 17.276 6.1375 17.276 6.1375C17.826 7.5125 17.476 8.5375 17.376 8.7875C18.0135 9.4875 18.401 10.375 18.401 11.475C18.401 15.3125 16.0635 16.1625 13.8385 16.4125C14.201 16.725 14.5135 17.325 14.5135 18.2625C14.5135 19.6 14.501 20.675 14.501 21.0125C14.501 21.275 14.6885 21.5875 15.1885 21.4875C19.259 20.1133 21.9999 16.2963 22.001 12C22.001 6.475 17.526 2 12.001 2Z"></path></svg>
+                      </a>
+                    </div>
+                    <button class="button">Contact Me</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <button class="mail">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                </button>
+                <div class="profile-pic">
+                    
+                  <img src="<?= asset('images/team/ank.jpg') ?>" alt="ankit gupta" />
+                </div>
+                <div class="bottom">
+                    <div class="content">
+                        <span class="name">COO</span>
+                        <span class="about-me">Ankit Gupta</span>
+                    </div>
+                  <div class="bottom-bottom">
+                    <div class="social-links-container">
+                      <a href="mailto:coo@deolang.com" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM12.0606 11.6829L5.64722 6.2377L4.35278 7.7623L12.0731 14.3171L19.6544 7.75616L18.3456 6.24384L12.0606 11.6829Z"></path></svg>
+                      </a>
+                      <a href="https://www.linkedin.com/in/ankit-gupta-858464249/" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94048 4.99993C6.94011 5.81424 6.44608 6.54702 5.69134 6.85273C4.9366 7.15845 4.07187 6.97605 3.5049 6.39155C2.93793 5.80704 2.78195 4.93715 3.1105 4.19207C3.43906 3.44699 4.18654 2.9755 5.00048 2.99993C6.08155 3.03238 6.94097 3.91837 6.94048 4.99993ZM7.00048 8.47993H3.00048V20.9999H7.00048V8.47993ZM13.3205 8.47993H9.34048V20.9999H13.2805V14.4299C13.2805 10.7699 18.0505 10.4299 18.0505 14.4299V20.9999H22.0005V13.0699C22.0005 6.89993 14.9405 7.12993 13.2805 10.1599L13.3205 8.47993Z"></path></svg>
+                      </a>
+                      <a href="" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 2C6.47598 2 2.00098 6.475 2.00098 12C2.00098 16.425 4.86348 20.1625 8.83848 21.4875C9.33848 21.575 9.52598 21.275 9.52598 21.0125C9.52598 20.775 9.51348 19.9875 9.51348 19.15C7.00098 19.6125 6.35098 18.5375 6.15098 17.975C6.03848 17.6875 5.55098 16.8 5.12598 16.5625C4.77598 16.375 4.27598 15.9125 5.11348 15.9C5.90098 15.8875 6.46348 16.625 6.65098 16.925C7.55098 18.4375 8.98848 18.0125 9.56348 17.75C9.65098 17.1 9.91348 16.6625 10.201 16.4125C7.97598 16.1625 5.65098 15.3 5.65098 11.475C5.65098 10.3875 6.03848 9.4875 6.67598 8.7875C6.57598 8.5375 6.22598 7.5125 6.77598 6.1375C6.77598 6.1375 7.61348 5.875 9.52598 7.1625C10.326 6.9375 11.176 6.825 12.026 6.825C12.876 6.825 13.726 6.9375 14.526 7.1625C16.4385 5.8625 17.276 6.1375 17.276 6.1375C17.826 7.5125 17.476 8.5375 17.376 8.7875C18.0135 9.4875 18.401 10.375 18.401 11.475C18.401 15.3125 16.0635 16.1625 13.8385 16.4125C14.201 16.725 14.5135 17.325 14.5135 18.2625C14.5135 19.6 14.501 20.675 14.501 21.0125C14.501 21.275 14.6885 21.5875 15.1885 21.4875C19.259 20.1133 21.9999 16.2963 22.001 12C22.001 6.475 17.526 2 12.001 2Z"></path></svg>
+                      </a>
+                    </div>
+                    <button class="button">Contact Me</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <button class="mail">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                </button>
+                <div class="profile-pic">
+                    
+                  <img src="<?= asset('images/team/me.webp') ?>" alt="gaurab gogoi" class="bg-gradient-to-br from-yellow-600 to-purple-500" />
+                </div>
+                <div class="bottom">
+                    <div class="content">
+                        <span class="name">CTO</span>
+                        <span class="about-me">Gaurab Gogoi</span>
+                    </div>
+                  <div class="bottom-bottom">
+                    <div class="social-links-container">
+                      <a href="mailto:gaurabgogoi@zohomail.in" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM12.0606 11.6829L5.64722 6.2377L4.35278 7.7623L12.0731 14.3171L19.6544 7.75616L18.3456 6.24384L12.0606 11.6829Z"></path></svg>
+                      </a>
+                      <a href="https://www.linkedin.com/in/gaurab-gogoi-3a6746246/" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94048 4.99993C6.94011 5.81424 6.44608 6.54702 5.69134 6.85273C4.9366 7.15845 4.07187 6.97605 3.5049 6.39155C2.93793 5.80704 2.78195 4.93715 3.1105 4.19207C3.43906 3.44699 4.18654 2.9755 5.00048 2.99993C6.08155 3.03238 6.94097 3.91837 6.94048 4.99993ZM7.00048 8.47993H3.00048V20.9999H7.00048V8.47993ZM13.3205 8.47993H9.34048V20.9999H13.2805V14.4299C13.2805 10.7699 18.0505 10.4299 18.0505 14.4299V20.9999H22.0005V13.0699C22.0005 6.89993 14.9405 7.12993 13.2805 10.1599L13.3205 8.47993Z"></path></svg>
+                      </a>
+                      <a href="https://www.github.com/MRgrav/" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 2C6.47598 2 2.00098 6.475 2.00098 12C2.00098 16.425 4.86348 20.1625 8.83848 21.4875C9.33848 21.575 9.52598 21.275 9.52598 21.0125C9.52598 20.775 9.51348 19.9875 9.51348 19.15C7.00098 19.6125 6.35098 18.5375 6.15098 17.975C6.03848 17.6875 5.55098 16.8 5.12598 16.5625C4.77598 16.375 4.27598 15.9125 5.11348 15.9C5.90098 15.8875 6.46348 16.625 6.65098 16.925C7.55098 18.4375 8.98848 18.0125 9.56348 17.75C9.65098 17.1 9.91348 16.6625 10.201 16.4125C7.97598 16.1625 5.65098 15.3 5.65098 11.475C5.65098 10.3875 6.03848 9.4875 6.67598 8.7875C6.57598 8.5375 6.22598 7.5125 6.77598 6.1375C6.77598 6.1375 7.61348 5.875 9.52598 7.1625C10.326 6.9375 11.176 6.825 12.026 6.825C12.876 6.825 13.726 6.9375 14.526 7.1625C16.4385 5.8625 17.276 6.1375 17.276 6.1375C17.826 7.5125 17.476 8.5375 17.376 8.7875C18.0135 9.4875 18.401 10.375 18.401 11.475C18.401 15.3125 16.0635 16.1625 13.8385 16.4125C14.201 16.725 14.5135 17.325 14.5135 18.2625C14.5135 19.6 14.501 20.675 14.501 21.0125C14.501 21.275 14.6885 21.5875 15.1885 21.4875C19.259 20.1133 21.9999 16.2963 22.001 12C22.001 6.475 17.526 2 12.001 2Z"></path></svg>
+                      </a>
+                    </div>
+                    <button class="button">Contact Me</button>
+                  </div>
+                </div>
+              </div>
             </div>
+            </div>
+          </section>
+                  
+          <section class="relative bg-red-900">
+            <top class="w-fit flex flex-row flex-nowrap animate-marquee-top justify-around gap-6 md:gap-20 overflow-x-hidden text-sm tracking-wide px-3 py-1 font-semibold text-red-100">
+              <p class="whitespace-nowrap">নমস্কাৰ</p>
+              <p class="whitespace-nowrap">नमस्ते</p>
+              <p class="whitespace-nowrap">नमस्कार</p>
+              <p class="whitespace-nowrap">নমস্কার</p>
+              <p class="whitespace-nowrap">Kem Chho</p>
+              <p class="whitespace-nowrap">Tashi Delek</p>
+              <p class="whitespace-nowrap">Chonglai</p>
+              <p class="whitespace-nowrap">Chibai</p>
+              <p class="whitespace-nowrap">Khurumjari</p>
+              <p class="whitespace-nowrap ahom">Màu sung khāa</p>
+              <p class="whitespace-nowrap">Khulumkha</p>
+              <p class="whitespace-nowrap">Hola</p>
+              <p class="whitespace-nowrap">নমস্কাৰ</p>
+              <p class="whitespace-nowrap">नमस्ते</p>
+              <p class="whitespace-nowrap">नमस्कार</p>
+              <p class="whitespace-nowrap">Tashi Delek</p>
+              <p class="whitespace-nowrap">Chonglai</p>
+              <p class="whitespace-nowrap">Chibai</p>
+              <p class="whitespace-nowrap ahom">Màu sung khāa</p>
+              <p class="whitespace-nowrap">Khulumkha</p>
+            </top>
+          </section>
+          <!-- Testimonials Section -->
+          <!-- <section id="testimonials" class="hidden bg-gradient-to-r from-indigo-500 to-pink-500 text-white py-16 px-6">
+            <div class="container mx-auto">
+              <h2 class="text-3xl font-bold mb-8">What Clients Say</h2>
+              <blockquote class="max-w-xl mx-auto italic text-lg">
+                "Professional, reliable, and incredibly creative!"<br>
+                <span class="block mt-4 font-semibold not-italic">- Client Name</span>
+              </blockquote>
+            </div>
+          </section> -->
+          
+          <!-- Contact Section -->
+          
+          <!-- <section id="contact" class="container mx-auto py-16 px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4 text-yellow-600">Contact Us</h2>
+            <address class="not-italic text-zinc-600 tracking-wider">
+              Email: <a href="mailto:info@deolang.com" class="text-indigo-600 hover:underline">info@deolang.com</a><br>
+              LinkedIn: <a href="https://www.linkedin.com/company/deolang" target="_blank" class="text-blue-500">DeoLang</a>
+            </address>
+          </section> -->
+        </main>
+        
+        <?php include ROOT.'/views/components/footer.php' ?>
+
+        <!-- <footer class="bg-zinc-700 text-zinc-50 py-6 mt-8">
+          <div class="container mx-auto text-sm flex flex-col md:flex-row justify-between items-center px-6">
+            <p class="text-zinc-400">&copy; 2025 DeoLang. All rights reserved.</p>
+            <nav class="mt-2 md:mt-0">
+              <a href="#privacy" class="hover:text-indigo-500 hover:underline mx-2">Privacy Policy</a>
+              <a href="#terms" class="hover:text-indigo-500 hover:underline mx-2">Terms of Service</a>
+            </nav>
           </div>
-        <?php endforeach; ?>
-      </div>
-    </div>
-  </section>
+        </footer> -->
+      <div>
 
-  <!-- Contact Section -->
-  <section id="contact" class="scroll-reveal px-5 py-20 bg-zinc-800/40">
-    <div class="max-w-2xl mx-auto text-center">
-      <h2 class="text-4xl md:text-5xl font-bold text-yellow-500 mb-6">
-        Let's Build Something Amazing
-      </h2>
-      <p class="text-lg text-zinc-300 mb-10">
-        Ready to transform your ideas into reality? Get in touch with us today.
-      </p>
-      
-      <!-- Contact Form -->
-      <form class="space-y-6">
-        <div>
-          <input type="text" placeholder="Your Name" required 
-                 class="w-full px-6 py-4 bg-zinc-900 border border-zinc-700 rounded-lg text-zinc-100 focus:border-yellow-500 focus:outline-none transition-colors">
-        </div>
-        <div>
-          <input type="email" placeholder="Your Email" required 
-                 class="w-full px-6 py-4 bg-zinc-900 border border-zinc-700 rounded-lg text-zinc-100 focus:border-yellow-500 focus:outline-none transition-colors">
-        </div>
-        <div>
-          <textarea placeholder="Your Message" rows="5" required 
-                    class="w-full px-6 py-4 bg-zinc-900 border border-zinc-700 rounded-lg text-zinc-100 focus:border-yellow-500 focus:outline-none transition-colors resize-none"></textarea>
-        </div>
-        <button type="submit" 
-                class="w-full px-8 py-4 bg-yellow-500 hover:bg-yellow-600 text-zinc-900 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-          Send Message
-        </button>
-      </form>
-      
-      <!-- Contact Info -->
-      <div class="mt-12 text-zinc-400">
-        <p>Email: contact@deolang.com</p>
-        <p>Location: Assam, India</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <!-- <footer class="text-center px-5 py-12 bg-zinc-950 text-zinc-500 border-t border-zinc-800">
-    <p class="mb-2">&copy; <?= date('Y') ?> <?= $company ?>. Building the future of SaaS, one product at a time.</p>
-    <p>Assam, India | contact@deolang.com</p>
-  </footer> -->
-  <?php require '/opt/lampp/htdocs/deolang/views/components/nav.php'; ?>
-
-  <!-- Scripts -->
-  <script>
-    // Scroll Reveal
-    const observerOptions = {
-      threshold: 0.15,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.scroll-reveal').forEach(el => {
-      observer.observe(el);
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/loaders/GLTFLoader.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Scene setup
+    const scene = new THREE.Scene();
+    const canvas = document.getElementById('3dModelCanvas');
+    const renderer = new THREE.WebGLRenderer({ 
+        canvas: canvas, 
+        alpha: true,  // Allow transparent background
+        antialias: true 
     });
+    
+    // Set canvas size
+    renderer.setSize(300, 300);
+    
+    // Camera
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+    camera.position.set(0, 2, 5);
+    
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    scene.add(ambientLight);
+    
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    directionalLight.position.set(0, 1, 0);
+    scene.add(directionalLight);
 
-    // Mobile Menu Toggle
-    function toggleMenu() {
-      document.getElementById('mobileMenu').classList.toggle('active');
-    }
-  </script>
+    // GLTF Loader
+    const loader = new THREE.GLTFLoader();
+    
+    loader.load(
+        // Path to your 3D model (replace with your actual model path)
+        '<?= asset('your-3d-model.glb') ?>',
+        function(gltf) {
+            const model = gltf.scene;
+            
+            // Scale and position the model
+            model.scale.set(1, 1, 1);  // Adjust scale as needed
+            model.position.set(0, 0, 0);
+            
+            scene.add(model);
+            
+            // Optional: Rotate the model
+            function animate() {
+                requestAnimationFrame(animate);
+                model.rotation.y += 0.01;
+                renderer.render(scene, camera);
+            }
+            animate();
+        },
+        function(xhr) {
+            // Loading progress
+            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+        },
+        function(error) {
+            console.error('An error occurred loading the model:', error);
+        }
+    );
+});
 
-</body>
-</html>
+
+</script> -->
