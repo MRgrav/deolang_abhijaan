@@ -33,17 +33,15 @@
   </label>
 
   <!-- Main Menu -->
-  <ul
-    class="
+  <ul class="
       flex-col items-center gap-4 absolute top-full left-0 w-full md:w-fit py-8 z-20 bg-zinc-900
       peer-checked:flex
       peer-checked:opacity-100
       peer-checked:pointer-events-auto
       opacity-0 pointer-events-none
       transition-all duration-300
-      md:static md:flex md:flex-row md:gap-6 md:py-0 md:opacity-100 md:pointer-events-auto md:bg-transparent"
-  >
-    <li><a href="#hero" class="hover:text-indigo-400 transition text-yellow-100 block px-4 py-2">Home</a></li>
+      md:static md:flex md:flex-row md:gap-6 md:py-0 md:opacity-100 md:pointer-events-auto md:bg-transparent">
+    <li><a href="/#hero" class="hover:text-indigo-400 transition text-yellow-100 block px-4 py-2">Home</a></li>
     <li><a href="#about" class="hover:text-indigo-400 transition text-yellow-100 block px-4 py-2">About</a></li>
     <li><a href="#services" class="hover:text-indigo-400 transition text-yellow-100 block px-4 py-2">Services</a></li>
     <li><a href="#team" class="hover:text-indigo-400 transition text-yellow-100 block px-4 py-2">Team</a></li>
