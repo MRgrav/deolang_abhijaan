@@ -2,8 +2,10 @@
     <div class="max-w-7xl w-[90%] mx-auto p-10">
         <div class="flex md:flex-row flex-col justify-around gap-y-14 gap-x-4">
             <div>
-                <h3 class="font-bold text-5xl">DeoLang</h3>
-                <p>Jorhat, Assam</p>
+                <h3 class="font-bold text-5xl mb-1">DeoLang</h3>
+                <p class="text-zinc-400">Jorhat, Assam</p>
+
+                <p class="text-zinc-200 mt-4">DeoLang is an unit of BlueTech Labs</p>
             </div>
             <div>
                 <h3 class='font-semibold text-lg'>Quick Links</h3>
@@ -28,18 +30,18 @@
                     <li>
                         <a href="https://www.linkedin.com/company/deolang/" target="_blank">LinkedIn</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="https://www.instagram.com/deolangllp/" target="_blank">Instagram</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
     </div>
     <div class="container mx-auto mt-16 text-sm flex flex-col md:flex-row justify-between items-center px-6">
-      <p class="text-zinc-400">&copy; 2025 DeoLang. All rights reserved.</p>
-      <nav class="mt-2 md:mt-0">
-        <a href="#privacy" class="hover:text-indigo-500 hover:underline mx-2">Privacy Policy</a>
-        <a href="#terms" class="hover:text-indigo-500 hover:underline mx-2">Terms of Service</a>
-      </nav>
+        <p class="text-zinc-400">&copy; 2025 DeoLang. All rights reserved.</p>
+        <nav class="mt-2 md:mt-0">
+            <a href="#privacy" class="hover:text-indigo-500 hover:underline mx-2">Privacy Policy</a>
+            <a href="#terms" class="hover:text-indigo-500 hover:underline mx-2">Terms of Service</a>
+        </nav>
     </div>
 </footer>
