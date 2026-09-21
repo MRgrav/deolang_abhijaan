@@ -1,424 +1,195 @@
-<?php
-// portfolio.php
-$company = "DeoLang";
-$tagline = "Innovative SaaS Solutions That Scale";
-$hero_text = "We craft cutting-edge software for education, fitness, and enterprise clients. From concept to deployment, we build platforms that empower thousands of users.";
-
-$about = [
-  "title" => "Who We Are",
-  "description" => "DeoLang is a technology company based in Assam, India, specializing in building scalable SaaS applications. With expertise in full-stack development, we transform ideas into powerful digital solutions that serve thousands of users daily.",
-  "stats" => [
-    ["number" => "10K+", "label" => "Active Users"],
-    ["number" => "3", "label" => "Products Launched"],
-    ["number" => "99.9%", "label" => "Uptime"],
-    ["number" => "24/7", "label" => "Support"]
-  ]
-];
-
-$projects = [
-  [
-    "title" => "ClassWix",
-    "subtitle" => "Complete School Management Ecosystem",
-    "desc" => "A modern ERP platform designed for K-12 schools with intuitive admin panels, student portals, attendance tracking, grade management, and parent communication tools. Built with performance-first architecture to handle 10,000+ concurrent users.",
-    "url" => "https://www.classwix.com",
-    "tech" => "Laravel · Solid.js · Flutter · Redis · PostgreSQL",
-    "btn_color" => "bg-blue-600 hover:bg-blue-700",
-    "accent_color" => "text-blue-400",
-    "display_type" => "phone",
-    "use_iframe" => true
-  ],
-  [
-    "title" => "Sundaram Developers",
-    "subtitle" => "Modern Living Spaces in Jorhat",
-    "desc" => "Real estate solutions focused on affordable housing and smart homes across Upper Assam. Connected living with world-class facilities, sustainable green spaces, and round-the-clock surveillance. Making modern living accessible in the heart of Jorhat.",
-    "url" => "https://www.sundaramdevelopers.in",
-    "screenshot" => "https://pk.deolang.com/api/files/pbc_4285667772/oex0p2137mtpnes/asd_xyyjkab0m8.png?thumb=400x400&token=",
-    "tech" => "Hono · Pocketbase",
-    "btn_color" => "bg-green-600 hover:bg-green-700",
-    "accent_color" => "text-green-400",
-    "display_type" => "desktop",
-    "use_iframe" => false
-  ],
-  [
-    "title" => "ARPS Jorhat",
-    "subtitle" => "Assam Rifles Public School",
-    "desc" => "CBSE-affiliated English-medium school established in 1977, offering comprehensive education from Nursery to Class XII. Excellence in academics with streams in Humanities, Commerce, and Science. Nurturing young minds with modern educational practices.",
-    "url" => "https://www.arpsjorhat.in",
-    "screenshot" => "https://pk.deolang.com/api/files/pbc_4285667772/jiszgx0uersa0ix/arps_jorhat_hl2uijt6y8.webp?thumb=400x400&token=",
-    "tech" => "Laravel · Vue · Postgress",
-    "btn_color" => "bg-purple-600 hover:bg-purple-700",
-    "accent_color" => "text-purple-400",
-    "display_type" => "tablet",
-    "use_iframe" => false
-  ]
-];
-
-$skills = [
-  ["name" => "Full-Stack Development", "icon" => "💻"],
-  ["name" => "Laravel & Vue.js", "icon" => "⚡"],
-  ["name" => "Go & Fiber", "icon" => "🚀"],
-  ["name" => "Multi-Tenant SaaS", "icon" => "🏢"],
-  ["name" => "PostgreSQL & MySQL", "icon" => "🗄️"],
-  ["name" => "Authentication Systems", "icon" => "🔐"]
-];
-
-$testimonials = [
-  [
-    "name" => "Rajesh Kumar",
-    "role" => "School Principal",
-    "company" => "Modern Academy",
-    "text" => "ClassWix transformed our school management. The intuitive interface and powerful features helped us digitize our entire operations seamlessly.",
-    "rating" => 5
-  ],
-  [
-    "name" => "Priya Sharma",
-    "role" => "Real Estate Investor",
-    "company" => "Sundaram Developers",
-    "text" => "The website showcases our properties beautifully. Customer inquiries have increased by 300% since launch.",
-    "rating" => 5
-  ]
-];
-?>
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title><?= $company ?> - Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script> -->
-  <style>
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .hero-animate { animation: fadeIn 1.2s ease-out; }
-    
-    /* Scroll Reveal Animation */
-    .scroll-reveal {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    .scroll-reveal.revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    /* Smooth Scroll */
-    html { scroll-behavior: smooth; }
-    
-    /* Navigation */
-    .nav-sticky {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(12px);
-    }
-    
-    /* Phone Frame with Punch Hole */
-    .phone-frame {
-      position: relative;
-      transition: transform 0.6s ease;
-      perspective: 1000px;
-    }
-    .phone-frame:hover {
-      transform: rotateY(5deg) rotateX(2deg) scale(1.02);
-    }
-    .phone-frame::before {
-      content: '';
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      width: 12px;
-      height: 12px;
-      background: #18181b;
-      border-radius: 50%;
-      z-index: 10;
-      box-shadow: 0 0 0 2px #27272a;
-    }
-    
-    /* Desktop Browser Frame */
-    .browser-frame {
-      position: relative;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-      transition: transform 0.6s ease;
-      cursor: pointer;
-    }
-    .browser-frame:hover { transform: scale(1.02); }
-    .browser-header {
-      height: 35px;
-      background: #27272a;
-      display: flex;
-      align-items: center;
-      padding: 0 12px;
-      gap: 6px;
-    }
-    .browser-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-    }
-    
-    /* Tablet Frame */
-    .tablet-frame {
-      position: relative;
-      transition: transform 0.6s ease;
-      cursor: pointer;
-    }
-    .tablet-frame:hover {
-      transform: scale(1.02) rotateZ(-1deg);
-    }
-    
-    .screenshot-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-    }
-    
-    /* Mobile Menu */
-    .mobile-menu {
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
-    }
-    .mobile-menu.active {
-      transform: translateX(0);
-    }
-  </style>
-<!-- </head> -->
-<div class="bg-zinc-900 text-zinc-100">
-  
-  <!-- Navigation -->
-
-  <?php require '/opt/lampp/htdocs/deolang/views/components/nav.php'; ?>
-
-  <!-- Hero Section -->
-  <section class="hero-animate text-center px-5 py-24 bg-zinc-950">
-    <h1 class="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent mb-4 tracking-tight">
-      <?= $company ?>
-    </h1>
-    <div class="text-2xl md:text-3xl text-zinc-400 mb-6 font-light tracking-wide">
-      <?= $tagline ?>
-    </div>
-    <p class="max-w-3xl mx-auto text-lg md:text-xl text-zinc-300 mb-8 leading-relaxed">
-      <?= $hero_text ?>
-    </p>
-    <div class="flex flex-wrap justify-center gap-4">
-      <a href="#projects" class="px-8 py-3 bg-yellow-500 hover:bg-yellow-600 text-zinc-900 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-        View Our Work
-      </a>
-      <a href="#contact" class="px-8 py-3 bg-zinc-800 hover:bg-zinc-700 text-zinc-100 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-        Get in Touch
-      </a>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="scroll-reveal px-5 py-20 bg-zinc-800/40">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl md:text-5xl font-bold text-yellow-500 text-center mb-8">
-        <?= $about['title'] ?>
-      </h2>
-      <p class="text-lg text-zinc-300 text-center max-w-3xl mx-auto mb-16 leading-relaxed">
-        <?= $about['description'] ?>
-      </p>
+<div class="min-h-screen relative bg-zinc-100 font-sans antialiased text-zinc-800">
+  <?php require '/opt/lampp/htdocs/deolang/views/components/nav.php'; ?>    
+  <div class="container mx-auto px-4 py-8 max-w-7xl">
+    <div class="grid grid-cols-1 lg:grid-cols-7 gap-8">
       
-      <!-- Stats -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-        <?php foreach ($about['stats'] as $stat): ?>
-          <div class="text-center">
-            <div class="text-4xl md:text-5xl font-bold text-yellow-500 mb-2">
-              <?= $stat['number'] ?>
-            </div>
-            <div class="text-zinc-400">
-              <?= $stat['label'] ?>
-            </div>
-          </div>
-        <?php endforeach; ?>
-      </div>
-    </div>
-  </section>
+      <!-- Main Content Area -->
+      <main class="lg:col-span-5">
+        <header class="flex items-center justify-between mb-6 pb-2 border-b border-zinc-300">
+          <h1 class="text-2xl font-bold tracking-tight text-zinc-900">Latest Articles & Insights</h1>
+          <span id="blog-count" class="text-xs font-semibold px-2.5 py-1 bg-zinc-200 text-zinc-700 rounded-full">Loading...</span>
+        </header>
 
-  <!-- Projects Section -->
-  <div id="projects" class="max-w-7xl mx-auto">
-    <?php foreach ($projects as $index => $project): ?>
-    <section class="scroll-reveal px-5 py-20 <?= $index % 2 === 1 ? 'bg-zinc-800/40' : '' ?>">
-      <div class="max-w-4xl mx-auto text-center mb-12">
-        <h2 class="text-4xl md:text-5xl font-bold <?= $project['accent_color'] ?> mb-3">
-          <?= $project['title'] ?>
-        </h2>
-        <h3 class="text-xl md:text-2xl text-zinc-400 font-normal mb-5">
-          <?= $project['subtitle'] ?>
-        </h3>
-        <p class="text-base md:text-lg text-zinc-300 leading-relaxed mb-4">
-          <?= $project['desc'] ?>
-        </p>
-        <div class="text-sm text-zinc-500 italic">
-          Tech Stack: <?= $project['tech'] ?>
+        <!-- Dynamic Blog Cards Grid -->
+        <div id="blogs-wrapper" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="col-span-full py-16 text-center text-zinc-500">
+            <svg class="animate-spin h-8 w-8 mx-auto text-zinc-400 mb-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <p class="text-sm font-medium">Loading blogs...</p>
+          </div>
         </div>
-      </div>
-      
-      <div class="flex justify-center mb-10">
-        <?php if ($project['display_type'] === 'phone'): ?>
-          <div class="phone-frame w-80 h-[640px] bg-zinc-950 border-[14px] border-zinc-800 rounded-[36px] shadow-2xl overflow-hidden">
-            <?php if ($project['use_iframe']): ?>
-              <iframe src="<?= $project['url'] ?>" title="<?= $project['title'] ?> Preview" loading="lazy" class="w-full h-full border-0 rounded-[22px]"></iframe>
-            <?php else: ?>
-              <a href="<?= $project['url'] ?>" target="_blank" class="block w-full h-full">
-                <img src="<?= asset($project['screenshot']) ?>" alt="<?= $project['title'] ?>" class="screenshot-img rounded-[22px]">
-              </a>
-            <?php endif; ?>
-          </div>
-        <?php elseif ($project['display_type'] === 'desktop'): ?>
-          <a href="<?= $project['url'] ?>" target="_blank" class="browser-frame w-full max-w-5xl bg-zinc-950 block">
-            <div class="browser-header">
-              <div class="browser-dot bg-red-500"></div>
-              <div class="browser-dot bg-yellow-500"></div>
-              <div class="browser-dot bg-green-500"></div>
-            </div>
-            <?php if ($project['use_iframe']): ?>
-              <iframe src="<?= $project['url'] ?>" title="<?= $project['title'] ?> Preview" loading="lazy" class="w-full h-[600px] border-0"></iframe>
-            <?php else: ?>
-              <img src="<?= $project['screenshot'] ?>" alt="<?= $project['title'] ?>" class="screenshot-img h-[600px]">
-            <?php endif; ?>
-          </a>
-        <?php elseif ($project['display_type'] === 'tablet'): ?>
-          <a href="<?= $project['url'] ?>" target="_blank" class="tablet-frame w-full max-w-2xl bg-zinc-950 border-[16px] border-zinc-800 rounded-[24px] shadow-2xl overflow-hidden block">
-            <?php if ($project['use_iframe']): ?>
-              <iframe src="<?= $project['url'] ?>" title="<?= $project['title'] ?> Preview" loading="lazy" class="w-full h-[550px] border-0 rounded-[8px]"></iframe>
-            <?php else: ?>
-              <img src="<?= $project['screenshot'] ?>" alt="<?= $project['title'] ?>" class="screenshot-img rounded-[8px] h-[550px]">
-            <?php endif; ?>
-          </a>
-        <?php endif; ?>
-      </div>
-      
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="<?= $project['url'] ?>" target="_blank" class="px-8 py-3 <?= $project['btn_color'] ?> text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-          Visit Website
-        </a>
-        <a href="<?= $project['url'] ?>" target="_blank" class="px-8 py-3 bg-yellow-500 hover:bg-yellow-600 text-zinc-900 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-          Explore More
-        </a>
-      </div>
-    </section>
-    <?php endforeach; ?>
+      </main>
+
+      <!-- Sidebar -->
+      <aside class="lg:col-span-2">
+        <div class="sticky top-24 bg-white p-6 rounded-xl shadow-sm border border-zinc-200/80">
+          <h2 class="text-lg font-bold text-zinc-900 mb-4 pb-2 border-b border-zinc-100 flex items-center gap-2">
+            <i class="ph ph-newspaper text-indigo-600 text-xl"></i>
+            Recent Posts
+          </h2>
+          <ul id="sidebar-blogs" class="space-y-3">
+            <li class="text-sm text-zinc-400 italic">Loading suggestions...</li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
   </div>
-
-  <!-- Skills Section -->
-  <section id="skills" class="scroll-reveal px-5 py-20 bg-zinc-800/40">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl md:text-5xl font-bold text-yellow-500 text-center mb-12">
-        Our Expertise
-      </h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-        <?php foreach ($skills as $skill): ?>
-          <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-6 text-center hover:border-yellow-500 transition-all hover:scale-105">
-            <div class="text-4xl mb-3"><?= $skill['icon'] ?></div>
-            <div class="text-lg font-semibold text-zinc-200"><?= $skill['name'] ?></div>
-          </div>
-        <?php endforeach; ?>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="scroll-reveal px-5 py-20">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl md:text-5xl font-bold text-yellow-500 text-center mb-12">
-        Client Testimonials
-      </h2>
-      <div class="grid md:grid-cols-2 gap-8">
-        <?php foreach ($testimonials as $testimonial): ?>
-          <div class="bg-zinc-800 border border-zinc-700 rounded-lg p-8">
-            <div class="flex mb-4">
-              <?php for ($i = 0; $i < $testimonial['rating']; $i++): ?>
-                <span class="text-yellow-500 text-xl">★</span>
-              <?php endfor; ?>
-            </div>
-            <p class="text-zinc-300 mb-6 italic">"<?= $testimonial['text'] ?>"</p>
-            <div>
-              <div class="font-semibold text-zinc-100"><?= $testimonial['name'] ?></div>
-              <div class="text-sm text-zinc-400"><?= $testimonial['role'] ?> at <?= $testimonial['company'] ?></div>
-            </div>
-          </div>
-        <?php endforeach; ?>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="scroll-reveal px-5 py-20 bg-zinc-800/40">
-    <div class="max-w-2xl mx-auto text-center">
-      <h2 class="text-4xl md:text-5xl font-bold text-yellow-500 mb-6">
-        Let's Build Something Amazing
-      </h2>
-      <p class="text-lg text-zinc-300 mb-10">
-        Ready to transform your ideas into reality? Get in touch with us today.
-      </p>
-      
-      <!-- Contact Form -->
-      <form class="space-y-6">
-        <div>
-          <input type="text" placeholder="Your Name" required 
-                 class="w-full px-6 py-4 bg-zinc-900 border border-zinc-700 rounded-lg text-zinc-100 focus:border-yellow-500 focus:outline-none transition-colors">
-        </div>
-        <div>
-          <input type="email" placeholder="Your Email" required 
-                 class="w-full px-6 py-4 bg-zinc-900 border border-zinc-700 rounded-lg text-zinc-100 focus:border-yellow-500 focus:outline-none transition-colors">
-        </div>
-        <div>
-          <textarea placeholder="Your Message" rows="5" required 
-                    class="w-full px-6 py-4 bg-zinc-900 border border-zinc-700 rounded-lg text-zinc-100 focus:border-yellow-500 focus:outline-none transition-colors resize-none"></textarea>
-        </div>
-        <button type="submit" 
-                class="w-full px-8 py-4 bg-yellow-500 hover:bg-yellow-600 text-zinc-900 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-          Send Message
-        </button>
-      </form>
-      
-      <!-- Contact Info -->
-      <div class="mt-12 text-zinc-400">
-        <p>Email: contact@deolang.com</p>
-        <p>Location: Assam, India</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <!-- <footer class="text-center px-5 py-12 bg-zinc-950 text-zinc-500 border-t border-zinc-800">
-    <p class="mb-2">&copy; <?= date('Y') ?> <?= $company ?>. Building the future of SaaS, one product at a time.</p>
-    <p>Assam, India | contact@deolang.com</p>
-  </footer> -->
-  <?php require '/opt/lampp/htdocs/deolang/views/components/footer.php'; ?>
 </div>
-  <!-- Scripts -->
-  <script>
-    // Scroll Reveal
-    const observerOptions = {
-      threshold: 0.15,
-      rootMargin: '0px 0px -100px 0px'
-    };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-        }
+<script>
+(function() {
+  async function loadBlogs() {
+    const wrapper = document.getElementById('blogs-wrapper');
+    const sidebar = document.getElementById('sidebar-blogs');
+    const blogCount = document.getElementById('blog-count');
+    if (!wrapper) return;
+
+    try {
+      // Fetch blogs ordered by creation date descending
+      const res = await pb.collection('blogs').getList(1, 50, {
+        sort: '-created'
       });
-    }, observerOptions);
+      const blogs = res.items || [];
 
-    document.querySelectorAll('.scroll-reveal').forEach(el => {
-      observer.observe(el);
-    });
+      if (blogCount) {
+        blogCount.textContent = `${blogs.length} ${blogs.length === 1 ? 'Article' : 'Articles'}`;
+      }
 
-    // Mobile Menu Toggle
-    function toggleMenu() {
-      document.getElementById('mobileMenu').classList.toggle('active');
+      if (blogs.length === 0) {
+        wrapper.innerHTML = `
+          <div class="col-span-full py-16 text-center text-zinc-500 bg-white rounded-xl border border-zinc-200">
+            <i class="ph ph-article-ny text-4xl text-zinc-300 mb-2"></i>
+            <p class="text-base font-medium text-zinc-700">No blog posts found</p>
+            <p class="text-xs text-zinc-400 mt-1">Check back later for new updates.</p>
+          </div>
+        `;
+        if (sidebar) sidebar.innerHTML = `<li class="text-sm text-zinc-400 italic">No posts available</li>`;
+        return;
+      }
+
+      // Add ItemList JSON-LD for SEO structured data
+      const jsonLdData = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": blogs.map((item, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "name": item.title || 'Untitled',
+          "url": `${window.location.origin}/blogs?id=${item.id}`,
+          "description": item.meta_description || ''
+        }))
+      };
+      let scriptTag = document.getElementById('jsonld-blogs');
+      if (!scriptTag) {
+        scriptTag = document.createElement('script');
+        scriptTag.id = 'jsonld-blogs';
+        scriptTag.type = 'application/ld+json';
+        document.head.appendChild(scriptTag);
+      }
+      scriptTag.textContent = JSON.stringify(jsonLdData);
+
+      // Render Grid Items
+      wrapper.innerHTML = blogs.map(item => {
+        const title = item.title || 'Untitled';
+        const coverImg = item.cover_image 
+          ? `https://pk.deolang.com/api/files/${item.collectionId}/${item.id}/${item.cover_image}`
+          : 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80';
+        
+        // SEO: Use explicit meta_description or fall back to stripped HTML excerpt
+        let descPreview = item.meta_description || '';
+        if (!descPreview) {
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = item.content || '';
+          const plainText = tempDiv.textContent || tempDiv.innerText || '';
+          descPreview = plainText.length > 130 ? plainText.substring(0, 130) + '...' : plainText;
+        }
+
+        const dateStr = item.created ? new Date(item.created).toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric'
+        }) : '';
+
+        const authorName = item.author || 'DeoLang Team';
+
+        const tagList = item.keywords || item.tags || '';
+        const tags = tagList ? tagList.split(',').map(t => t.trim()).filter(Boolean) : [];
+
+        return `
+          <article class="group bg-white rounded-xl border border-zinc-200/80 shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col h-full" itemscope itemtype="https://schema.org/BlogPosting">
+            <div class="aspect-video w-full overflow-hidden bg-zinc-100 relative">
+              <img 
+                src="${coverImg}" 
+                alt="${title}" 
+                itemprop="image"
+                loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                onerror="this.src='https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80'"
+              />
+            </div>
+            
+            <div class="p-5 flex flex-col flex-grow">
+              <div class="flex items-center justify-between text-xs text-zinc-400 mb-2">
+                ${dateStr ? `<time itemprop="datePublished" datetime="${item.created}">${dateStr}</time>` : ''}
+                <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <span itemprop="name" class="font-medium text-zinc-500">${authorName}</span>
+                </span>
+              </div>
+              
+              <h2 class="text-lg font-bold text-zinc-900 group-hover:text-indigo-600 transition-colors line-clamp-2 leading-snug mb-2" itemprop="headline">
+                <a href="/blogs?id=${item.id}" itemprop="url">${title}</a>
+              </h2>
+
+              <p class="text-sm text-zinc-600 line-clamp-3 mb-4 flex-grow leading-relaxed" itemprop="description">
+                ${descPreview || 'Click to read full article content.'}
+              </p>
+
+              ${tags.length ? `
+                <div class="flex flex-wrap gap-1.5 mb-4">
+                  ${tags.slice(0, 3).map(tag => `<span class="text-[11px] font-medium bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded-md">#${tag}</span>`).join('')}
+                </div>
+              ` : ''}
+
+              <div class="pt-3 border-t border-zinc-100 flex items-center justify-between mt-auto">
+                <a href="/blogs?id=${item.id}" class="inline-flex items-center gap-1 text-sm font-semibold text-indigo-600 hover:text-indigo-700 transition-colors">
+                  Read Article
+                  <i class="ph ph-arrow-right text-xs"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      // Render Sidebar Recent Posts
+      if (sidebar) {
+        sidebar.innerHTML = blogs.slice(0, 5).map(item => `
+          <li>
+            <a href="/blogs?id=${item.id}" class="group block py-1.5 hover:bg-zinc-50 rounded-md transition-colors">
+              <h3 class="text-sm font-semibold text-zinc-800 group-hover:text-indigo-600 line-clamp-1 transition-colors">
+                ${item.title || 'Untitled'}
+              </h3>
+              ${item.created ? `<span class="text-[11px] text-zinc-400">${new Date(item.created).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>` : ''}
+            </a>
+          </li>
+        `).join('');
+      }
+
+    } catch (err) {
+      console.error('Failed to fetch PocketBase blogs:', err);
+      wrapper.innerHTML = `
+        <div class="col-span-full py-12 text-center text-red-500 bg-red-50 rounded-xl border border-red-200">
+          <i class="ph ph-warning-circle text-3xl mb-2"></i>
+          <p class="font-semibold text-sm">Failed to load blogs</p>
+          <p class="text-xs text-red-400 mt-1">Please try refreshing the page.</p>
+        </div>
+      `;
     }
-  </script>
+  }
 
-<!-- </body>
-</html> -->
+  document.addEventListener('DOMContentLoaded', loadBlogs);
+})();
+</script>

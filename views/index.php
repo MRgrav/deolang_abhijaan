@@ -178,40 +178,14 @@
     </section> -->
 
     <style>
-      /* Rotating background animation */
+      /* Rotating background animation - smooth linear infinite loop */
       @keyframes rotate-bg {
         0% {
-          transform: rotate(0deg) scale(1.4);
+          transform: rotate(0deg) scale(1.3);
         }
 
         100% {
-          transform: rotate(360deg) scale(1.4);
-        }
-      }
-
-      /* Zoom animation on hover */
-      @keyframes zoom-bg {
-        0% {
-          transform: scale(1.4);
-          /*rotate(var(--current-rotation, 0deg)) */
-        }
-
-        100% {
-          transform: scale(1.8);
-          /* rotate(calc(var(--current-rotation, 0deg) + 360deg)) */
-        }
-      }
-
-      /* Zoom animation on hover */
-      @keyframes rotate-zoomed-bg {
-        0% {
-          transform: rotate(0deg) scale(1.8);
-          /*rotate(var(--current-rotation, 0deg)) */
-        }
-
-        100% {
-          transform: rotate(360deg) scale(1.8);
-          /* rotate(calc(var(--current-rotation, 0deg) + 360deg)) */
+          transform: rotate(360deg) scale(1.3);
         }
       }
 
@@ -224,7 +198,7 @@
         }
 
         50% {
-          transform: translateY(-20px);
+          transform: translateY(-18px);
         }
       }
 
@@ -233,28 +207,24 @@
         inset: 0;
         overflow: hidden;
         z-index: 1;
+        pointer-events: none;
       }
 
       .hero-bg-rotate {
         position: absolute;
-        inset: -50%;
-        /* background: 
-    radial-gradient(circle at 20% 30%, rgba(234, 179, 8, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 70%); */
-        background-color: black;
+        inset: -60%;
+        background-color: #09090b;
         background-image: url('/public/images/max-petrunin-sm.webp');
-        object-fit: cover;
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
-        animation: rotate-bg 60s linear infinite;
-        transition: animation 0.s ease;
+        animation: rotate-bg 90s linear infinite;
+        transition: transform 1.2s ease-out, opacity 0.5s ease;
+        will-change: transform;
       }
 
       #hero:hover .hero-bg-rotate {
-        /* animation: rotate-bg 60s linear infinite, zoom-bg 60s ease-in-out forwards, rotate-zoomed-bg 60s linear infinite; */
-        animation: zoom-bg 3s ease-in-out forwards, rotate-zoomed-bg 60s linear infinite;
-        transform-origin: center;
+        transform: rotate(15deg) scale(1.45);
       }
 
       .hero-circle {
@@ -276,58 +246,73 @@
       .hero-circle:nth-child(5) {
         animation-delay: 2.5s;
       }
-
-      .hero-circle:nth-child(6) {
-        animation-delay: 0.5s;
-      }
     </style>
 
     <!-- Hero Section -->
     <section id="hero"
-      class="relative flex justify-center bg-zinc-900 bg-cover bg-center top-0 bg-no-repeat mb-20 md:mb-0 pb-52 overflow-hidden">
+      class="relative flex justify-center bg-zinc-950 bg-cover bg-center top-0 bg-no-repeat pb-40 lg:pb-52 overflow-hidden">
 
-      <!-- Animated Rotating Background -->
+      <!-- Animated Background & Glow Gradients -->
       <div class="hero-bg-container">
-        <div class="hero-bg-rotate"></div>
+        <div class="hero-bg-rotate opacity-40"></div>
+      </div>
+
+      <!-- Glowing Accent Radial Orbs -->
+      <div
+        class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-600/20 blur-[120px] rounded-full pointer-events-none">
+      </div>
+      <div
+        class="absolute top-1/3 right-10 w-[350px] h-[350px] bg-yellow-500/15 blur-[100px] rounded-full pointer-events-none">
       </div>
 
       <!-- Floating Decorative Circles -->
-      <span class="hero-circle absolute p-10 rounded-full border-2 border-yellow-400/10 top-72 right-11"></span>
-      <span class="hero-circle absolute p-14 rounded-full border-3 border-yellow-400/10 top-36 left-20"></span>
-      <span class="hero-circle absolute p-16 rounded-full border-2 border-yellow-400/10 bottom-20 right-72"></span>
-      <span class="hero-circle absolute p-18 rounded-full border-2 border-yellow-400/10 top-1/2 right-3/5"></span>
-      <span class="hero-circle absolute p-14 rounded-full border-3 border-yellow-400/10 top-1/2 left-30"></span>
-      <span class="hero-circle absolute p-12 rounded-full border-2 border-yellow-400/10 bottom-40 right-1/3"></span>
+      <span
+        class="hero-circle absolute p-10 rounded-full border border-yellow-400/20 top-72 right-11 pointer-events-none"></span>
+      <span
+        class="hero-circle absolute p-14 rounded-full border border-purple-400/20 top-36 left-20 pointer-events-none"></span>
+      <span
+        class="hero-circle absolute p-16 rounded-full border border-yellow-400/15 bottom-20 right-72 pointer-events-none"></span>
+      <span
+        class="hero-circle absolute p-12 rounded-full border border-purple-400/20 bottom-40 right-1/3 pointer-events-none"></span>
 
       <!-- Content -->
       <div
-        class="h-fit container mx-auto flex flex-col-reverse lg:flex-row items-center justify-center text-center gap-4 z-10 p-8 pt-40 relative">
-        <div class="h-fit">
-          <div
-            class="flex rounded-full bg-zinc-500 border border-yellow-400 text-zinc-900 font-semibold w-fit mx-auto mb-10">
-            <span class="px-4 py-2">Welcome to </span>
-            <span class="text-yellow-400 bg-zinc-800 px-4 py-2 rounded-full">DeoLang</span>
-          </div>
+        class="h-fit container mx-auto flex flex-col items-center justify-center text-center gap-6 z-10 px-4 sm:px-6 pt-36 sm:pt-44 relative max-w-5xl">
 
-          <h2 class="font-extrabold text-lg lg:text-7xl text-zinc-100 tracking-wider uppercase my-4">
-            Step into the digital world with Us
-          </h2>
-
-          <p class="font-semibold text-2xl text-purple-300 mb-20">
-            Empowering businesses with smart, scalable software.
-          </p>
-
-          <button
-            class="relative px-6 py-2 text-xl font-bold shadow-md shadow-purple-700 border bg-purple-600 text-white hover:shadow-xl hover:text-purple-300 hover:tracking-wider transition-all duration-300 delay-100">
-            GET STARTED
-            <span class="absolute shadow-lg shadow-purple-600 -mt-4 right-10 bg-purple-100 rounded-full p-2"></span>
-            <span class="absolute shadow-lg shadow-purple-600 -mb-4 right-30 bg-purple-100 rounded-full p-2.5"></span>
-            <span class="absolute shadow-lg shadow-purple-600 -top-4 left-0 bg-purple-100 rounded-full p-1"></span>
-            <span class="absolute shadow-lg shadow-purple-600 -bottom-4 right-20 bg-purple-100 rounded-full p-1"></span>
-            <span class="absolute shadow-lg shadow-purple-600 bottom-4 -right-4 bg-purple-100 rounded-full p-3"></span>
-            <span class="absolute shadow-lg shadow-purple-600 bottom-0 -right-7 bg-purple-100 rounded-full p-1"></span>
-          </button>
+        <!-- Badge -->
+        <div
+          class="inline-flex items-center gap-2 rounded-full bg-zinc-900/80 border border-yellow-500/40 px-4 py-1.5 backdrop-blur-md shadow-lg transition-transform hover:scale-105">
+          <span class="flex h-2 w-2 rounded-full bg-yellow-400 animate-pulse"></span>
+          <span class="text-xs sm:text-sm font-semibold text-zinc-200">Welcome to <span
+              class="text-yellow-400 font-bold">DeoLang</span></span>
         </div>
+
+        <!-- Main Headline -->
+        <h1 class="font-extrabold text-3xl sm:text-5xl lg:text-7xl text-white tracking-tight leading-tight uppercase">
+          Step Into The <span
+            class="bg-gradient-to-r from-yellow-300 via-amber-400 to-purple-400 bg-clip-text text-transparent">Digital
+            World</span> With Us
+        </h1>
+
+        <!-- Subheading -->
+        <p class="font-medium text-lg sm:text-2xl text-zinc-300 max-w-3xl leading-relaxed">
+          Empowering businesses with smart, scalable software, custom web applications, and mobile solutions.
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="flex flex-col sm:flex-row items-center gap-4 mt-6">
+          <a href="#services"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-bold rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg shadow-purple-600/30 hover:shadow-purple-600/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200">
+            <span>GET STARTED</span>
+            <i class="ph ph-arrow-right text-lg"></i>
+          </a>
+          <a href="/blogs.asm"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold rounded-xl bg-zinc-900/80 hover:bg-zinc-800 text-zinc-200 border border-zinc-700/80 backdrop-blur-md hover:text-white transition-all duration-200">
+            <i class="ph ph-newspaper text-lg text-yellow-400"></i>
+            <span>Read Articles</span>
+          </a>
+        </div>
+
       </div>
     </section>
 
@@ -724,6 +709,206 @@
         </div>
       </div>
     </section>
+
+    <!-- Products & Solutions Section -->
+    <section id="products" class="py-24 px-6 bg-zinc-50 text-zinc-800 border-t border-zinc-200/80 relative">
+      <div class="container mx-auto max-w-6xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span
+            class="text-xs font-bold uppercase tracking-widest text-indigo-700 bg-indigo-100 px-3.5 py-1.5 rounded-full border border-indigo-200">
+            Turnkey Enterprise Solutions
+          </span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-zinc-900 mt-4 mb-4 tracking-tight">Our Products & Platforms</h2>
+          <p class="text-zinc-600 text-base sm:text-lg">
+            Ready-to-deploy software products tailored for educational institutions, businesses, and digital creators.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <!-- Product Card: Education ERP -->
+          <div
+            class="group bg-white hover:bg-zinc-50/80 border border-zinc-200/80 shadow-sm rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-purple-300 hover:shadow-md">
+            <div
+              class="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+              <i class="ph ph-graduation-cap"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-zinc-900 group-hover:text-purple-600 transition-colors">Education ERP
+            </h3>
+            <p class="text-sm text-zinc-600 leading-relaxed mb-4">
+              All-in-one management platform for schools and institutions covering student records, admissions, fees,
+              and attendance.
+            </p>
+            <span class="inline-flex items-center gap-1 text-xs font-semibold text-purple-600">
+              Enterprise Ready <i class="ph ph-arrow-right"></i>
+            </span>
+          </div>
+
+          <!-- Product Card: Library Management System -->
+          <div
+            class="group bg-white hover:bg-zinc-50/80 border border-zinc-200/80 shadow-sm rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-amber-300 hover:shadow-md">
+            <div
+              class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+              <i class="ph ph-books"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-zinc-900 group-hover:text-amber-600 transition-colors">Library
+              System</h3>
+            <p class="text-sm text-zinc-600 leading-relaxed mb-4">
+              Smart digital cataloging, member issue/return tracking, automated fine calculations, and barcode
+              inventory.
+            </p>
+            <span class="inline-flex items-center gap-1 text-xs font-semibold text-amber-600">
+              Automated Cataloging <i class="ph ph-arrow-right"></i>
+            </span>
+          </div>
+
+          <!-- Product Card: Headless CMS -->
+          <div
+            class="group bg-white hover:bg-zinc-50/80 border border-zinc-200/80 shadow-sm rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-indigo-300 hover:shadow-md">
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+              <i class="ph ph-article"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-zinc-900 group-hover:text-indigo-600 transition-colors">Custom CMS
+            </h3>
+            <p class="text-sm text-zinc-600 leading-relaxed mb-4">
+              High-performance content management systems with customizable media workflows and multi-channel API
+              publishing.
+            </p>
+            <span class="inline-flex items-center gap-1 text-xs font-semibold text-indigo-600">
+              API First <i class="ph ph-arrow-right"></i>
+            </span>
+          </div>
+
+          <!-- Product Card: Dynamic Forms Engine -->
+          <div
+            class="group bg-white hover:bg-zinc-50/80 border border-zinc-200/80 shadow-sm rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-md">
+            <div
+              class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+              <i class="ph ph-textbox"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-zinc-900 group-hover:text-emerald-600 transition-colors">Dynamic Forms
+            </h3>
+            <p class="text-sm text-zinc-600 leading-relaxed mb-4">
+              No-code form builder supporting conditional logic, secure payment collection, and instant webhook
+              integrations.
+            </p>
+            <span class="inline-flex items-center gap-1 text-xs font-semibold text-emerald-600">
+              No-Code Builder <i class="ph ph-arrow-right"></i>
+            </span>
+          </div>
+
+          <!-- Product Card: Custom Web Portals -->
+          <div
+            class="group bg-white hover:bg-zinc-50/80 border border-zinc-200/80 shadow-sm rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-md">
+            <div
+              class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+              <i class="ph ph-globe-hemisphere-west"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-zinc-900 group-hover:text-blue-600 transition-colors">Business
+              Portals</h3>
+            <p class="text-sm text-zinc-600 leading-relaxed mb-4">
+              High-converting responsive websites and client dashboards engineered for speed, accessibility, and modern
+              UI.
+            </p>
+            <span class="inline-flex items-center gap-1 text-xs font-semibold text-blue-600">
+              SEO Optimized <i class="ph ph-arrow-right"></i>
+            </span>
+          </div>
+
+          <!-- Product Card: Analytics & Reporting -->
+          <div
+            class="group bg-white hover:bg-zinc-50/80 border border-zinc-200/80 shadow-sm rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-rose-300 hover:shadow-md">
+            <div
+              class="w-12 h-12 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+              <i class="ph ph-chart-line-up"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-zinc-900 group-hover:text-rose-600 transition-colors">Custom
+              Dashboards</h3>
+            <p class="text-sm text-zinc-600 leading-relaxed mb-4">
+              Real-time analytics and business intelligence suites designed to visualize metrics and monitor
+              performance.
+            </p>
+            <span class="inline-flex items-center gap-1 text-xs font-semibold text-rose-600">
+              Real-time Data <i class="ph ph-arrow-right"></i>
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Ecosystem & Infrastructure Partners Section -->
+    <section id="infrastructure" class="py-20 px-6 bg-zinc-100 text-zinc-800 border-t border-zinc-200">
+      <div class="container mx-auto max-w-6xl text-center">
+        <span
+          class="text-xs font-bold uppercase tracking-widest text-indigo-700 bg-indigo-100 px-3.5 py-1.5 rounded-full border border-indigo-200">
+          Global Cloud & Infrastructure
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-zinc-900 mt-4 mb-3">Powered By Industry Leaders</h2>
+        <p class="text-zinc-600 text-sm sm:text-base max-w-2xl mx-auto mb-12">
+          We leverage enterprise-grade cloud, security, and communications infrastructure to deliver maximum reliability
+          and performance.
+        </p>
+
+        <!-- Dynamic Container Rendered from JS Array -->
+        <div id="tech-partners-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 items-center">
+          <!-- Rendered dynamically below -->
+        </div>
+      </div>
+    </section>
+
+    <script>
+      (function () {
+        // ARRAY OF TECH/INFRASTRUCTURE PARTNERS
+        // You can easily add, remove, or replace logo URLs, names, and subtitles here!
+        const partnerLogos = [
+          {
+            name: "Cloudflare",
+            category: "Security & CDN",
+            logoUrl: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Cloudflare_Logo.svg"
+          },
+          {
+            name: "Hostinger",
+            category: "VPS & Cloud",
+            logoUrl: "https://upload.wikimedia.org/wikipedia/commons/6/6d/Hostinger_logo.svg"
+          },
+          {
+            name: "Zoho",
+            category: "Workplace Mail",
+            logoUrl: "https://upload.wikimedia.org/wikipedia/commons/a/af/Zoho_logo.svg"
+          },
+          {
+            name: "Google Cloud",
+            category: "Cloud Infra",
+            logoUrl: "https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg"
+          },
+          {
+            name: "Meta",
+            category: "Developer API",
+            logoUrl: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg"
+          }
+        ];
+
+        const grid = document.getElementById('tech-partners-grid');
+        if (!grid) return;
+
+        grid.innerHTML = partnerLogos.map(partner => `
+        <div class="p-6 rounded-2xl bg-white border border-zinc-200/80 shadow-sm flex flex-col items-center justify-center gap-3 hover:shadow-md hover:border-indigo-300 transition-all hover:-translate-y-1 group min-h-[130px]">
+          <img 
+            src="${partner.logoUrl}" 
+            alt="${partner.name} logo" 
+            class="h-8 sm:h-9 w-auto max-w-[130px] object-contain group-hover:scale-105 transition-transform"
+            style="object-fit: contain;"
+            loading="lazy"
+            onerror="this.onerror=null; this.parentElement.querySelector('.fallback-name').classList.remove('hidden'); this.style.display='none';"
+          />
+          <span class="fallback-name hidden font-bold text-sm text-zinc-800">${partner.name}</span>
+          <span class="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider">${partner.category}</span>
+        </div>
+      `).join('');
+      })();
+    </script>
 
     <!-- About Section -->
     <section id="about" class="pt-28 px-6 bg-gradient-to-b from-zinc-50 to-red-100">
