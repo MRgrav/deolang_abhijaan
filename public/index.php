@@ -1,3 +1,9 @@
+<?php
+if (!defined('ROOT')) {
+    http_response_code(404);
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

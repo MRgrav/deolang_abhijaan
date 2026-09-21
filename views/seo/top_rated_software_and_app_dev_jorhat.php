@@ -5,7 +5,7 @@
 
 <div class="font-sans text-zinc-200 bg-zinc-900 overflow-x-hidden selection:bg-yellow-500 selection:text-white">
   <header class="bg-zinc-900/80 backdrop-blur text-zinc-200 fixed w-full top-0 z-50">
-    <?php require '/opt/lampp/htdocs/deolang/views/components/nav.php'; ?>
+    {{ use_nav }}
   </header>
   <main>
   
@@ -132,21 +132,52 @@
         <p class="text-lg text-zinc-400 max-w-2xl mx-auto">Build your mobile or web app with Jorhat's premier development team.</p>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-        <!-- CEO -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <!-- Contact Card: CEO -->
         <div class="bg-zinc-800/80 p-8 rounded-2xl border border-zinc-700 flex flex-col items-center text-center hover:border-yellow-500/50 transition-all">
           <img src="<?= asset('images/team/smt.jpeg') ?>" alt="Sumeet Bharali CEO DeoLang" class="w-24 h-24 rounded-full object-cover border-2 border-yellow-400 mb-4 shadow-lg">
           <h3 class="text-xl font-bold text-white">Sumeet Bharali</h3>
-          <p class="text-yellow-400 font-medium mb-4">CEO & Founder, DeoLang</p>
+          <p class="text-yellow-400 font-medium mb-4">CEO & Founder</p>
           <div class="flex items-center gap-3 text-zinc-300 mb-2">
             <i class="ph-bold ph-envelope text-yellow-400 text-lg"></i>
-            <a href="mailto:contact@deolang.com" class="hover:text-yellow-400 transition-colors">contact@deolang.com</a>
+            <a href="mailto:contact@deolang.com" class="hover:text-yellow-400 transition-colors text-sm">contact@deolang.com</a>
           </div>
           <div class="flex items-center gap-3 text-zinc-300">
             <i class="ph-bold ph-linkedin-logo text-yellow-400 text-lg"></i>
-            <a href="https://www.linkedin.com/in/sumeetbharali/" target="_blank" class="hover:text-yellow-400 transition-colors">LinkedIn Profile</a>
+            <a href="https://www.linkedin.com/in/sumeetbharali/" target="_blank" class="hover:text-yellow-400 transition-colors text-sm">LinkedIn Profile</a>
           </div>
         </div>
+
+        <!-- Contact Card: COO -->
+        <div class="bg-zinc-800/80 p-8 rounded-2xl border border-zinc-700 flex flex-col items-center text-center hover:border-yellow-500/50 transition-all">
+          <img src="<?= asset('images/team/ank.jpg') ?>" alt="Ankit Gupta COO DeoLang" class="w-24 h-24 rounded-full object-cover border-2 border-yellow-400 mb-4 shadow-lg">
+          <h3 class="text-xl font-bold text-white">Ankit Gupta</h3>
+          <p class="text-yellow-400 font-medium mb-4">COO</p>
+          <div class="flex items-center gap-3 text-zinc-300 mb-2">
+            <i class="ph-bold ph-envelope text-yellow-400 text-lg"></i>
+            <a href="mailto:contact@deolang.com" class="hover:text-yellow-400 transition-colors text-sm">contact@deolang.com</a>
+          </div>
+          <div class="flex items-center gap-3 text-zinc-300">
+            <i class="ph-bold ph-linkedin-logo text-yellow-400 text-lg"></i>
+            <a href="https://www.linkedin.com/in/ankit-gupta-858464249/" target="_blank" class="hover:text-yellow-400 transition-colors text-sm">LinkedIn Profile</a>
+          </div>
+        </div>
+
+        <!-- Contact Card: CTO -->
+        <div class="bg-zinc-800/80 p-8 rounded-2xl border border-zinc-700 flex flex-col items-center text-center hover:border-yellow-500/50 transition-all">
+          <img src="<?= asset('images/team/cgg.jpg') ?>" alt="Gaurab Gogoi CTO DeoLang" class="w-24 h-24 rounded-full object-cover border-2 border-yellow-400 mb-4 shadow-lg">
+          <h3 class="text-xl font-bold text-white">Gaurab Gogoi</h3>
+          <p class="text-yellow-400 font-medium mb-4">CTO</p>
+          <div class="flex items-center gap-3 text-zinc-300 mb-2">
+            <i class="ph-bold ph-envelope text-yellow-400 text-lg"></i>
+            <a href="mailto:gaurabgogoi@zohomail.in" class="hover:text-yellow-400 transition-colors text-sm">gaurabgogoi@zohomail.in</a>
+          </div>
+          <div class="flex items-center gap-3 text-zinc-300">
+            <i class="ph-bold ph-linkedin-logo text-yellow-400 text-lg"></i>
+            <a href="https://www.linkedin.com/in/gaurab-gogoi-3a6746246/" target="_blank" class="hover:text-yellow-400 transition-colors text-sm">LinkedIn Profile</a>
+          </div>
+        </div>
+      </div>
 
         <!-- CTO -->
         <div class="bg-zinc-800/80 p-8 rounded-2xl border border-zinc-700 flex flex-col items-center text-center hover:border-yellow-500/50 transition-all">
@@ -167,5 +198,5 @@
   </section>
 
   </main>
-  <?php require '/opt/lampp/htdocs/deolang/views/components/footer.php'; ?>
+  {{ use_footer }}
 </div>
