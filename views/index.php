@@ -306,7 +306,7 @@
             <span>GET STARTED</span>
             <i class="ph ph-arrow-right text-lg"></i>
           </a>
-          <a href="/blogs.asm"
+          <a href="/blogs"
             class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold rounded-xl bg-zinc-900/80 hover:bg-zinc-800 text-zinc-200 border border-zinc-700/80 backdrop-blur-md hover:text-white transition-all duration-200">
             <i class="ph ph-newspaper text-lg text-yellow-400"></i>
             <span>Read Articles</span>
@@ -718,7 +718,8 @@
             class="text-xs font-bold uppercase tracking-widest text-indigo-700 bg-indigo-100 px-3.5 py-1.5 rounded-full border border-indigo-200">
             Turnkey Enterprise Solutions
           </span>
-          <h2 class="text-3xl sm:text-5xl font-extrabold text-zinc-900 mt-4 mb-4 tracking-tight">Our Products & Platforms</h2>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-zinc-900 mt-4 mb-4 tracking-tight">Our Products &
+            Platforms</h2>
           <p class="text-zinc-600 text-base sm:text-lg">
             Ready-to-deploy software products tailored for educational institutions, businesses, and digital creators.
           </p>
@@ -787,7 +788,8 @@
               class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
               <i class="ph ph-textbox"></i>
             </div>
-            <h3 class="text-xl font-bold mb-2 text-zinc-900 group-hover:text-emerald-600 transition-colors">Dynamic Forms
+            <h3 class="text-xl font-bold mb-2 text-zinc-900 group-hover:text-emerald-600 transition-colors">Dynamic
+              Forms
             </h3>
             <p class="text-sm text-zinc-600 leading-relaxed mb-4">
               No-code form builder supporting conditional logic, secure payment collection, and instant webhook

@@ -1,7 +1,7 @@
 <footer class="bg-zinc-950 text-zinc-300 pt-16 pb-8 border-t border-zinc-800/60 font-sans">
     <div class="max-w-7xl w-[90%] mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-zinc-800/80">
-            
+
             <!-- Brand Info Column -->
             <div class="space-y-4">
                 <a href="/" class="flex items-center gap-3">
@@ -9,7 +9,8 @@
                     <span class="font-extrabold text-3xl text-yellow-400 tracking-wide">DeoLang</span>
                 </a>
                 <p class="text-sm text-zinc-400 leading-relaxed">
-                    Innovative IT solutions from Jorhat, Assam. Crafting smart, scalable web apps, desktop software, and mobile apps.
+                    Innovative IT solutions from Jorhat, Assam. Crafting smart, scalable web apps, desktop software, and
+                    mobile apps.
                 </p>
                 <div class="pt-2 text-xs text-zinc-500 font-medium">
                     DeoLang is a unit of <span class="text-zinc-300">BlueTech Labs</span>.
@@ -18,7 +19,8 @@
 
             <!-- Quick Links Column -->
             <div>
-                <h3 class="font-bold text-base text-zinc-100 uppercase tracking-wider mb-4 border-l-2 border-yellow-400 pl-2.5">
+                <h3
+                    class="font-bold text-base text-zinc-100 uppercase tracking-wider mb-4 border-l-2 border-yellow-400 pl-2.5">
                     Quick Links
                 </h3>
                 <ul class="space-y-2.5 text-sm">
@@ -38,7 +40,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/blogs.asm" class="hover:text-yellow-400 transition-colors flex items-center gap-1.5">
+                        <a href="/blogs" class="hover:text-yellow-400 transition-colors flex items-center gap-1.5">
                             <i class="ph ph-caret-right text-xs text-zinc-500"></i> Blogs & Articles
                         </a>
                     </li>
@@ -52,7 +54,8 @@
 
             <!-- Contact Info Column -->
             <div>
-                <h3 class="font-bold text-base text-zinc-100 uppercase tracking-wider mb-4 border-l-2 border-yellow-400 pl-2.5">
+                <h3
+                    class="font-bold text-base text-zinc-100 uppercase tracking-wider mb-4 border-l-2 border-yellow-400 pl-2.5">
                     Contact Us
                 </h3>
                 <ul class="space-y-3 text-sm">
@@ -77,17 +80,19 @@
 
             <!-- Social Links & Connect -->
             <div>
-                <h3 class="font-bold text-base text-zinc-100 uppercase tracking-wider mb-4 border-l-2 border-yellow-400 pl-2.5">
+                <h3
+                    class="font-bold text-base text-zinc-100 uppercase tracking-wider mb-4 border-l-2 border-yellow-400 pl-2.5">
                     Connect
                 </h3>
                 <p class="text-xs text-zinc-400 mb-4">Follow us on our official networks to stay updated.</p>
                 <div class="flex items-center gap-3">
-                    <a href="https://www.linkedin.com/company/deolang/" target="_blank" rel="noopener" aria-label="LinkedIn"
-                       class="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-300 hover:text-yellow-400 hover:border-yellow-400/50 hover:bg-zinc-800 transition-all">
+                    <a href="https://www.linkedin.com/company/deolang/" target="_blank" rel="noopener"
+                        aria-label="LinkedIn"
+                        class="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-300 hover:text-yellow-400 hover:border-yellow-400/50 hover:bg-zinc-800 transition-all">
                         <i class="ph ph-linkedin-logo text-xl"></i>
                     </a>
                     <a href="mailto:contact@deolang.com" aria-label="Email"
-                       class="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-300 hover:text-yellow-400 hover:border-yellow-400/50 hover:bg-zinc-800 transition-all">
+                        class="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-300 hover:text-yellow-400 hover:border-yellow-400/50 hover:bg-zinc-800 transition-all">
                         <i class="ph ph-envelope-simple text-xl"></i>
                     </a>
                 </div>
@@ -97,7 +102,8 @@
 
         <!-- Bottom Copyright & Legal Links -->
         <div class="pt-8 text-xs text-zinc-500 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p>&copy; <?= date('Y') ?> <span class="text-zinc-300 font-semibold">DeoLang</span>. All rights reserved.</p>
+            <p>&copy; <?= date('Y') ?> <span class="text-zinc-300 font-semibold">DeoLang</span>. All rights reserved.
+            </p>
             <nav class="flex items-center gap-6">
                 <a href="#privacy" class="hover:text-zinc-300 transition-colors">Privacy Policy</a>
                 <a href="#terms" class="hover:text-zinc-300 transition-colors">Terms of Service</a>
