@@ -109,22 +109,9 @@ if ($blog) {
         "description" => $metaDesc,
         "articleBody" => $plainContent
     ];
+    $ogType = 'article';
 }
 ?>
-<title><?php echo htmlspecialchars($pageTitle); ?></title>
-<meta name="description" content="<?php echo htmlspecialchars($metaDesc); ?>">
-<meta name="keywords" content="<?php echo htmlspecialchars($keywords); ?>">
-<meta name="author" content="<?php echo htmlspecialchars($author); ?>">
-<meta property="og:title" content="<?php echo htmlspecialchars($pageTitle); ?>">
-<meta property="og:description" content="<?php echo htmlspecialchars($metaDesc); ?>">
-<meta property="og:type" content="article">
-<meta property="og:url" content="<?php echo htmlspecialchars($canonicalUrl); ?>">
-<meta property="og:image" content="<?php echo htmlspecialchars($coverImg); ?>">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="<?php echo htmlspecialchars($pageTitle); ?>">
-<meta name="twitter:description" content="<?php echo htmlspecialchars($metaDesc); ?>">
-<meta name="twitter:image" content="<?php echo htmlspecialchars($coverImg); ?>">
-<link rel="canonical" href="<?php echo htmlspecialchars($canonicalUrl); ?>">
 
 <div class="min-h-screen relative bg-zinc-100 font-sans antialiased text-zinc-800">
   {{ use_nav }}
@@ -145,8 +132,8 @@ if ($blog) {
             </div>
           <?php else: 
             $dateStr = !empty($blog['created']) ? date('F j, Y', strtotime($blog['created'])) : '';
-            $tagList = !empty($blog['keywords']) ? $blog['keywords'] : ($blog['tags'] ?? '');
-            $tags = array_filter(array_map('trim', explode(',', $tagList)));
+            $tagList = !empty($blog['tags']) ? $blog['tags'] : ($blog['keywords'] ?? '');
+            $tags = array_slice(array_filter(array_map('trim', explode(',', $tagList))), 0, 5);
           ?>
             <header class="mb-6">
               <a href="/blogs" class="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-indigo-600 transition-colors mb-4">
@@ -180,7 +167,16 @@ if ($blog) {
               </div>
             <?php endif; ?>
 
-            <div class="prose prose-zinc max-w-none text-zinc-700 leading-relaxed text-base" itemprop="articleBody">
+            <div class="prose prose-zinc max-w-none text-zinc-700 leading-relaxed text-base blog-content-body" itemprop="articleBody">
+              <style>
+                .blog-content-body h1 { font-size: 2.25rem !important; font-weight: 800 !important; margin-top: 1.75rem !important; margin-bottom: 1rem !important; color: #18181b !important; line-height: 1.25 !important; display: block !important; }
+                .blog-content-body h2 { font-size: 1.75rem !important; font-weight: 700 !important; margin-top: 1.5rem !important; margin-bottom: 0.75rem !important; color: #18181b !important; line-height: 1.35 !important; border-bottom: 2px solid #e4e4e7 !important; padding-bottom: 0.35rem !important; display: block !important; }
+                .blog-content-body h3 { font-size: 1.35rem !important; font-weight: 700 !important; margin-top: 1.25rem !important; margin-bottom: 0.5rem !important; color: #27272a !important; line-height: 1.4 !important; display: block !important; }
+                .blog-content-body h4 { font-size: 1.15rem !important; font-weight: 600 !important; margin-top: 1rem !important; margin-bottom: 0.5rem !important; color: #3f3f46 !important; display: block !important; }
+                .blog-content-body ul { list-style-type: disc !important; padding-left: 1.5rem !important; margin: 1rem 0 !important; }
+                .blog-content-body ol { list-style-type: decimal !important; padding-left: 1.5rem !important; margin: 1rem 0 !important; }
+                .blog-content-body blockquote { border-left: 4px solid #4f46e5 !important; padding-left: 1rem !important; font-style: italic !important; background: #f8fafc !important; margin: 1rem 0 !important; padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; }
+              </style>
               <?php echo $blog['content'] ?? '<p class="italic text-zinc-400">No content provided.</p>'; ?>
             </div>
           <?php endif; ?>

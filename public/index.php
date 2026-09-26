@@ -4,13 +4,42 @@ if (!defined('ROOT')) {
     exit;
 }
 ?>
+<?php
+// Default fallbacks for dynamic SEO metadata
+$pageTitle = $pageTitle ?? 'DeoLang - Innovative Tech Solutions';
+$metaDesc = $metaDesc ?? 'Innovative tech solutions from Jorhat, Northeast India. Crafting cutting-edge apps, websites, and software to empower businesses.';
+$keywords = $keywords ?? 'services, development, web, apps, android, mac, linux, deolang, ideas, digital, smart, ai, create, cutting-edge, mobile, desktop, northeast, it, jorhat, golaghat';
+$author = $author ?? 'DeoLang Team';
+$ogType = $ogType ?? 'website';
+$canonicalUrl = $canonicalUrl ?? ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]" . $_SERVER['REQUEST_URI']);
+$coverImg = $coverImg ?? asset('images/logo_192.png');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DeoLang</title>
+  <title><?= htmlspecialchars($pageTitle) ?></title>
+  <meta name="description" content="<?= htmlspecialchars($metaDesc) ?>">
+  <meta name="keywords" content="<?= htmlspecialchars($keywords) ?>">
+  <meta name="author" content="<?= htmlspecialchars($author) ?>">
+  
+  <!-- OpenGraph -->
+  <meta property="og:title" content="<?= htmlspecialchars($pageTitle) ?>">
+  <meta property="og:description" content="<?= htmlspecialchars($metaDesc) ?>">
+  <meta property="og:type" content="<?= htmlspecialchars($ogType) ?>">
+  <meta property="og:url" content="<?= htmlspecialchars($canonicalUrl) ?>">
+  <meta property="og:image" content="<?= htmlspecialchars($coverImg) ?>">
+  <meta property="og:locale" content="en_IN">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<?= htmlspecialchars($pageTitle) ?>">
+  <meta name="twitter:description" content="<?= htmlspecialchars($metaDesc) ?>">
+  <meta name="twitter:image" content="<?= htmlspecialchars($coverImg) ?>">
+  
+  <link rel="canonical" href="<?= htmlspecialchars($canonicalUrl) ?>">
   <link rel="icon" href="<?= asset('images/favicon.ico') ?>">
   <link preload rel="stylesheet" href="<?= asset('style.css') ?>">
   <!-- <link rel="stylesheet" href="<?= asset('style.min.css') ?>"> -->
@@ -19,31 +48,10 @@ if (!defined('ROOT')) {
   <?php if (HTMX) {
     echo '<script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>';
   } ?>
-  <meta property="og:title" content="Innovative IT Solutions – Jorhat, Assam | Northeast Tech Startup">
-  <meta property="og:description"
-    content="Leading IT startup in Jorhat, Assam delivering cutting‑edge software development, cloud services, and digital transformation for businesses across Northeast India.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://deolang.com/">
-  <meta property="og:image" content="<?= asset('images/logo_192.png') ?>">
-  <meta property="og:locale" content="en_IN">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Innovative IT Solutions – Jorhat, Assam | Northeast Tech Startup">
-  <meta name="twitter:description"
-    content="Leading IT startup in Jorhat, Assam delivering cutting‑edge software development, cloud services, and digital transformation for businesses across Northeast India.">
-  <meta name="twitter:image" content="<?= asset('images/logo_192.png') ?>">
-  <link rel="canonical" href="https://deolang.com/">
-  <meta name="keywords"
-    content="services, development, web, apps, android, mac, linux, deolang, ideas, digital, smart, ai, create, cutting-edge, mobile, desktop, northeast, it, jorhat, golaghat">
-  <meta name=""
-    content="Innovative tech solutions from Jorhat, Northeast India. Crafting cutting-edge apps, websites, and desktop software to empower businesses and individuals with seamless digital experiences." />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <link rel="stylesheet" type="text/css"
     href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
   <link rel="stylesheet" type="text/css"
     href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/duotone/style.css" />
-  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8423647290391534"
-     crossorigin="anonymous"></script>
-     <meta name="google-adsense-account" content="ca-pub-8423647290391534"> -->
   <!-- Other meta tags, stylesheets, or scripts -->
   <meta name="google-adsense-account" content="ca-pub-5591235870596420">
 </head>

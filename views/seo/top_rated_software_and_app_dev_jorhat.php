@@ -1,7 +1,9 @@
-<title>DeoLang - Top-Rated Software & Mobile App Development in Jorhat</title>
-<meta name="description" content="DeoLang is the top-rated software and mobile app development company in Jorhat, Assam. We engineer high-performance Android, iOS, and web applications.">
-<meta name="keywords" content="DeoLang, mobile app development jorhat, custom software company assam, android app developers jorhat, ios app development assam, best software agency jorhat">
-<meta name="robots" content="index, follow">
+<?php
+$pageTitle = 'DeoLang - Top-Rated Software & Mobile App Development in Jorhat';
+$metaDesc = 'DeoLang is the top-rated software and mobile app development company in Jorhat, Assam. We engineer high-performance Android, iOS, and web applications.';
+$keywords = 'DeoLang, mobile app development jorhat, custom software company assam, android app developers jorhat, ios app development assam, best software agency jorhat';
+?>
+
 
 <div class="font-sans text-zinc-200 bg-zinc-900 overflow-x-hidden selection:bg-yellow-500 selection:text-white">
   <header class="bg-zinc-900/80 backdrop-blur text-zinc-200 fixed w-full top-0 z-50">
@@ -126,28 +128,13 @@
 
   <!-- Contact Us Section -->
   <section id="contact-us" class="py-24 bg-zinc-900 text-zinc-200 border-t border-zinc-800">
-    <div class="container mx-auto px-4 lg:px-8 max-w-5xl">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl text-white mb-4">Contact DeoLang Team</h2>
-        <p class="text-lg text-zinc-400 max-w-2xl mx-auto">Build your mobile or web app with Jorhat's premier development team.</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-        <!-- Contact Card: CEO -->
-        <div class="bg-zinc-800/80 p-8 rounded-2xl border border-zinc-700 flex flex-col items-center text-center hover:border-yellow-500/50 transition-all">
-          <img src="<?= asset('images/team/smt.jpeg') ?>" alt="Sumeet Bharali CEO DeoLang" class="w-24 h-24 rounded-full object-cover border-2 border-yellow-400 mb-4 shadow-lg">
-          <h3 class="text-xl font-bold text-white">Sumeet Bharali</h3>
-          <p class="text-yellow-400 font-medium mb-4">CEO & Founder</p>
-          <div class="flex items-center gap-3 text-zinc-300 mb-2">
-            <i class="ph-bold ph-envelope text-yellow-400 text-lg"></i>
-            <a href="mailto:contact@deolang.com" class="hover:text-yellow-400 transition-colors text-sm">contact@deolang.com</a>
-          </div>
-          <div class="flex items-center gap-3 text-zinc-300">
-            <i class="ph-bold ph-linkedin-logo text-yellow-400 text-lg"></i>
-            <a href="https://www.linkedin.com/in/sumeetbharali/" target="_blank" class="hover:text-yellow-400 transition-colors text-sm">LinkedIn Profile</a>
-          </div>
+      <div class="container mx-auto px-4 lg:px-8 max-w-5xl">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl text-white mb-4">Contact DeoLang Team</h2>
+          <p class="text-lg text-zinc-400 max-w-2xl mx-auto">Build your mobile or web app with Jorhat's premier development team.</p>
         </div>
-
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
         <!-- Contact Card: COO -->
         <div class="bg-zinc-800/80 p-8 rounded-2xl border border-zinc-700 flex flex-col items-center text-center hover:border-yellow-500/50 transition-all">
           <img src="<?= asset('images/team/ank.jpg') ?>" alt="Ankit Gupta COO DeoLang" class="w-24 h-24 rounded-full object-cover border-2 border-yellow-400 mb-4 shadow-lg">
@@ -177,25 +164,32 @@
             <a href="https://www.linkedin.com/in/gaurab-gogoi-3a6746246/" target="_blank" class="hover:text-yellow-400 transition-colors text-sm">LinkedIn Profile</a>
           </div>
         </div>
-      </div>
 
-        <!-- CTO -->
+        <!-- Contact Card: CEO -->
         <div class="bg-zinc-800/80 p-8 rounded-2xl border border-zinc-700 flex flex-col items-center text-center hover:border-yellow-500/50 transition-all">
-          <img src="<?= asset('images/team/cgg.jpg') ?>" alt="Gaurab Gogoi CTO DeoLang" class="w-24 h-24 rounded-full object-cover border-2 border-yellow-400 mb-4 shadow-lg">
-          <h3 class="text-xl font-bold text-white">Gaurab Gogoi</h3>
-          <p class="text-yellow-400 font-medium mb-4">CTO & Technical Head, DeoLang</p>
+          <img src="<?= asset('images/team/smt.jpeg') ?>" alt="Sumeet Bharali CEO DeoLang" class="w-24 h-24 rounded-full object-cover border-2 border-yellow-400 mb-4 shadow-lg">
+          <h3 class="text-xl font-bold text-white">Sumeet Bharali</h3>
+          <p class="text-yellow-400 font-medium mb-4">CEO & Founder</p>
           <div class="flex items-center gap-3 text-zinc-300 mb-2">
             <i class="ph-bold ph-envelope text-yellow-400 text-lg"></i>
-            <a href="mailto:gaurabgogoi@zohomail.in" class="hover:text-yellow-400 transition-colors">gaurabgogoi@zohomail.in</a>
+            <a href="mailto:contact@deolang.com" class="hover:text-yellow-400 transition-colors text-sm">contact@deolang.com</a>
           </div>
           <div class="flex items-center gap-3 text-zinc-300">
             <i class="ph-bold ph-linkedin-logo text-yellow-400 text-lg"></i>
-            <a href="https://www.linkedin.com/in/gaurab-gogoi-3a6746246/" target="_blank" class="hover:text-yellow-400 transition-colors">LinkedIn Profile</a>
+            <a href="https://www.linkedin.com/in/sumeetbharali/" target="_blank" class="hover:text-yellow-400 transition-colors text-sm">LinkedIn Profile</a>
           </div>
         </div>
+        </div>
+
+        <div class="bg-zinc-800/40 p-8 rounded-2xl border border-zinc-800 text-center max-w-2xl mx-auto">
+          <h4 class="text-lg font-bold text-white mb-2">Visit / Reach DeoLang Headquarters</h4>
+          <p class="text-zinc-400 mb-4">Based in Jorhat, Assam. Providing world-class IT solutions globally.</p>
+          <a href="mailto:contact@deolang.com" class="inline-flex items-center justify-center rounded-full bg-yellow-500 px-6 py-2.5 text-sm font-bold text-zinc-900 hover:bg-yellow-400 transition-all">
+            Send Us an Email <i class="ph-bold ph-paper-plane-tilt ml-2"></i>
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
   </main>
   {{ use_footer }}

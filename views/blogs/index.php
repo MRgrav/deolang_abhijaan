@@ -92,8 +92,8 @@ $jsonLdData = [
               $dateStr = !empty($item['created']) ? date('M j, Y', strtotime($item['created'])) : '';
               $authorName = !empty($item['author']) ? $item['author'] : 'DeoLang Team';
               
-              $tagList = !empty($item['keywords']) ? $item['keywords'] : ($item['tags'] ?? '');
-              $tags = array_filter(array_map('trim', explode(',', $tagList)));
+              $tagList = !empty($item['tags']) ? $item['tags'] : ($item['keywords'] ?? '');
+              $tags = array_slice(array_filter(array_map('trim', explode(',', $tagList))), 0, 4);
             ?>
               <article class="group bg-white rounded-xl border border-zinc-200/80 shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col h-full" itemscope itemtype="https://schema.org/BlogPosting">
                 <div class="aspect-video w-full overflow-hidden bg-zinc-100 relative">
