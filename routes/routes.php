@@ -18,6 +18,13 @@ route('/prot', 'k.php');
 
 // route('/deolang/mail/contact', 'logics/mail.php');
 
+// New pages
+route('/privacy-policy', 'legal/privacy.php');
+route('/terms-of-service', 'legal/terms.php');
+route('/cookie-policy', 'legal/cookies.php');
+route('/faq', 'faq.php');
+route('/contact', 'contact.php');
+
 // SEO Landing Pages
 route('/enterprise-software-jorhat', 'seo/best_enterprise_software_and_web_app_company_jorhat.php');
 route('/enterprise-software-jorhat/GET', 'seo/best_enterprise_software_and_web_app_company_jorhat.php');

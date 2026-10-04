@@ -46,6 +46,8 @@
     <li><a href="/#services" class="hover:text-indigo-400 transition text-yellow-100 block px-4 py-2">Services</a></li>
     <li><a href="/#products" class="hover:text-indigo-400 transition text-yellow-100 block px-4 py-2">Products</a></li>
     <li><a href="/blogs" class="hover:text-indigo-400 transition text-yellow-100 block px-4 py-2">Blogs</a></li>
+    <li><a href="/faq" class="hover:text-indigo-400 transition text-yellow-100 block px-4 py-2">FAQ</a></li>
     <li><a href="/#team" class="hover:text-indigo-400 transition text-yellow-100 block px-4 py-2">Team</a></li>
+    <li><a href="/contact" class="hover:text-indigo-400 transition text-yellow-100 block px-4 py-2">Contact</a></li>
   </ul>
 </nav>
